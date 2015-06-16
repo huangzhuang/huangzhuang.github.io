@@ -51,17 +51,6 @@ define([], function(){
 		basicwrap = wrap;
 		wrap.style.height = document.body.scrollHeight + 'px';
 	};
-	
-	var resetTags = function(){
-		var tags = $(".tagcloud a");
-		tags.css({"font-size": "12px"});
-		for(var i=0,len=tags.length; i<len; i++){
-			//var num = parseInt(Math.random()*5+1);
-			var num = tags.eq(i).html().length % 5 +1;
-			tags[i].className = "";
-			tags.eq(i).addClass("color"+num);
-		}
-	}
 
 	var show = function(target, idx){
 		document.getElementById("viewer").className = "";
@@ -146,7 +135,6 @@ define([], function(){
 			ctn = document.getElementsByClassName("slider-trigger")[0];
 			//构造四步
 			reset();
-			resetTags();
 			renderDOM();
 			combine();
 			bindDOM();
