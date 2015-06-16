@@ -146,6 +146,7 @@ define([], function(){
 			ctn = document.getElementsByClassName("slider-trigger")[0];
 			//构造四步
 			reset();
+			resetTags();
 			renderDOM();
 			combine();
 			bindDOM();
