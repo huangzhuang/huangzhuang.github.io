@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>css之选择器(selector) | hzhuang的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="css3选择器分类
+基本选择器
+层次选择器
+伪类选择器
+伪元素
+属性选择器
+
+其中最为复杂的是伪类选择器。以下是css3选择器的分类图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css之选择器(selector)">
+<meta property="og:url" content="http://huangzhuang.github.io/2015/06/18/selector/index.html">
+<meta property="og:site_name" content="hzhuang的博客">
+<meta property="og:description" content="css3选择器分类
+基本选择器
+层次选择器
+伪类选择器
+伪元素
+属性选择器
+
+其中最为复杂的是伪类选择器。以下是css3选择器的分类图">
+<meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/selector-strucate.jpg">
+<meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/strucate-pseudo.png">
+<meta property="og:updated_time" content="2015-06-19T01:56:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css之选择器(selector)">
+<meta name="twitter:description" content="css3选择器分类
+基本选择器
+层次选择器
+伪类选择器
+伪元素
+属性选择器
+
+其中最为复杂的是伪类选择器。以下是css3选择器的分类图">
+  
+    <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://hz2015.sinaapp.com/static/images/zhuang.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">hzhuang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">人若无名，便可专心练剑！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/tags/css3">css3</a></li>
+				        
+							<li><a href="/tags/前端">前端</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/huangzhuang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/1875236755/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huang-zhuang-225" title="zhihu">zhihu</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/autosize/" style="font-size: 10px;">autosize</a> <a href="/tags/css3/" style="font-size: 20px;">css3</a> <a href="/tags/iscroll/" style="font-size: 10px;">iscroll</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/learning/" style="font-size: 20px;">learning</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/reqexp/" style="font-size: 10px;">reqexp</a> <a href="/tags/transition/" style="font-size: 10px;">transition</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/模仿qq/" style="font-size: 10px;">模仿qq</a> <a href="/tags/简书/" style="font-size: 10px;">简书</a> <a href="/tags/选择器/" style="font-size: 10px;">选择器</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">华中科技大学13级硕士，在读。想从事前端类工作，努力奋进中。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">hzhuang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://hz2015.sinaapp.com/static/images/zhuang.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">hzhuang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">人若无名，便可专心练剑！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/tags/css3">css3</a></li>
+		        
+					<li><a href="/tags/前端">前端</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/huangzhuang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/1875236755/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huang-zhuang-225" title="zhihu">zhihu</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-selector" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/18/selector/" class="article-date">
+  	<time datetime="2015-06-18T14:23:30.000Z" itemprop="datePublished">2015-06-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      css之选择器(selector)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learning/">learning</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/选择器/">选择器</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="css3选择器分类">css3选择器分类</h1><ul>
+<li>基本选择器</li>
+<li>层次选择器</li>
+<li>伪类选择器</li>
+<li>伪元素</li>
+<li>属性选择器</li>
+</ul>
+<p>其中最为复杂的是伪类选择器。<br>以下是css3选择器的分类图<br><img src="http://hz2015.sinaapp.com/static/pictures/selector-strucate.jpg" alt=""><br><a id="more"></a></p>
+<h1 id="1-基本选择器">1.基本选择器</h1><p>*/E/#id/.class/selector1,delectorN</p>
+<h2 id="兼容性">兼容性</h2><p>所有的浏览器都支持基本的选择器。</p>
+<h1 id="2-层次选择器">2.层次选择器</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E F</td>
+<td style="text-align:left">选择E的后代F</td>
+</tr>
+<tr>
+<td style="text-align:left">E&gt;F</td>
+<td style="text-align:left">选择E的子元素F</td>
+</tr>
+<tr>
+<td style="text-align:left">E+F</td>
+<td style="text-align:left">选择E的相邻元素F(后面的)，相当于next</td>
+</tr>
+<tr>
+<td style="text-align:left">E~F</td>
+<td style="text-align:left">选择E后面的所有元素F，相当于sibilings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="兼容性-1">兼容性</h2><p>IE6不支持下面3个，其他的基本ok。不用考虑IE6就随便用。</p>
+<h1 id="3伪类选择器">3伪类选择器</h1><ul>
+<li>动态伪类</li>
+<li>目标伪类</li>
+<li>语言伪类</li>
+<li>UI状态伪类</li>
+<li>结构伪类</li>
+<li>否定伪类</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">E:</span>pseudo-<span class="class"><span class="keyword">class</span> &#123;</span> <span class="string">property:</span> value&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-1动态伪类选择器">3.1动态伪类选择器</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:link</td>
+<td style="text-align:left">链接伪类</td>
+<td style="text-align:left">未点击过的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:visited</td>
+<td style="text-align:left">链接伪类</td>
+<td style="text-align:left">访问过的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:active</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">被激活的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:hover</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">不解释</td>
+</tr>
+<tr>
+<td style="text-align:left">E:focus</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">也不解释</td>
+</tr>
+</tbody>
+</table>
+<h3 id="兼容性-2">兼容性</h3><p>除了:active和:focus是IE8+以上才支持的，其他基本是没有兼容性问题的。</p>
+<h2 id="3-2目标伪类选择器">3.2目标伪类选择器</h2><p>:target用于选取锚点或者链接#后面的目标元素。</p>
+<blockquote>
+<p>目标伪类是属于动态的，只在存在URL指向时候才有效。</p>
+</blockquote>
+<h3 id="兼容性-3">兼容性</h3><p>IE8+才支持。</p>
+<p>对于8以下的解决方案。<br><a href="http://www.htmldog.com/articles/suckerfish/target" target="_blank" rel="external">解决方案</a></p>
+<h2 id="3-3语言伪类选择器">3.3语言伪类选择器</h2><p>略</p>
+<h2 id="3-4UI元素状态伪类选择器">3.4UI元素状态伪类选择器</h2><p>包括：启用，禁用，选中，未选中，获得焦点，失去焦点，锁定和待机。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:checked</td>
+<td style="text-align:left">选中</td>
+<td style="text-align:left">选中的复选按钮或者单选按钮</td>
+</tr>
+<tr>
+<td style="text-align:left">E:enabled</td>
+<td style="text-align:left">启用</td>
+<td style="text-align:left">选中所有启动的表单元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:disabled</td>
+<td style="text-align:left">禁用</td>
+<td style="text-align:left">选中所有禁用的表单元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="兼容性-4">兼容性</h3><p>IE9+以上才支持，对于IE6-8则可以采用一下两种方式：</p>
+<ul>
+<li>定义类，然后设置样式。</li>
+<li><a href="http://selectivizr.com" target="_blank" rel="external">js库</a></li>
+</ul>
+<h2 id="3-5结构伪类选择器">3.5结构伪类选择器</h2><table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:first-child</td>
+<td style="text-align:left">作为父元素的第一个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:last-child</td>
+<td style="text-align:left">作为父元素的最后一个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:root</td>
+<td style="text-align:left">E所在文档的根目录</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-child(n)</td>
+<td style="text-align:left">作为父元素的第n个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-last-child(n)</td>
+<td style="text-align:left">作为父元素的倒数第n个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-of-type(n)</td>
+<td style="text-align:left">作为父元素指定的第n个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-last-of-type(n)</td>
+<td style="text-align:left">作为父元素指定的倒数第n个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:first-of-type</td>
+<td style="text-align:left">作为父元素指定的第一个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:last-of-type</td>
+<td style="text-align:left">作为父元素指定的最后一个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:only-child</td>
+<td style="text-align:left">父元素只包含一个子元素，且该子元素匹配E元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:only-of-type</td>
+<td style="text-align:left">作为父元素只包含同一类子元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:empty</td>
+<td style="text-align:left">作为父元素指定的第一个元素E</td>
+</tr>
+</tbody>
+</table>
+<p>用一张图来说明：<br><img src="http://hz2015.sinaapp.com/static/pictures/strucate-pseudo.png" alt=""></p>
+<h3 id="兼容性-5">兼容性</h3><p>IE9+</p>
+<h2 id="3-6否定伪类选择器">3.6否定伪类选择器</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="function"><span class="title">not</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="4伪元素选择器">4伪元素选择器</h1><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">::first-letter</span><br><span class="line">::first-line</span><br><span class="line"><span class="attribute">::before/::after:生成内容，内容不属于DOM，但是可以设置样式。</span></span><br><span class="line"><span class="attribute">::selection:(只能是background和color)</span></span><br></pre></td></tr></table></figure>
+<h1 id="5属性选择器">5属性选择器</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E[attr]</td>
+<td style="text-align:left">具有属性attr的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr=val]</td>
+<td style="text-align:left">具有属性是attr=val的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr~=val]</td>
+<td style="text-align:left">attr属性具有多个空格分割的值，其中一个值是val</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr竖=val]</td>
+<td style="text-align:left">attr属性的值是val或者以val-开头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr*=val]</td>
+<td style="text-align:left">attr属性的值包含val即可</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr^=val]</td>
+<td style="text-align:left">attr属性的值以val开头</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr$=val]</td>
+<td style="text-align:left">attr属性的值以val结尾</td>
+</tr>
+</tbody>
+</table>
+<h2 id="兼容性-6">兼容性</h2><p>IE7+</p>
+<h1 id="说明">说明</h1><ul>
+<li>整理自《图解css3》</li>
+<li>无技术含量，就是写博客的过程中整理思路。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/06/17/animation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">css3之动画(animation)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="selector" data-title="css之选择器(selector)" data-url="http://huangzhuang.github.io/2015/06/18/selector/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2015 hzhuang
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
