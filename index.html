@@ -459,14 +459,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="DNA">DNA</h1><p>题目：</p>
-<blockquote>
-<p>In DNA strings, symbols “A” and “T” are complements of each other, as “C” and “G”. You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).<br>DNAStrand (“ATTGC”) # return “TAACG”<br>DNAStrand (“GTAT”) # return “CATA”</p>
-</blockquote>
-<p>以下的解决方法是摘录并分析掌握：</p>
-<p>解决一：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DNAStrand</span><span class="params">(dna)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> dna.replace(/./g, <span class="function"><span class="keyword">function</span><span class="params">(c)</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> DNAStrand.<span class="built_in">pairs</span>[c]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DNAStrand.<span class="built_in">pairs</span> = &#123;</span><br><span class="line">  A: <span class="string">'T'</span>,</span><br><span class="line">  T: <span class="string">'A'</span>,</span><br><span class="line">  C: <span class="string">'G'</span>,</span><br><span class="line">  G: <span class="string">'C'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>解决二：<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var pairs = &#123;<span class="string">"A"</span>:<span class="string">"T"</span>,<span class="string">"T"</span>:<span class="string">"A"</span>,<span class="string">"C"</span>:<span class="string">"G"</span>,<span class="string">"G"</span>:<span class="string">"C"</span>&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DNAStrand</span><span class="params">(dna)</span>&#123;</span></span><br><span class="line">	console.<span class="built_in">log</span><span class="params">(dna.split<span class="params">(<span class="string">""</span>)</span>)</span>; <span class="comment">//["A","A","A","A"]</span></span><br><span class="line">	<span class="comment">// map()给数组的每一项运行给定的函数。返回每次函数调用的结果组成的数组</span></span><br><span class="line">	return dna.split<span class="params">(<span class="string">""</span>)</span>.map<span class="params">(function<span class="params">(v)</span>&#123;return pairs[v]&#125;)</span>.join<span class="params">(<span class="string">""</span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(DNAStrand<span class="params">(<span class="string">"AAAA"</span>)</span>)</span>;</span><br></pre></td></tr></table></figure></p>
-
+        <h1 id="说明">说明</h1><p>一下是从codewars中总结的，有的是自己会做的，然后参考别人的，找到好的方法，有的是不会，学习别人的，就是实战吧。非常不错的网站噢，强烈推荐。<br>
       
     </div>
     
@@ -478,6 +471,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/19/codewars/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
