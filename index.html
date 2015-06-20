@@ -209,6 +209,7 @@
 <li>第一章<br>  * </li>
 <li>第五章<ul>
 <li>5.2数组类型</li>
+<li>5.3Date类型</li>
 </ul>
 </li>
 </ul>
@@ -407,7 +408,7 @@
 </table>
 <p>作为参数的函数接受4个参数：前一个值，当前值，项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项。第一次迭代发生在数组的第二项，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum = values.reduce(<span class="function"><span class="keyword">function</span><span class="params">(prev, cur, <span class="keyword">index</span>, <span class="keyword">array</span>)</span><span class="comment">&#123;</span><br><span class="line">	return prev+cur;</span><br><span class="line">&#125;</span>);</span></span><br><span class="line">console.log(sum);<span class="comment">//15</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-
+<h2 id="5-3_Date类型">5.3 Date类型</h2>
       
     </div>
     
