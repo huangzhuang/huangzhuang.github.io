@@ -25,7 +25,7 @@
 定位布局
 
 现在：css3引入布局模式Flexbox布局；主要思路：以最佳的方式填充可用空间。">
-<meta property="og:updated_time" content="2015-06-21T09:42:28.000Z">
+<meta property="og:updated_time" content="2015-06-21T11:51:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3之伸缩盒布局(flex)">
 <meta name="twitter:description" content="1.flexbox的基本知识布局模式之前css2：
@@ -450,6 +450,42 @@
 </tr>
 </tbody>
 </table>
+<p>3.伸缩项目行对齐方式：指定伸缩项目行在侧轴的对齐方式</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">规范版本</th>
+<th style="text-align:left">属性名称</th>
+<th style="text-align:left">start</th>
+<th style="text-align:left">center</th>
+<th style="text-align:left">end</th>
+<th style="text-align:left">distribute</th>
+<th style="text-align:left">stretch</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">标准版本</td>
+<td style="text-align:left">align-content</td>
+<td style="text-align:left">flex-start</td>
+<td style="text-align:left">center</td>
+<td style="text-align:left">flex-end</td>
+<td style="text-align:left">space-around</td>
+<td style="text-align:left">stretch</td>
+</tr>
+<tr>
+<td style="text-align:left">混合版本</td>
+<td style="text-align:left">flex-line-pack</td>
+<td style="text-align:left">start</td>
+<td style="text-align:left">center</td>
+<td style="text-align:left">end</td>
+<td style="text-align:left">distribute</td>
+<td style="text-align:left">stretch</td>
+</tr>
+</tbody>
+</table>
+<p>4.显示顺序<br>|版本|属性名称|属性值|<br>|:——|:———|:——-|<br>|标准|order|<number>|<br>|混合|flex-order|<number>|<br>|老旧|box-ordinal-group|<number>|</number></number></number></p>
+<p>5.换行<br>|版本|属性名称|不换行|换行|反转换行|<br>|:——|:———|:——-|<br>|标准|flex-wrap|nowrap|wrap|wrap-reverse|<br>|混合|flex-wrap|nowrap|wrap|wrap-reverse|<br>|老旧|box-lines|single|multiple|N/A|</p>
 <h1 id="旧版本flexbox详解">旧版本flexbox详解</h1><p>开启的方法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:<span class="built_in">box</span> | inline-<span class="built_in">box</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-orient:horizontal |<span class="string"> vertical </span>|<span class="string"> inline-axis </span>|<span class="string"> block-axis</span></span><br></pre></td></tr></table></figure></p>
 <p>布局顺序：伸缩项目在伸缩容器中的流动顺序。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">box</span>-direction:<span class="built_in">normal</span> | <span class="built_in">reverse</span></span><br></pre></td></tr></table></figure></p>
@@ -473,6 +509,28 @@
 <li>设置main、sidebar-left和sidebar-right的显示顺序。</li>
 <li>最后，page的侧轴对齐方式设置成stretch。</li>
 </ul>
+<h1 id="混合模式">混合模式</h1><p>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flexbox <span class="string">| inline-flexbox</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩流方向<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row |<span class="string"> row-reserve </span>|<span class="string"> column </span>|<span class="string"> column-reserve</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩换行flex-wrap<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex-<span class="operator">wrap</span>: nowrap | <span class="operator">wrap</span> | <span class="operator">wrap</span>-reserve<span class="comment"></span><br><span class="line">//nowrap:类似box-lines的取值single</span><span class="comment"></span><br><span class="line">//wrap:类似box-lines的取值multiple</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩流方向和换行：flex-flow<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: <span class="tag">&lt;<span class="title">flex-direction</span>&gt;</span> | <span class="tag">&lt;<span class="title">flex-wrap</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>主轴对齐flex-pack<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-pack: start |<span class="string"> end </span>|<span class="string"> center </span>|<span class="string"> justify </span>|<span class="string"> distribute</span></span><br></pre></td></tr></table></figure></p>
+<p>侧轴对齐flex-align<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-align: start |<span class="string"> end </span>|<span class="string"> center </span>|<span class="string"> baseline </span>|<span class="string"> stretch</span></span><br></pre></td></tr></table></figure></p>
+<p>堆栈伸缩行flex-line-pack<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-line-pack: start |<span class="string"> end</span>|<span class="string"> center </span>|<span class="string"> justify </span>|<span class="string"> distribute </span>|<span class="string"> stretch</span></span><br></pre></td></tr></table></figure></p>
+<p>flex-line-pack属性主要用来控制伸缩项目的排列方式。</p>
+<p>伸缩性flex<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex</span>: <span class="string">&lt;number&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>显示顺序flex-order<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex-order</span>: <span class="string">&lt;integer&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>类似老版本的box-ordinal-group</p>
+<h1 id="新版本flexbox模型">新版本flexbox模型</h1><p>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flex <span class="string">| inline-flex</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩流方向<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row |<span class="string"> row-reverse </span>|<span class="string"> column </span>|<span class="string"> column-reverse</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩换行flex-wrap<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-<span class="operator">wrap</span>: nowrap | <span class="operator">wrap</span> | <span class="operator">wrap</span>-reverse</span><br></pre></td></tr></table></figure></p>
+<p>伸缩流方向和换行<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: <span class="tag">&lt;<span class="title">flex-firection</span>&gt;</span> | <span class="tag">&lt;<span class="title">flex-wrap</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>主轴对齐justify-content<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">justify-content: flex-<span class="operator"><span class="keyword">start</span> | flex-<span class="keyword">end</span> | center | <span class="keyword">space</span>-<span class="keyword">between</span> | <span class="keyword">space</span>-around</span><br><span class="line">//<span class="keyword">space</span>-<span class="keyword">between</span>:类似justify。</span><br><span class="line">//<span class="keyword">space</span>-around:伸缩项目会平均分布在行里。类似distribute。</span></span><br></pre></td></tr></table></figure></p>
+<p>侧轴对齐align-items<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//调整伸缩项目在侧轴的对齐方式</span><br><span class="line">align-items: flex-start |<span class="string"> flex-end </span>|<span class="string"> center </span>|<span class="string"> baseline </span>|<span class="string"> stretch</span><br><span class="line"></span><br><span class="line">//align-self主要用来设置单独伸缩项目在侧轴的对齐方式。</span><br><span class="line">align-self: flex-start </span>|<span class="string"> flex-end </span>|<span class="string"> center </span>|<span class="string"> baseline </span>|<span class="string"> stretch</span></span><br></pre></td></tr></table></figure></p>
+<p>堆栈伸缩行align-content<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">align-content: flex-start | flex-<span class="keyword">end</span> | center | <span class="constant">space</span>-<span class="keyword">between</span> | <span class="constant">space</span>-<span class="keyword">around</span></span><br></pre></td></tr></table></figure></p>
+<p>会更改flex-wrap的行为。它和align-items相似，但不是对齐伸缩项目，而是对齐的是伸缩行。</p>
+<p>伸缩性flex</p>
+<p>显示顺序order<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">order</span>: <span class="string">&lt;number&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="说明">说明</h2><p>整理思路的文章。</p>
 
       
     </div>
