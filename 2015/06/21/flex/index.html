@@ -25,7 +25,7 @@
 定位布局
 
 现在：css3引入布局模式Flexbox布局；主要思路：以最佳的方式填充可用空间。">
-<meta property="og:updated_time" content="2015-06-21T08:26:34.000Z">
+<meta property="og:updated_time" content="2015-06-21T09:42:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3之伸缩盒布局(flex)">
 <meta name="twitter:description" content="1.flexbox的基本知识布局模式之前css2：
@@ -452,6 +452,27 @@
 </table>
 <h1 id="旧版本flexbox详解">旧版本flexbox详解</h1><p>开启的方法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:<span class="built_in">box</span> | inline-<span class="built_in">box</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-orient:horizontal |<span class="string"> vertical </span>|<span class="string"> inline-axis </span>|<span class="string"> block-axis</span></span><br></pre></td></tr></table></figure></p>
+<p>布局顺序：伸缩项目在伸缩容器中的流动顺序。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">box</span>-direction:<span class="built_in">normal</span> | <span class="built_in">reverse</span></span><br></pre></td></tr></table></figure></p>
+<p>伸缩换行：处理溢出情况<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-lines</span>: <span class="string">single | multiple</span></span><br></pre></td></tr></table></figure></p>
+<p>主轴对齐box-pack<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-pack: start |<span class="string"> center </span>|<span class="string"> end </span>|<span class="string"> justify </span>|</span><br></pre></td></tr></table></figure></p>
+<p>侧轴对齐box-align<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-align: start |<span class="string"> end </span>|<span class="string"> center </span>|<span class="string"> baseline </span>|<span class="string"> stretch </span>|</span><br></pre></td></tr></table></figure></p>
+<p>伸缩性box-flex<br>可以灵活的控制伸缩项目在伸缩容器中的剩余空间。<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-flex</span>: <span class="string">&lt;number&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>伸缩项目的固有宽度之和小于伸缩容器的宽度，伸缩项目会自动增加宽度以填充伸缩容器。</li>
+<li>伸缩项目的固有宽度之和大于伸缩容器的宽度，伸缩项目会自动减少宽度以适应伸缩容器。</li>
+</ul>
+<p>显示顺序box-ordinal-group<br>重新设置伸缩项目的出现顺序。默认的是在DOM中出现的先后顺序。<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-ordinal-group</span>: <span class="string">&lt;integer&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>实战：box制作自适应的三列等高布局<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"page"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"main"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">h1</span>&gt;</span>主内容<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"sidebar-left"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">h1</span>&gt;</span>左边栏<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"sidebar-right"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="title">h1</span>&gt;</span>右边栏<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"footer"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span>我是页面页脚<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>body开启box，伸缩流方向是vertical。</p>
+</li>
+<li><p>page开启伸缩性。</p>
+</li>
+<li>把page开启box，伸缩流是horizontal。</li>
+<li>main伸缩性。</li>
+<li>设置main、sidebar-left和sidebar-right的显示顺序。</li>
+<li>最后，page的侧轴对齐方式设置成stretch。</li>
+</ul>
 
       
     </div>
