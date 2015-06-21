@@ -25,7 +25,7 @@
 定位布局
 
 现在：css3引入布局模式Flexbox布局；主要思路：以最佳的方式填充可用空间。">
-<meta property="og:updated_time" content="2015-06-21T11:51:15.000Z">
+<meta property="og:updated_time" content="2015-06-21T11:54:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3之伸缩盒布局(flex)">
 <meta name="twitter:description" content="1.flexbox的基本知识布局模式之前css2：
@@ -484,8 +484,68 @@
 </tr>
 </tbody>
 </table>
-<p>4.显示顺序<br>|版本|属性名称|属性值|<br>|:——|:———|:——-|<br>|标准|order|<number>|<br>|混合|flex-order|<number>|<br>|老旧|box-ordinal-group|<number>|</number></number></number></p>
-<p>5.换行<br>|版本|属性名称|不换行|换行|反转换行|<br>|:——|:———|:——-|<br>|标准|flex-wrap|nowrap|wrap|wrap-reverse|<br>|混合|flex-wrap|nowrap|wrap|wrap-reverse|<br>|老旧|box-lines|single|multiple|N/A|</p>
+<p>4.显示顺序</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">版本</th>
+<th style="text-align:left">属性名称</th>
+<th style="text-align:left">属性值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">order</td>
+<td style="text-align:left"><number></number></td>
+</tr>
+<tr>
+<td style="text-align:left">混合</td>
+<td style="text-align:left">flex-order</td>
+<td style="text-align:left"><number></number></td>
+</tr>
+<tr>
+<td style="text-align:left">老旧</td>
+<td style="text-align:left">box-ordinal-group</td>
+<td style="text-align:left"><number></number></td>
+</tr>
+</tbody>
+</table>
+<p>5.换行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">版本</th>
+<th style="text-align:left">属性名称</th>
+<th style="text-align:left">不换行</th>
+<th>换行</th>
+<th>反转换行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">标准</td>
+<td style="text-align:left">flex-wrap</td>
+<td style="text-align:left">nowrap</td>
+<td>wrap</td>
+<td>wrap-reverse</td>
+</tr>
+<tr>
+<td style="text-align:left">混合</td>
+<td style="text-align:left">flex-wrap</td>
+<td style="text-align:left">nowrap</td>
+<td>wrap</td>
+<td>wrap-reverse</td>
+</tr>
+<tr>
+<td style="text-align:left">老旧</td>
+<td style="text-align:left">box-lines</td>
+<td style="text-align:left">single</td>
+<td>multiple</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
 <h1 id="旧版本flexbox详解">旧版本flexbox详解</h1><p>开启的方法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:<span class="built_in">box</span> | inline-<span class="built_in">box</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-orient:horizontal |<span class="string"> vertical </span>|<span class="string"> inline-axis </span>|<span class="string"> block-axis</span></span><br></pre></td></tr></table></figure></p>
 <p>布局顺序：伸缩项目在伸缩容器中的流动顺序。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">box</span>-direction:<span class="built_in">normal</span> | <span class="built_in">reverse</span></span><br></pre></td></tr></table></figure></p>
