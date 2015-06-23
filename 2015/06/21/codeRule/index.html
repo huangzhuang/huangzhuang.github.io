@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>前端代码规范 | hzhuang的博客</title>
+  <title>前端代码规范-css | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="高质量的css
 css的API使用(基础)
@@ -12,7 +12,7 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
 common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的common层，但">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端代码规范">
+<meta property="og:title" content="前端代码规范-css">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/21/codeRule/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description" content="高质量的css
@@ -21,9 +21,9 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 
 base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
 common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的common层，但">
-<meta property="og:updated_time" content="2015-06-22T16:06:22.000Z">
+<meta property="og:updated_time" content="2015-06-23T07:55:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端代码规范">
+<meta name="twitter:title" content="前端代码规范-css">
 <meta name="twitter:description" content="高质量的css
 css的API使用(基础)
 css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
@@ -210,7 +210,7 @@ common.js位于中间层，是样式的模块化。是要高度重用的模块�
         
   
     <h1 class="article-title" itemprop="name">
-      前端代码规范
+      前端代码规范-css
     </h1>
   
 
@@ -285,6 +285,30 @@ common.js位于中间层，是样式的模块化。是要高度重用的模块�
 <p>6.块级元素和行内元素的区别<br>块级：div p form ul ol li<br>行内：span strong em<br>区别：<br>块级可以设置宽度和高度，行内元素设置的话无效。<br>块级元素的margin和padding，而行内元素的很奇怪：水平有效，数值无效。</p>
 <p>7.display：inline-block和hasLayout<br>Inline-block设置之后，它就是行内的块级元素，可以设置长宽，可以设置margin和padding，但是并不是独占一行，和其他元素并排。</p>
 <p>IE6/7不兼容display：inline-block，但是触发hasLayout可以模拟出这个效果。</p>
+<p>8.relative，absolute和float</p>
+<ul>
+<li>relative和absolute会改变元素在文档流中的位置。relative会保留z-index为0的占位。</li>
+<li>float则是没有改变元素在文档流的位置。</li>
+<li>absolute和float会改变display的值（none除外）成为inline-block。</li>
+</ul>
+<p>9.居中</p>
+<ul>
+<li>水平居中：<br>1)文本和图片等行内元素</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;</span><br></pre></td></tr></table></figure>
+<p>2)确定宽度的块级元素<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">width</span>:<span class="value">xxx</span></span>;<span class="rule"><span class="attribute">margin-left</span>:<span class="value">auto</span></span>;<span class="rule"><span class="attribute">margin-right</span>:<span class="value">auto</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>3)不确定宽度的块级元素<br>三种方法：<br>用table标签来实现，table不是块级元素，不设置宽度，它的宽度就是由内部的元素撑起，则即使不设置宽度，由margin-left:auto;margin-right:auto;也可以时居中。</p>
+<p>设置display:inline然后配合text-align:center来实现。</p>
+<p>设置父元素float，然后position:relative和left:50%,然后设置子元素position:relative和left:-50%。</p>
+<ul>
+<li>竖直居中<br>1)父元素高度不确定的文本和图片以及块级元素的竖直居中。<br>通过给父容器设置相同的上下边距padding实现的。</li>
+</ul>
+<p>2)父元素高度确定的单行文本的竖直居中<br>so easy! 行高等于父元素的高度即可。</p>
+<p>3)父辈高度确定的多行文本，图片，块级元素的竖直居中。<br>方法一：<br>vertical-align:只有父元素是td或者th的时候才生效，所以设置display:table-cell来激活。但是IE6/7是不支持的。所以可以直接使用table。</p>
+<p>方法二：<br>对于一般的使用display:table-cell和vertical-align:middle;来实现，对于不支持的IE6/7则使用hack<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"verticalWrap"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"xxx"</span> <span class="attribute">class</span>=<span class="value">"vertical"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="class">.verticalWrap</span><span class="rules">&#123;*<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;*<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">50%</span></span></span>;&#125;</span></span><br><span class="line"><span class="class">.vertical</span><span class="rules">&#123;*<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;*<span class="rule"><span class="attribute">top</span>:<span class="value">-<span class="number">50%</span></span></span>;&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>10.z-index的相关问题以及IE6下的select元素<br>z轴在元素设置position为absolute或者relative的时候激活。</p>
+<p>select在IE6中是以窗口的形式存在，bug。如何设置z-index是不起作用的。解决方法就是把要放在select上面的内容放在一个iframe里面。</p>
+<p>11.插入png图片的问题<br>IE6对png的透明不友好。脚本解决。</p>
 
       
     </div>
@@ -325,7 +349,7 @@ common.js位于中间层，是样式的模块化。是要高度重用的模块�
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="codeRule" data-title="前端代码规范" data-url="http://huangzhuang.github.io/2015/06/21/codeRule/"></div>
+	<div class="ds-thread" data-thread-key="codeRule" data-title="前端代码规范-css" data-url="http://huangzhuang.github.io/2015/06/21/codeRule/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
