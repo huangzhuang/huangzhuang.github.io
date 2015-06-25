@@ -179,6 +179,43 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-angular" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/25/angular/" class="article-date">
+  	<time datetime="2015-06-25T12:02:11.000Z" itemprop="datePublished">2015-06-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-codeRule-js" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -205,7 +242,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高质量的javascript">高质量的javascript</h1>
+        <h1 id="高质量的javascript">高质量的javascript</h1><h2 id="养成良好的编程习惯">养成良好的编程习惯</h2><ul>
+<li>用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。</li>
+<li>使用命名空间</li>
+</ul>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="kotlin"></span><br><span class="line">	<span class="variable"><span class="keyword">var</span> GLOBAL</span> = </span></span><span class="expression">&#123;&#125;</span><span class="xml"><span class="dns"><span class="comment">;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="fortran"></span><br><span class="line">	(<span class="function"><span class="keyword">function</span><span class="params">()</span></span></span></span><span class="expression">&#123;</span><br><span class="line">		<span class="variable">var</span> <span class="variable">a</span>=123,<span class="variable">b</span>=<span class="string">"hello world"</span>;</span><br><span class="line">		<span class="variable">GLOBAL.A</span>=&#123;&#125;</span><span class="xml"><span class="armasm"><span class="comment">;</span></span><br><span class="line">		<span class="preprocessor">GLOBAL</span>.A.<span class="keyword">str2 </span>= a<span class="comment">;</span></span><br><span class="line">		<span class="preprocessor">GLOBAL</span>.A.<span class="keyword">str </span>= <span class="keyword">b;</span><br><span class="line"></span>	&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -217,6 +258,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/06/21/codeRule-js/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -708,63 +753,6 @@
       
         <p class="article-more-link">
           <a  href="/2015/06/15/qq-simulate/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/15/test/" class="article-date">
-  	<time datetime="2015-06-15T01:45:00.000Z" itemprop="datePublished">2015-06-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/15/test/">正则表达式-javascript</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>说明：<br>博客终于搭建的差不多了，现在去简书post以前写的一篇笔记来测试测试。</p>
-<p>测试内容：<br>1.标签可行<br>2.more的使用<br>3.是否可以评论</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reqexp/">reqexp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/简书/">简书</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/06/15/test/#more">more >></a>
         </p>
       
       <div class="clearfix"></div>

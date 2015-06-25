@@ -5,16 +5,28 @@
   
   <title>前端代码规范-js | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="高质量的javascript">
+  <meta name="description" content="高质量的javascript养成良好的编程习惯
+用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
+使用命名空间
+
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端代码规范-js">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/21/codeRule-js/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="高质量的javascript">
-<meta property="og:updated_time" content="2015-06-24T12:16:25.000Z">
+<meta property="og:description" content="高质量的javascript养成良好的编程习惯
+用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
+使用命名空间
+
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
+<meta property="og:updated_time" content="2015-06-24T15:26:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端代码规范-js">
-<meta name="twitter:description" content="高质量的javascript">
+<meta name="twitter:description" content="高质量的javascript养成良好的编程习惯
+用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
+使用命名空间
+
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -215,7 +227,63 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="高质量的javascript">高质量的javascript</h1>
+        <h1 id="高质量的javascript">高质量的javascript</h1><h2 id="养成良好的编程习惯">养成良好的编程习惯</h2><ul>
+<li>用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。</li>
+<li>使用命名空间</li>
+</ul>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="kotlin"></span><br><span class="line">	<span class="variable"><span class="keyword">var</span> GLOBAL</span> = </span></span><span class="expression">&#123;&#125;</span><span class="xml"><span class="dns"><span class="comment">;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="fortran"></span><br><span class="line">	(<span class="function"><span class="keyword">function</span><span class="params">()</span></span></span></span><span class="expression">&#123;</span><br><span class="line">		<span class="variable">var</span> <span class="variable">a</span>=123,<span class="variable">b</span>=<span class="string">"hello world"</span>;</span><br><span class="line">		<span class="variable">GLOBAL.A</span>=&#123;&#125;</span><span class="xml"><span class="armasm"><span class="comment">;</span></span><br><span class="line">		<span class="preprocessor">GLOBAL</span>.A.<span class="keyword">str2 </span>= a<span class="comment">;</span></span><br><span class="line">		<span class="preprocessor">GLOBAL</span>.A.<span class="keyword">str </span>= <span class="keyword">b;</span><br><span class="line"></span>	&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>给代码添加适当的注释，以提高代码的可维护性。</li>
+</ul>
+<p>添加必要的注释，可以大大的提高代码的可维护性，对于团队合作来说，更是十分有必要的。<br>让js不产生冲突，需要避免全局变量的泛滥，合理使用命名空间以及为代码添加必要的注释。</p>
+<h2 id="给程序统一的入口—-window-onload和DOMReady">给程序统一的入口—-window.onload和DOMReady</h2><p>js从功能上分：框架部分和应用部分。</p>
+<ul>
+<li>框架部分：提供的是将js代码的组织作用，包括定义全局变量，定义命名空间。</li>
+<li>应用部分：页面逻辑功能，不同的页面会有不同的功能，不同页面的应用部分的代码也不相同。</li>
+</ul>
+<p>现在给定一个“入口”,init( )就是一个入口。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		xxx;</span><br><span class="line">	&#125;)();</span><br><span class="line">	xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>window.onload( )会在window对象在网页内元素全部加载完毕之后触发onload事件。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = init;</span><br></pre></td></tr></table></figure>
+<p>但是按照以上的方法必须网页的全部的内容加载完才执行，如果页面很大，就要等很久的时间了，最好的方法就是只要DOM加载完成即可啦。DOMReady来啦。<br>DOMReady是结合框架来使用的，jquery的，就非常明了啦。</p>
+<p>在调用init( )函数时候，更稳妥的方法。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span><span class="params">(init)</span>&#123;init<span class="params">( )</span>;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="文件压缩">文件压缩</h2><p>最流行的压缩工具<a href="http://dean.edwards.name/packer/" target="_blank" rel="external">Packer</a>和<a href="http://refresh-sf.com/yui/" target="_blank" rel="external">YUI Compresser</a></p>
+<h1 id="javascript的分层概念和javascript库">javascript的分层概念和javascript库</h1><h2 id="如何分层">如何分层</h2><p>分层可以让我们的代码组织条理更清晰，减少冗余，提高代码重用率。<br>推荐：base.js + common.js + page.js<br>1.base.js<br>最底层，职责：</p>
+<ul>
+<li>封装不同浏览器下js的差异，提供统一的接口，完成兼容性的工作。</li>
+<li>扩展js语言底层提供的接口。</li>
+<li>给base.js和commmon.js提供接口。</li>
+</ul>
+<p>兼容性解决整理：</p>
+<blockquote>
+<p>1.FireFox会将空白，换行等文本信息也仿作childNodes中的一员，而IE则会忽略，只将DOM节点当做childNodes的一员。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//兼容浏览器的nextSiblings的函数封装。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getNextNode</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">	node = <span class="keyword">typeof</span> node == <span class="string">"string"</span> ? <span class="built_in">document</span>.getElementById(node) : node;</span><br><span class="line">	<span class="keyword">var</span> nextNode = node.nextSiblings;</span><br><span class="line">	<span class="comment">//判断是否有nextSiblings</span></span><br><span class="line">	<span class="keyword">if</span>(!nextNode) &#123;<span class="keyword">return</span> <span class="literal">null</span>;&#125;</span><br><span class="line">	<span class="comment">//判断是否是IE浏览器。</span></span><br><span class="line">	<span class="keyword">if</span>(!<span class="built_in">document</span>.all)&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nextNode.nodeType == <span class="number">1</span>)&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(nextNode.nextSiblings)&#123;</span><br><span class="line">					nextNode = nextNode.nextSiblings;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.透明度，IE的透明度是通过滤镜实现的，而FireFox是通过opacity属性值得数值而来的。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setOpacity</span>(<span class="params">node, lebel</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> node = <span class="keyword">typeof</span> node == <span class="string">"string"</span> ? <span class="built_in">document</span>.getElementById(node) : node;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">document</span>.all)&#123;</span><br><span class="line">		node.style.filter = <span class="string">'alpha(opacity='</span> + level + <span class="string">')'</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		node.style.opacity = level / <span class="number">100</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>3.event对象，Ie中event对象是作为window的属性作用于全局作用域的，而在firefox中，event对象是作为事件的参数存在的。</p>
+</blockquote>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> getEventTarget(<span class="literal">e</span>)&#123;</span><br><span class="line">	<span class="literal">e</span> = window.event || <span class="literal">e</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">e</span>.srcElement || <span class="literal">e</span>.target;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.maopaio</p>
+</blockquote>
+<p>2.common.js</p>
+<ul>
+<li>提供可供复用的组件。</li>
+<li>mvc模式中的m，和页面内的具体功能没有直接的关系。</li>
+<li>给page.js层提供组件。</li>
+</ul>
+<p>3.page.js</p>
+<ul>
+<li>mvc模式中的c。</li>
+<li>依赖于base.js和common.js</li>
+<li>完成页面内的功能需求。</li>
+</ul>
+
       
     </div>
     
@@ -223,6 +291,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/06/25/angular/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2015/06/21/codeRule/" id="article-nav-older" class="article-nav-link-wrap">
