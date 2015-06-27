@@ -18,7 +18,13 @@
 第五章
 
 5.2数组类型
-5.3Date类型">
+5.3Date类型
+
+
+第六章 面向对象程序设计
+
+6.1 理解对象
+6.2 创建对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/20/javascript-3th/index.html">
@@ -36,8 +42,14 @@
 第五章
 
 5.2数组类型
-5.3Date类型">
-<meta property="og:updated_time" content="2015-06-24T04:01:02.000Z">
+5.3Date类型
+
+
+第六章 面向对象程序设计
+
+6.1 理解对象
+6.2 创建对象">
+<meta property="og:updated_time" content="2015-06-27T14:59:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description" content="目录
@@ -53,7 +65,13 @@
 第五章
 
 5.2数组类型
-5.3Date类型">
+5.3Date类型
+
+
+第六章 面向对象程序设计
+
+6.1 理解对象
+6.2 创建对象">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -268,6 +286,12 @@
 <ul>
 <li>5.2数组类型</li>
 <li>5.3Date类型</li>
+</ul>
+</li>
+<li><p>第六章 面向对象程序设计</p>
+<ul>
+<li>6.1 理解对象</li>
+<li>6.2 创建对象</li>
 </ul>
 </li>
 </ul>
@@ -704,7 +728,97 @@
 </table>
 <p>作为参数的函数接受4个参数：前一个值，当前值，项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项。第一次迭代发生在数组的第二项，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。<br><figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> values =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line"><span class="keyword">var</span> sum = values.reduce(<span class="function"><span class="keyword">function</span><span class="params">(prev, cur, <span class="keyword">index</span>, <span class="keyword">array</span>)</span><span class="comment">&#123;</span><br><span class="line">	return prev+cur;</span><br><span class="line">&#125;</span>);</span></span><br><span class="line">console.log(sum);<span class="comment">//15</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<h2 id="5-3_Date类型">5.3 Date类型</h2>
+<h2 id="5-3_Date类型">5.3 Date类型</h2><h1 id="第六章_面向对象的程序设计">第六章 面向对象的程序设计</h1><p>内容：</p>
+<ul>
+<li>理解对象属性</li>
+<li>理解并创建对象</li>
+<li>理解继承</li>
+</ul>
+<h2 id="6-1_理解对象">6.1 理解对象</h2><h3 id="6-1-1_属性类型">6.1.1 属性类型</h3><p>内部才有的特性，用[[…]]来表示的。<br>1.数据属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[[Configurable]]</td>
+<td style="text-align:left">能否delete删除属性从而重新定义、能否修改属性的特性、能否把属性修改为访问器属性。</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Enumerable]]</td>
+<td style="text-align:left">能否通过for-in枚举。默认是true</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Eritable]]</td>
+<td style="text-align:left">能否修改属性的值</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Value]]</td>
+<td style="text-align:left">包含这个属性的数据值</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="inform7"></span><br><span class="line">	var <span class="keyword">person</span> = </span></span><span class="expression">&#123;</span><br><span class="line">		<span class="variable">name</span>:<span class="string">"HuangZhuang"</span>;</span><br><span class="line">	&#125;</span><span class="xml"><span class="undefined"></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>如上所示：创建一个对象，它的默认内部属性前三个都是true,然后[[value]]被设置成了一个特定的值HuangZhuang。对象创建name属性，[[Value]]被设置了，在对name属性值得任何时候的修改都会反映在这个位置。</p>
+<p>修改特性的默认值，只能调用：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.<span class="function"><span class="title">defineProperty</span><span class="params">(属性所在对象，<span class="string">"属性名字"</span>，<span class="string">"一个描述符对象"</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>如果要修改，则：<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var <span class="keyword">person</span> = &#123;&#125;;</span><br><span class="line">Object.defineProperty(<span class="keyword">person</span>, <span class="string">"name"</span>, &#123;</span><br><span class="line">	writable: false,</span><br><span class="line">	value: <span class="string">"hz"</span></span><br><span class="line">&#125;)</span><br><span class="line">console.log(<span class="keyword">person</span>.name); //hz</span><br><span class="line"><span class="keyword">person</span>.name= <span class="string">"hh"</span>;</span><br><span class="line">console.log(<span class="keyword">person</span>.name); //hz</span><br></pre></td></tr></table></figure></p>
+<p>有一点注意：就是当Configurable是false时，其他三个的特性是要受到限制的，而且设定Object.defineProperty后，这四个特性均是默认设定成false的。</p>
+<p>2.访问器属性<br>访问器属性不包含数组，但是包含一对getter和setter函数。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[[Configurable]]</td>
+<td style="text-align:left">能否delete删除属性从而重新定义、能否修改属性的特性、能否把属性修改为访问器属性。</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Enumerable]]</td>
+<td style="text-align:left">能否通过for-in枚举。默认是true</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Get]]</td>
+<td style="text-align:left">读取属性时调用的函数</td>
+</tr>
+<tr>
+<td style="text-align:left">[[Set]]</td>
+<td style="text-align:left">写入属性时调用的函数</td>
+</tr>
+</tbody>
+</table>
+<p>访问器属性不可以直接定义，必须通过Object.defineProperty( )来定义。</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;</span><br><span class="line">	_year : <span class="number">2004</span>,</span><br><span class="line">	edition: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line">Object.defineProperty(book, <span class="string">"year"</span>,&#123;</span><br><span class="line">	<span class="keyword">get</span>: <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>._year;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="keyword">set</span>: <span class="function"><span class="keyword">function</span><span class="params">(newValue)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(newValue &gt; <span class="number">2004</span>)&#123;</span><br><span class="line">			<span class="keyword">this</span>._year = newValue;</span><br><span class="line">			<span class="keyword">this</span>.edition += newValue - <span class="number">2004</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">book.year = <span class="number">2005</span>;</span><br><span class="line">alert(book.edition); <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p>下划线表示只能通过对象方法访问的属性。</p>
+<h3 id="6-1-2_定义多个属性">6.1.2 定义多个属性</h3><p>Object.defineProperties(第一个对象是要添加和修改其属性的对象，第二个对象的属性与第一个对象中要添加或修改的属性一一对应)</p>
+<h3 id="6-1-3_读取属性的特性">6.1.3 读取属性的特性</h3><p>一个函数Object.getOwnPropertyDescriptor( )针对属性是数据类型还是访问器类型返回出内部属性的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="built_in">Object</span>.getOwnPropertyDescriptor(book, <span class="string">"year"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+<h2 id="6-2_创建对象">6.2 创建对象</h2><p>Object构造函数或对象字面量都可以创建单个对象，但是这种方式是有明显的缺点的：使用同一个接口创建很多对象，会产生大量的额重复代码。</p>
+<h3 id="6-2-1_工厂模式">6.2.1 工厂模式</h3><p>用函数来封装以特定的接口创建对象的细节。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age, job</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">	o.name = name;</span><br><span class="line">	o.age = age;</span><br><span class="line">	o.job = job;</span><br><span class="line">	o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o1 = createPerson(<span class="string">"hz"</span>, <span class="number">25</span>, <span class="string">'IT'</span>);</span><br><span class="line">......</span><br></pre></td></tr></table></figure></p>
+<p>但是却没有解决对象识别的问题，即怎样知道一个对象的类型。</p>
+<h3 id="6-2-2_构造函数模式">6.2.2 构造函数模式</h3><p>特点：</p>
+<ul>
+<li>没有显示的创建对象</li>
+<li>直接将属性和方法赋值给this对象</li>
+<li>没有return语句</li>
+</ul>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function <span class="keyword">Person</span>(name, age, job)&#123;</span><br><span class="line">	this.name = name;</span><br><span class="line">	this.age = age;</span><br><span class="line">	this.job = job;</span><br><span class="line">	this.sayName = function()&#123;</span><br><span class="line">		console.log(this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">var Person1 = new <span class="keyword">Person</span>(<span class="string">"hz"</span>, 25, <span class="string">"IT"</span>);</span><br></pre></td></tr></table></figure>
+<p>构造函数始终都应该以一个大写字母开头，非构造函数才是用小写字母开头。</p>
+<p>以上的例子中，要创建一个Person的新实例，要使用new操作符。经理四个步骤：</p>
+<ul>
+<li>1创建一个新对象。</li>
+<li>2将构造函数打的作用域赋值给新对象，this就会指向新对象。</li>
+<li>3执行构造函数中的代码。</li>
+<li>返回新对象。</li>
+</ul>
+<p>Person创建的实例，都有一个指向Person的Constructor属性。<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Person1.constructor == <span class="keyword">Person</span> ); //true</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
