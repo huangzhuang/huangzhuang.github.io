@@ -15,10 +15,10 @@
 3.7 函数
 
 
-第五章
+第五章 引用类型
 
-5.2数组类型
-5.3Date类型
+5.2 数组类型
+5.3 Date类型
 
 
 第六章 面向对象程序设计
@@ -39,17 +39,17 @@
 3.7 函数
 
 
-第五章
+第五章 引用类型
 
-5.2数组类型
-5.3Date类型
+5.2 数组类型
+5.3 Date类型
 
 
 第六章 面向对象程序设计
 
 6.1 理解对象
 6.2 创建对象">
-<meta property="og:updated_time" content="2015-06-27T15:05:48.000Z">
+<meta property="og:updated_time" content="2015-06-27T15:22:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description" content="目录
@@ -62,10 +62,10 @@
 3.7 函数
 
 
-第五章
+第五章 引用类型
 
-5.2数组类型
-5.3Date类型
+5.2 数组类型
+5.3 Date类型
 
 
 第六章 面向对象程序设计
@@ -282,16 +282,16 @@
 <li>3.7 函数</li>
 </ul>
 </li>
-<li><p>第五章</p>
+<li><p><a href="#第五章 引用类型">第五章 引用类型</a></p>
 <ul>
-<li>5.2数组类型</li>
-<li>5.3Date类型</li>
+<li>5.2 <a href="#5.2 数组类型">数组类型</a></li>
+<li>5.3 <a href="#5.3 Date类型">Date类型</a></li>
 </ul>
 </li>
-<li><p>第六章 面向对象程序设计</p>
+<li><p>第六章 <a href="#第六章_面向对象的程序设计">面向对象程序设计</a></p>
 <ul>
-<li>6.1 <a href="#第六章_面向对象的程序设计">理解对象</a></li>
-<li>6.2 创建对象</li>
+<li>6.1 <a href="#6.1 理解对象">理解对象</a></li>
+<li>6.2 <a href="#6.2 创建对象">创建对象</a></li>
 </ul>
 </li>
 </ul>
@@ -815,9 +815,11 @@
 <li>1创建一个新对象。</li>
 <li>2将构造函数打的作用域赋值给新对象，this就会指向新对象。</li>
 <li>3执行构造函数中的代码。</li>
-<li>返回新对象。</li>
+<li>4返回新对象。</li>
 </ul>
 <p>Person创建的实例，都有一个指向Person的Constructor属性。<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Person1.constructor == <span class="keyword">Person</span> ); //true</span><br></pre></td></tr></table></figure></p>
+<p>构造函数与其他函数的唯一区别就是调用方式。new 操作符来调用函数就是构造函数，如果没有就和普通函数没有区别的。<br> <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 作为构造函数使用</span><br><span class="line"> var <span class="keyword">person</span> = new <span class="keyword">Person</span>(<span class="string">"hz"</span>, 25, <span class="string">"IT"</span>);</span><br><span class="line"> <span class="keyword">person</span>.sayName();//hz</span><br><span class="line"></span><br><span class="line">//作为普通函数使用</span><br><span class="line"><span class="keyword">Person</span>(<span class="string">"hz"</span>, 25, <span class="string">"IT"</span>);//添加到window对象</span><br><span class="line">window.sayName();</span><br><span class="line"></span><br><span class="line">// 在另一个对象中使用</span><br><span class="line">var o = new Object();</span><br><span class="line"><span class="keyword">Person</span>.call(o, <span class="string">"hz"</span>, 25, <span class="string">"IT"</span>); //在o对象的特殊作用域中调用，o就拥有了所有属性和方法。</span><br><span class="line">o.sayName();</span><br></pre></td></tr></table></figure></p>
+<p>构造函数的问题就是每个<strong>方法</strong>都要在每个实例上重新创建一遍。就是说不同实例上的同名函数实际上是不一样的。如果把这些方法通过全局作用域的函数调出来可以解决，但是当需要很多方法时，<em>封装性太差</em>。解决方法：原型模式。<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var Person1 = new <span class="keyword">Person</span>(<span class="string">"hz"</span>, 25, <span class="string">"IT"</span>);</span><br><span class="line">var Person2 = new <span class="keyword">Person</span>(<span class="string">"hz"</span>, 25, <span class="string">"IT"</span>);</span><br><span class="line">console.log(Person1.sayName == Person2.sayName); //false</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
