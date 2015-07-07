@@ -24,7 +24,15 @@
 第六章 面向对象程序设计
 
 6.1 理解对象
-6.2 创建对象">
+6.2 创建对象
+6.3 继承
+
+
+第二十五章 新兴的API
+
+25.1 requestAnimationFrame( ))
+25.2 Page Visibility API
+25.3 Geol">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/20/javascript-3th/index.html">
@@ -48,8 +56,16 @@
 第六章 面向对象程序设计
 
 6.1 理解对象
-6.2 创建对象">
-<meta property="og:updated_time" content="2015-07-01T10:51:19.000Z">
+6.2 创建对象
+6.3 继承
+
+
+第二十五章 新兴的API
+
+25.1 requestAnimationFrame( ))
+25.2 Page Visibility API
+25.3 Geol">
+<meta property="og:updated_time" content="2015-07-07T07:40:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description" content="目录
@@ -71,7 +87,15 @@
 第六章 面向对象程序设计
 
 6.1 理解对象
-6.2 创建对象">
+6.2 创建对象
+6.3 继承
+
+
+第二十五章 新兴的API
+
+25.1 requestAnimationFrame( ))
+25.2 Page Visibility API
+25.3 Geol">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -282,7 +306,7 @@
 <li>3.7 函数</li>
 </ul>
 </li>
-<li><p><a href="#第五章_引用类型">第五章 引用类型</a></p>
+<li><p>第五章 <a href="#第五章_引用类型">引用类型</a></p>
 <ul>
 <li>5.2 <a href="#5-2_数组类型">数组类型</a></li>
 <li>5.3 <a href="#5-3_Date类型">Date类型</a></li>
@@ -292,6 +316,15 @@
 <ul>
 <li>6.1 <a href="#6-1_理解对象">理解对象</a></li>
 <li>6.2 <a href="#6-2_创建对象">创建对象</a></li>
+<li>6.3 <a href="#6-3_继承">继承</a></li>
+</ul>
+</li>
+<li><p>第二十五章 <a href="#第25章_新兴的API">新兴的API</a></p>
+<ul>
+<li>25.1 <a href="#25-1_requestAnimationFrame(">requestAnimationFrame( )</a>)</li>
+<li>25.2 <a href="#25-2_Page_Visibility_API">Page Visibility API</a></li>
+<li>25.3 <a href="#25-3_Geolocation_API">Geolocation API</a></li>
+<li>25.4 <a href="#25-4_File_API">File API</a></li>
 </ul>
 </li>
 </ul>
@@ -912,7 +945,138 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="comment">//继承SuperType</span></span><br><span class="line">	SuperType.call(<span class="keyword">this</span>, <span class="string">"hzhaung"</span>);<span class="comment">//hzhuang是传递的参数。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> instance1 = <span class="keyword">new</span> SubType();</span><br><span class="line">instance1.colors.push(<span class="string">"blcak"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(instance1.colors);<span class="comment">//["red", "blue", "green", "blcak"]</span></span><br><span class="line"><span class="keyword">var</span> instance2 = <span class="keyword">new</span> SubType();</span><br><span class="line"><span class="built_in">console</span>.log(instance2.colors);<span class="comment">//["red", "blue", "green"]</span></span><br></pre></td></tr></table></figure>
 <p>在新SubType对象上执行SuperType( )函数中定义的所有对象初始化代码。<br>1.传递参数<br>2.借用构造函数的问题<br>方法在构造函数中定义，所以就无法复用。</p>
 <h3 id="6-3-3_组合继承">6.3.3 组合继承</h3><p>将原型链和借用构造函数的技术组合在一起。<br>思路：使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样在原型上定义的方法实现了函数的复用，又可以保证每个实例有它自己的属性。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperType</span><span class="params">(name)</span>&#123;</span></span><br><span class="line">	this.name = name;</span><br><span class="line">	this.colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SuperType.prototype.sayName = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></span><br><span class="line">	console.<span class="built_in">log</span><span class="params">(this.name)</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">SubType</span><span class="params">(name, age)</span>&#123;</span></span><br><span class="line">	<span class="comment">//继承SuperType</span></span><br><span class="line">	SuperType.call<span class="params">(this, name)</span>;</span><br><span class="line">	this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SubType.prototype = new SuperType<span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">SubType.prototype.sayAge = <span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></span><br><span class="line">	console.<span class="built_in">log</span><span class="params">(this.age)</span>;</span><br><span class="line">&#125;</span><br><span class="line">var instance1 = new SubType<span class="params">(<span class="string">"hzhuang"</span>, <span class="number">25</span>)</span>;</span><br><span class="line">instance1.colors.push<span class="params">(<span class="string">"blcak"</span>)</span>;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(instance1.colors)</span>;<span class="comment">//["red", "blue", "green", "blcak"]</span></span><br><span class="line">instance1.sayName<span class="params">()</span>;<span class="comment">//hzhuang</span></span><br><span class="line">instance1.sayAge<span class="params">()</span>;<span class="comment">//25</span></span><br><span class="line"></span><br><span class="line">var instance2 = new SubType<span class="params">(<span class="string">"hz"</span>, <span class="number">26</span>)</span>;</span><br><span class="line">instance2.sayName<span class="params">()</span>;<span class="comment">//hz</span></span><br><span class="line">instance2.sayAge<span class="params">()</span>;<span class="comment">//26</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="6-3-4_原型式继承">6.3.4 原型式继承</h3>
+<h3 id="6-3-4_原型式继承">6.3.4 原型式继承</h3><p>没有严格意义上的构造函数。借助原型可以基于已有的对象创建新对象，同时还不比创建自定义类型。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>&#123;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在object函数内部，先创建了yige 临时性的构造函数，然后将传入的对象作为这个构造函数的原型，最后返回这个临时类的一个新实例。<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">function object(o)&#123;</span><br><span class="line">		function F()&#123;&#125;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		return new F();</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">var <span class="keyword">person</span> = &#123;</span><br><span class="line">	name : <span class="string">"hzhuang"</span>,</span><br><span class="line">	friends : <span class="comment">["a", "b", "c"]</span></span><br><span class="line">&#125;;</span><br><span class="line">var anotherPerson = object(<span class="keyword">person</span>);</span><br><span class="line">anotherPerson.name = <span class="string">"hz"</span>;</span><br><span class="line">anotherPerson.friends.push(<span class="string">"d"</span>);</span><br><span class="line"></span><br><span class="line">var yetanotherPerson = object(<span class="keyword">person</span>);</span><br><span class="line">yetanotherPerson.name = <span class="string">"hh"</span>;</span><br><span class="line">yetanotherPerson.friends.push(<span class="string">"e"</span>);</span><br><span class="line"></span><br><span class="line">console.log(<span class="keyword">person</span>.friends);//<span class="comment">["a", "b", "c", "d", "e"]</span></span><br></pre></td></tr></table></figure></p>
+<p>在上面的实例中，可以用Object.create( )来代替自定义的object函数。但是可以达到相同的效果。</p>
+<h3 id="6-3-5_寄生式继承">6.3.5 寄生式继承</h3><p>思路与寄生构造函数和工厂模式类似，即创建一个仅仅用于<strong>封装继承过程的函数</strong>，改函数内部已某种方式增强对象。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>&#123;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name : <span class="string">"hzhuang"</span>,</span><br><span class="line">	friends : [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(original)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="keyword">clone</span> = object(original);</span><br><span class="line">	<span class="keyword">clone</span>.sayHi = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> console.log(<span class="string">"hi"</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">clone</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> anotherPerson = createAnother(person);</span><br><span class="line">anotherPerson.sayHi();</span><br></pre></td></tr></table></figure></p>
+<h3 id="6-3-6_寄生组合式继承">6.3.6  寄生组合式继承</h3><p>基本思路：不必为了指定子类型的原型而调用超类型的构造函数，所需要的无非是超类型原型的一个副本人而已。本质上使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span><span class="params">(subType, superType)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> prototype = object(superType.prototype);<span class="comment">//创建对象，创建超类型原型的一个副本。</span></span><br><span class="line">	prototype.constructor = subType;<span class="comment">//增强对象</span></span><br><span class="line">	subType.prototype = prototype;<span class="comment">//指定对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
+<ul>
+<li>创建平滑的动画</li>
+<li>操作文件</li>
+<li>使用Web Workers在后台执行Js</li>
+</ul>
+<h2 id="25-1_requestAnimationFrame(_)">25.1 requestAnimationFrame( )</h2><h3 id="早期动画循环">早期动画循环</h3><p>使用setInterval( )来实现。<br><figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="keyword">function</span><span class="list">()</span><span class="collection">&#123;</span><br><span class="line">	function updateAnimation<span class="list">()</span><span class="collection">&#123;</span><br><span class="line">		doAnimation1<span class="list">()</span><span class="comment">;</span></span><br><span class="line">		doAnimation2<span class="list">()</span><span class="comment">;</span></span><br><span class="line">	&#125;</span><span class="comment">;</span></span><br><span class="line">	setInterval<span class="list">(<span class="keyword">updateAnimation</span>, <span class="number">100</span>)</span><span class="comment">;</span></span><br><span class="line">&#125;</span>)</span><span class="list">()</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>问题：<br>setInterval( )和setTimeout( )都不是十分的精确。传入第二个参数，实际只是指定了把动画代码添加到浏览器UI线程队列中<strong>以等待执行的时间</strong>。如果队列的前面已经加入了其他任务，那动画代码就要等前面的任务完成后再执行。</p>
+<h3 id="25-1-2_循环间隔的问题">25.1.2 循环间隔的问题</h3><p>浏览器的计数器的精度：各不相同。<br>IE9+:4ms/Firefox+safari:10ms/chrome:4ms<br>所以在不同的浏览器中即使设置相同时间的等待时间，性能也会有区别。</p>
+<h3 id="25-1-3_mozRequestAnimationFrame">25.1.3 mozRequestAnimationFrame</h3><p>css变换和动画的优势在于浏览器知道动画什么时候开始，因此会计算出正确的循环讲个。<br>mozRequestAnimationFrame( )告诉浏览区某些js代码要执行动画。它接受一个参数，即在重绘屏幕前调用的一个函数。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">继续</span><br></pre></td></tr></table></figure></p>
+<h2 id="25-2_Page_Visibility_API">25.2 Page Visibility API</h2><p>为了让开发人员知道页面是否对用户可见而推出的。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">API组成部分</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">document.hidden</td>
+<td style="text-align:left">页面是否隐藏的布尔值。页面隐藏包括页面在后台标签或者浏览器最小化。</td>
+</tr>
+<tr>
+<td style="text-align:left">document.visibilityState</td>
+<td style="text-align:left">4个可能的值：后台或者最小化、前台标签页中、实际的页面已经隐藏，但是 用户可以预览页面和页面在屏幕外执行预渲染处理。</td>
+</tr>
+<tr>
+<td style="text-align:left">visibilitychange事件</td>
+<td style="text-align:left">文档从可见变成不可见或从不可见变成可见时，触发该事件。</td>
+</tr>
+</tbody>
+</table>
+<p>此API只有IE10和chrome支持，检测的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isHiddenSupported</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">typeof</span>(<span class="built_in">document</span>.hidden || <span class="built_in">document</span>.msHidden || <span class="built_in">document</span>.webkitHidden) != <span class="string">"undefined"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleVisibilityChange</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>);</span><br><span class="line">	<span class="keyword">var</span> msg;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">document</span>.hidden || <span class="built_in">document</span>.msHidden || <span class="built_in">document</span>.webkitHidden)&#123;</span><br><span class="line">		msg = <span class="string">"hidden"</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		msg = <span class="string">"visibility"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	output.innerHTML += msg;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//EventUtil.addHandler是base.js中得到的。</span></span><br><span class="line">EventUtil.addHandler(<span class="built_in">document</span>, <span class="string">"msvisibilitychange"</span>, handleVisibilityChange);</span><br><span class="line">EventUtil.addhandler(<span class="built_in">document</span>, <span class="string">"webkitvisibilitychange"</span>, handleVisibilityChange);</span><br></pre></td></tr></table></figure></p>
+<p>对于document.visibilityState，IE的值和chrome的值是不一样的，chrome是三个：“hidden”,”visible”,”prerender”。IE暂时忽略，</p>
+<h2 id="25-3_Geolocation_API">25.3 Geolocation API</h2><p>访问之前 必须要得到用户的明确许可，在页面中共享其位置信息。<br><strong>navigator.geolocation对象</strong>，这个对象包含三个方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">用法参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">getCurrentPosition( )</td>
+<td style="text-align:left">触发请求用户共享地理定位信息的对话框。</td>
+<td style="text-align:left">三个参数：成功回调函数，可选的失败回调函数以及可选的选项对象。</td>
+</tr>
+<tr>
+<td style="text-align:left">watchPosition( )</td>
+<td style="text-align:left">跟踪用户的信息</td>
+<td style="text-align:left">参数和上一个完全相同</td>
+</tr>
+<tr>
+<td style="text-align:left">clearWatch( )</td>
+<td style="text-align:left">用于取消watchPosition( )的监控</td>
+<td style="text-align:left">xx</td>
+</tr>
+</tbody>
+</table>
+<p>成功回调函数会接受到一个Position对象参数；Position对象有两个属性：<strong>coords</strong>和<strong>timestamp</strong>。<br>coords包含的信息：</p>
+<ul>
+<li>latitude：十进制的形式表示的维度</li>
+<li>longitude: 十进制的形式表示的经度</li>
+<li>accuracy：精度</li>
+<li>其他浏览器还有……</li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span><span class="params">(position)</span></span>&#123;</span><br><span class="line">	logdrawMapCenteredAt(<span class="keyword">position</span>.coords.latitude,<span class="keyword">position</span>.coords.longitude);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>失败回调函数，返回的是一个对象，有<strong>message</strong>和<strong>code</strong>两个属性。message中的信息解释为什么错误；code属性是一个数组，表示的是错误的类型。<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">navigator.geolocation.getCurrentPosition(<span class="function"><span class="keyword">function</span><span class="params">(position)</span></span>&#123;</span><br><span class="line">	logdrawMapCenteredAt(<span class="keyword">position</span>.coords.latitude,<span class="keyword">position</span>.coords.longitude);</span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span><span class="params">(error)</span></span>&#123;</span><br><span class="line">	console.<span class="built_in">log</span>(error.message);</span><br><span class="line">	console.<span class="built_in">log</span>(error.code);</span><br><span class="line">&#125;,&#123;</span><br><span class="line">	enableHigeAccuracy: true,</span><br><span class="line">	timeout: <span class="number">5000</span>,</span><br><span class="line">	maximumAge: <span class="number">25000</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>第三个参数用于设定信息的类型。是一个选项对象。</p>
+<ul>
+<li>enableHighAccuracy是一个boolean值，表示必须尽肯呢个的使用最准确的位置信息。</li>
+<li>timeout表示等待位置信息的最长时间。</li>
+<li>maximumAge表示上一次取得坐标信息的有效时间。</li>
+</ul>
+<blockquote>
+<p>watchPosition( )起到定时调用getCurrentPosition( )的效果。</p>
+</blockquote>
+<p>watchPosition( )返回一个数值标识符。如果要取消监控，则使用clearWatch( )方法。</p>
+<h2 id="25-4_File_API">25.4 File API</h2><p>在文职输入字段的基础上，添加一些直接访问文件信息的接口。H5在DOM中为文件输入元素添加了一个files集合，files集合中包含一组<strong>File对象</strong>，每个File对象就对应着一个文件。<br>File对象的只读属性：</p>
+<ul>
+<li>name</li>
+<li>size</li>
+<li>type</li>
+<li>lastModifiedDate</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> fileLists = <span class="built_in">document</span>.getElementById(<span class="string">"file-lists"</span>);</span><br><span class="line">	EventUtil.addHandler(fileLists, <span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> files = EventUtil.getTarget(event).files,i=<span class="number">0</span>,len = files.length;</span><br><span class="line">		<span class="keyword">while</span>(i &lt; len)&#123;</span><br><span class="line">			<span class="built_in">console</span>.log(files[i].name + <span class="string">"("</span> + files[i].type + <span class="string">","</span> + files[i].size + <span class="string">"bites)"</span>);</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="25-4-1_FileReader类型">25.4.1 FileReader类型</h3><p>读取文件系统提供的方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">readAsText(file, encoding)</td>
+<td style="text-align:left">以纯文本形式读取文件，将读取到的文本保存在result属性中。</td>
+</tr>
+<tr>
+<td style="text-align:left">readAsDataURL(file)</td>
+<td style="text-align:left">读取文件并且以数据URL的形式保存在result中。</td>
+</tr>
+<tr>
+<td style="text-align:left">readAsBinaryString(file)</td>
+<td style="text-align:left">读取文件并将一个字符串保存在result属性中。</td>
+</tr>
+<tr>
+<td style="text-align:left">readAsArrayBuffer(file)</td>
+<td style="text-align:left">读取文件并将一个包含文件内容的ArrayBuffer保存在result中。</td>
+</tr>
+</tbody>
+</table>
+<p>读取文件也是<strong>异步的</strong>，所以也会包括几个事件：</p>
+<ul>
+<li>progress：获得lengthComputable，loaded和total属性。</li>
+<li>error：返回error属性。五种错误。</li>
+<li>load：读取成功时候调用。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> fileLists = <span class="built_in">document</span>.getElementById(<span class="string">"file-lists"</span>);</span><br><span class="line">	EventUtil.addHandler(fileLists, <span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> info = <span class="string">""</span>,</span><br><span class="line">		output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>),</span><br><span class="line">		progress = <span class="built_in">document</span>.getElementById(<span class="string">"progress"</span>),</span><br><span class="line">		files = EventUtil.getTarget(event).files,</span><br><span class="line">		type = <span class="string">"default"</span>,</span><br><span class="line">		reader = <span class="keyword">new</span> FileReader();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(<span class="regexp">/image/</span>.test(files[<span class="number">0</span>].type))&#123;</span><br><span class="line">			reader.readAsDataURL(files[<span class="number">0</span>]);</span><br><span class="line">			type = <span class="string">"image"</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			reader.readAsText(files[<span class="number">0</span>]);</span><br><span class="line">			type = <span class="string">"text"</span>;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		reader.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			output.innerHTML = <span class="string">"Could not read file, error code is "</span> + reader.error.code;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		reader.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(event.lengthComputable)&#123;</span><br><span class="line">				progress.innerHTML = event.loaded + <span class="string">"/"</span> + event.total;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">			<span class="keyword">var</span> html = <span class="string">""</span>;</span><br><span class="line">			<span class="keyword">switch</span>(type)&#123;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">"image"</span>:</span><br><span class="line">				html = <span class="string">"&lt;img src=\""</span> + reader.result + <span class="string">"\"&gt;"</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="string">"text"</span>:</span><br><span class="line">				heml = reader.result;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			output.innerHTML = html;</span><br><span class="line">			<span class="built_in">console</span>.log(reader.result);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>abort( )方法可以停止以上过程。</p>
+<h3 id="25-4-2_读取部分内容">25.4.2 读取部分内容</h3><p>如果想读取文件的部分内容，File对象还支持一个slice( )方法。在火狐浏览器中加入moz，在chrome中要加入webkit。<br>slice( )支持两个参数：第一个起始字节，第二个是读取的字节数。<br><figure class="highlight scilab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blobSlice</span><span class="params">(blob, startByte, length)</span>&#123;</span></span><br><span class="line">	<span class="keyword">if</span>(<span class="transposed_variable">blob.</span>slice)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="transposed_variable">blob.</span>slice(startByte, <span class="built_in">length</span>);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="transposed_variable">blob.</span>webkit)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="transposed_variable">blob.</span>webkitSlice(startByte, <span class="built_in">length</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="transposed_variable">blob.</span>mozslice)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="transposed_variable">blob.</span>mozSlice(startByte, <span class="built_in">length</span>);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> null;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Blob类型有一个size属性和type属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> fileLists = <span class="built_in">document</span>.getElementById(<span class="string">"file-lists"</span>);</span><br><span class="line">	EventUtil.addHandler(fileLists, <span class="string">"change"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">var</span> info = <span class="string">""</span>,</span><br><span class="line">		output = <span class="built_in">document</span>.getElementById(<span class="string">"output"</span>),</span><br><span class="line">		progress = <span class="built_in">document</span>.getElementById(<span class="string">"progress"</span>),</span><br><span class="line">		files = EventUtil.getTarget(event).files,</span><br><span class="line">		type = <span class="string">"default"</span>,</span><br><span class="line">		reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">		blob = blobSlice(files[<span class="number">0</span>], <span class="number">0</span>, <span class="number">32</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(blob)&#123;</span><br><span class="line">			reader.readAsText(blob);</span><br><span class="line"></span><br><span class="line">			reader.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				output.innerHTML = <span class="string">"Could not read file, error code is "</span> + reader.error.code;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			reader.onprogress = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(event.lengthComputable)&#123;</span><br><span class="line">					progress.innerHTML = event.loaded + <span class="string">"/"</span> + event.total;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			reader.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">				<span class="keyword">var</span> html = <span class="string">""</span>;</span><br><span class="line">				<span class="keyword">switch</span>(type)&#123;</span><br><span class="line">					<span class="keyword">case</span> <span class="string">"image"</span>:</span><br><span class="line">					html = <span class="string">"&lt;img src=\""</span> + reader.result + <span class="string">"\"&gt;"</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">					<span class="keyword">case</span> <span class="string">"text"</span>:</span><br><span class="line">					heml = reader.result;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				output.innerHTML = html;</span><br><span class="line">				<span class="built_in">console</span>.log(reader.result);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			alert(<span class="string">"Your browser doesn't support slice()."</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">blobSlice</span>(<span class="params">blob, startByte, length</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(blob.slice)&#123;</span><br><span class="line">		<span class="keyword">return</span> blob.slice(startByte, length);</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(blob.webkit)&#123;</span><br><span class="line">		<span class="keyword">return</span> blob.webkitSlice(startByte, length);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(blob.mozslice)&#123;</span><br><span class="line">		<span class="keyword">return</span> blob.mozSlice(startByte, length);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="25-4-3_对象URL">25.4.3 对象URL</h3>
       
     </div>
     
