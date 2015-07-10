@@ -25,14 +25,7 @@
 
 6.1 理解对象
 6.2 创建对象
-6.3 继承
-
-
-第二十五章 新兴的API
-
-25.1 requestAnimationFrame( ))
-25.2 Page Visibility API
-25.3 Geol">
+6.3 继承">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/20/javascript-3th/index.html">
@@ -57,15 +50,8 @@
 
 6.1 理解对象
 6.2 创建对象
-6.3 继承
-
-
-第二十五章 新兴的API
-
-25.1 requestAnimationFrame( ))
-25.2 Page Visibility API
-25.3 Geol">
-<meta property="og:updated_time" content="2015-07-07T07:40:45.000Z">
+6.3 继承">
+<meta property="og:updated_time" content="2015-07-10T11:59:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description" content="目录
@@ -88,14 +74,7 @@
 
 6.1 理解对象
 6.2 创建对象
-6.3 继承
-
-
-第二十五章 新兴的API
-
-25.1 requestAnimationFrame( ))
-25.2 Page Visibility API
-25.3 Geol">
+6.3 继承">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -319,8 +298,17 @@
 <li>6.3 <a href="#6-3_继承">继承</a></li>
 </ul>
 </li>
-<li><p>第二十五章 <a href="#第25章_新兴的API">新兴的API</a></p>
+</ul>
+<a id="more"></a>
 <ul>
+<li>第八章 <a href="第八章_BOM">BOM</a><ul>
+<li>8.1 <a href="8-1_window对象">window对象</a></li>
+<li>8.2 <a href="8-2_location对象">location对象</a></li>
+<li>8.3 <a href="8-3_navigator对象">navigator对象</a></li>
+<li>8.5 <a href="8-5_history对象">history对象</a></li>
+</ul>
+</li>
+<li>第二十五章 <a href="#第25章_新兴的API">新兴的API</a><ul>
 <li>25.1 <a href="#25-1_requestAnimationFrame(">requestAnimationFrame( )</a>)</li>
 <li>25.2 <a href="#25-2_Page_Visibility_API">Page Visibility API</a></li>
 <li>25.3 <a href="#25-3_Geolocation_API">Geolocation API</a></li>
@@ -329,7 +317,6 @@
 </li>
 </ul>
 <hr>
-<a id="more"></a>
 <h1 id="第二章_javascript简介">第二章 javascript简介</h1><ul>
 <li>netscape创建LiveScript脚本语言。搭java顺风车就改为javascript。</li>
 <li>js三部分：ECMAScript，dom，bom</li>
@@ -950,6 +937,190 @@
 <p>在上面的实例中，可以用Object.create( )来代替自定义的object函数。但是可以达到相同的效果。</p>
 <h3 id="6-3-5_寄生式继承">6.3.5 寄生式继承</h3><p>思路与寄生构造函数和工厂模式类似，即创建一个仅仅用于<strong>封装继承过程的函数</strong>，改函数内部已某种方式增强对象。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">object</span><span class="params">(o)</span></span>&#123;</span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">F</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name : <span class="string">"hzhuang"</span>,</span><br><span class="line">	friends : [<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>]</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createAnother</span><span class="params">(original)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> <span class="keyword">clone</span> = object(original);</span><br><span class="line">	<span class="keyword">clone</span>.sayHi = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> console.log(<span class="string">"hi"</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">clone</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> anotherPerson = createAnother(person);</span><br><span class="line">anotherPerson.sayHi();</span><br></pre></td></tr></table></figure></p>
 <h3 id="6-3-6_寄生组合式继承">6.3.6  寄生组合式继承</h3><p>基本思路：不必为了指定子类型的原型而调用超类型的构造函数，所需要的无非是超类型原型的一个副本人而已。本质上使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span><span class="params">(subType, superType)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> prototype = object(superType.prototype);<span class="comment">//创建对象，创建超类型原型的一个副本。</span></span><br><span class="line">	prototype.constructor = subType;<span class="comment">//增强对象</span></span><br><span class="line">	subType.prototype = prototype;<span class="comment">//指定对象</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="第八章_BOM">第八章 BOM</h1><p>主要内容</p>
+<ul>
+<li>理解window对象</li>
+<li>控制窗口、框架和弹出窗口</li>
+<li>location对象中的页面信息</li>
+<li>navigator对象了解浏览器</li>
+</ul>
+<h2 id="8-1_window对象">8.1 window对象</h2><p>BOM的核心对象是window，它表示浏览器的一个实例。</p>
+<ul>
+<li>window对象既是js访问浏览器窗口的一个接口。</li>
+<li>window也是ECMAScript规定的Global对象。网页中定义的对象、函数等都以window作为Global对象。</li>
+</ul>
+<h3 id="8-1-1_全局作用域">8.1.1 全局作用域</h3><p>由于window的特性，所以在在全局作用域中声明的变量、函数都会变成window对象的属性和方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">29</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayAge</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>.age);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age);</span><br><span class="line">sayAge();</span><br><span class="line"><span class="built_in">window</span>.sayAge();</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>定义全局变量与在window对象上定义属性还有一点差别：全局变量不能通过delete操作符删除，但是在window对象上定义的属性可以使用这个操作符。</p>
+</blockquote>
+<h3 id="8-1-2_窗口关系及框架">8.1.2 窗口关系及框架</h3><p>页面中如果有框架，则每个框架都有自己的window对象。保存在frames集合中。每个window都有各自的name属性。<br>不常用，忽略。</p>
+<h3 id="8-1-3_窗口位置">8.1.3 窗口位置</h3><p>screenLeft和screenTop属性，分别用于表示窗口相对于屏幕左边和上面的位置。特别的是：在FireFox中，是screenX和screenY两个属性来完成相同的功能。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> leftPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenLeft == <span class="string">"number"</span>)?<span class="built_in">window</span>.screenLeft : <span class="built_in">window</span>.screenX;</span><br><span class="line"><span class="reserved">var</span> topPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenTop == <span class="string">"number"</span>)?<span class="built_in">window</span>.screenTop : <span class="built_in">window</span>.screenY;</span><br></pre></td></tr></table></figure></p>
+<p>关于方法moveTo( )和moveBy( )浏览器一般是禁用的。 </p>
+<h3 id="8-1-4_窗口大小">8.1.4 窗口大小</h3><p>关于窗口大小属性的四个：outerWidth/innerWidth/outerHeight/innerOuter在各浏览器中的渲染差别。</p>
+<ul>
+<li>IE9+、Safari和FireFox：outerWidth/outerHeight返回浏览器窗口本身的尺寸。</li>
+<li>Opera： outerWidth/outerHeight表示页面视图容器的大小。</li>
+<li>Chrome：innerWidth/innerHeight一般表示页面中视图区的大小（减去边框宽度）。而chrome中这对属性的值和outerWidth/outerHeight返回的值大小是一样的，都表示视口的大小。</li>
+</ul>
+<p>跨浏览器确定浏览器的窗口无法实现，但是可以获取到页面视口的大小。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth;</span><br><span class="line"><span class="keyword">var</span> pageHeight = <span class="built_in">window</span>.innerHeight;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> pageWidth != <span class="string">"number"</span>)&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">document</span>.compatMode == <span class="string">"CSS!compatMode"</span>)&#123; <span class="comment">//检查是否处于标准模式</span></span><br><span class="line">		pageWidth =<span class="built_in">document</span>.documentElement.clientWidth;</span><br><span class="line">		pageHeight = <span class="built_in">document</span>.documentElement.clientHeight;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		pageWidth = <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line">		pageHeight = <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>移动设备中，IE的浏览器的视口大小的值是可见视口的值，而其他浏览器的值就是布局视口的值。</p>
+<p>同样有resizeTo( )和resizeBy( )，但是一般浏览器禁止。</p>
+<h3 id="8-1-5_导航和打开窗口">8.1.5 导航和打开窗口</h3><p>window.open( )可以打开导航到一个特定的URL，也可以打开一个新的浏览器窗口。<br>window.open( )接受四个参数：要加载的URL、窗口目标、一个特性字符串以及新页面是否取代浏览器历史记录中当前加载页面的布尔值。</p>
+<ul>
+<li>第一个参数：要加载的URL</li>
+<li>第二个参数：窗口目标。<ul>
+<li>已存在的窗口或者框架属性。</li>
+<li>特殊的窗口名称：_self、_parent、_top或_blank。</li>
+</ul>
+</li>
+<li>第三个参数：在第二个参数并不是一个存在的窗口或者框架的时候。则会根据第三个设置的特性值新建窗口或者框架。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">特性值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">fullscreen,取值yes或no</td>
+<td style="text-align:left">仅限IE</td>
+</tr>
+<tr>
+<td style="text-align:left">height</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">left</td>
+<td style="text-align:left">新窗口的左坐标</td>
+</tr>
+<tr>
+<td style="text-align:left">location取值yes或no</td>
+<td style="text-align:left">是否在新窗口中显示地址栏</td>
+</tr>
+<tr>
+<td style="text-align:left">menubar取值yes或no</td>
+<td style="text-align:left">是否在新窗口中显示菜单栏</td>
+</tr>
+<tr>
+<td style="text-align:left">resizeable</td>
+<td style="text-align:left">是否可以通过拖动浏览器窗口的边框改变其大小</td>
+</tr>
+<tr>
+<td style="text-align:left">scrollbars</td>
+<td style="text-align:left">是否允许有滚动</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">是否在新窗口中显示状态栏</td>
+</tr>
+<tr>
+<td style="text-align:left">toolbar</td>
+<td style="text-align:left">是否在新窗口中显示工具栏</td>
+</tr>
+<tr>
+<td style="text-align:left">top</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">width</td>
+<td style="text-align:left">无</td>
+</tr>
+</tbody>
+</table>
+<p>以上的设置值是yes或者no的默认值都是no。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> hzhuang</span> = window.<span class="keyword">open</span>(<span class="string">"http://localhost:4000/"</span>, <span class="string">"hzhaung"</span>, <span class="string">"height=400,width:400,resizeable=no"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>window.close( )方法用于关闭新打开的窗口。浏览器主窗口是不可以使用这个方法的，凡是弹出的窗口却可以。</p>
+<p>新创建的window对象有一个<strong>opera属性</strong>，保存着打开它的原始窗口对象。</p>
+<p>可以通过设置这些特性字符串来处理网页上肆无忌惮的广告问题。</p>
+<p><strong>弹出窗口屏蔽程序</strong><br>大多数浏览器都内置屏蔽弹出窗口。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> blocked</span> = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="variable"><span class="keyword">var</span> wroxWin</span> = window.<span class="keyword">open</span>(<span class="string">"http://www.wrox.com"</span>, <span class="string">"_blank"</span>);</span><br><span class="line">    <span class="keyword">if</span> (wroxWin == <span class="literal">null</span>)&#123;</span><br><span class="line">        blocked = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (ex)&#123;</span><br><span class="line">    blocked = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (blocked)&#123;</span><br><span class="line">    alert(<span class="string">"The popup was blocked!"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-1-6_间歇调用和超时调用">8.1.6 间歇调用和超时调用</h3><p>windo对象的setTimeout( )方法。<br>这个方法会返回一个数值ID，表示超时调用。用clearTimeout(set方法返回的值)来取消。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutID = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">"hzhuang"</span>);&#125;, <span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(timeoutID);<span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<p>window对象的setInterval( )实现间歇调用。</p>
+<h3 id="8-1-7_系统对话框">8.1.7 系统对话框</h3><p>三种：alert() + confirm( ) + prompt( )</p>
+<ul>
+<li>与显示的网页没有关系。</li>
+<li>外观由操作系统决定，并非css。</li>
+<li>显示的时候代码是停止执行的。</li>
+</ul>
+<h2 id="8-2_location对象">8.2 location对象</h2><p>​location对象即是window对象的属性，也是document对象的属性。</p>
+<ul>
+<li>保存当前文档的信息</li>
+<li>将URL解析成独立的片段</li>
+</ul>
+<p>以“<a href="http://www.wrox.com:80#contents”为例" target="_blank" rel="external">http://www.wrox.com:80#contents”为例</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性名</th>
+<th style="text-align:left">例子</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">“#contents”</td>
+<td style="text-align:left">URL的hash，就是#号后面的字符串</td>
+</tr>
+<tr>
+<td style="text-align:left">host</td>
+<td style="text-align:left">“www.wrox.com”80”</td>
+<td style="text-align:left">返回服务器名称和端口号</td>
+</tr>
+<tr>
+<td style="text-align:left">hostname</td>
+<td style="text-align:left">…</td>
+<td style="text-align:left">返回服务器名</td>
+</tr>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">“<a href="http://www.wrox.com”" target="_blank" rel="external">http://www.wrox.com”</a></td>
+<td style="text-align:left">返回当前加载页面的完整URL</td>
+</tr>
+<tr>
+<td style="text-align:left">pathname</td>
+<td style="text-align:left">/…/</td>
+<td style="text-align:left">url的路径名</td>
+</tr>
+<tr>
+<td style="text-align:left">port</td>
+<td style="text-align:left">“80”</td>
+<td style="text-align:left">端口</td>
+</tr>
+<tr>
+<td style="text-align:left">protocal</td>
+<td style="text-align:left">“http”</td>
+<td style="text-align:left">协议</td>
+</tr>
+<tr>
+<td style="text-align:left">search</td>
+<td style="text-align:left">”？q=javascript“</td>
+<td style="text-align:left">返回URL中的查询字符串，以问号开头</td>
+</tr>
+</tbody>
+</table>
+<h3 id="8-2-1_查询字符串参数">8.2.1 查询字符串参数</h3><p>解决location.search只能返回问号后面全部字符串而不精确的问题。<br>构造一个函数，解析查询字符串，然后返回包含所有参数的一个<em>对象</em>。<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function getQueryStringArgs()&#123;</span><br><span class="line">	var <span class="variable">qs =</span> (location.search.length &gt; <span class="number">0</span> ? location.search.substring(<span class="number">1</span>) : <span class="string">""</span>),</span><br><span class="line">	<span class="variable">args =</span> &#123;&#125;,//保存数据的对象</span><br><span class="line">	//获取每一项</span><br><span class="line">	<span class="variable">items =</span> qs.length ? qs.split(<span class="string">"&amp;"</span>) : [],</span><br><span class="line">	<span class="variable">item =</span> <span class="constant">null</span>,</span><br><span class="line">	<span class="variable">name =</span> <span class="constant">null</span>,</span><br><span class="line">	<span class="variable">value =</span> <span class="constant">null</span>,</span><br><span class="line">	<span class="variable">i =</span> <span class="number">0</span>,</span><br><span class="line">	<span class="variable">len =</span> items.length;</span><br><span class="line"></span><br><span class="line">	for(<span class="variable">i =</span> <span class="number">0</span>; i&lt;len ;i++)&#123;</span><br><span class="line">		<span class="variable">item =</span> items[i].split(<span class="string">"="</span>);</span><br><span class="line">		<span class="variable">name =</span> decodeURLComponent(item[<span class="number">0</span>]);</span><br><span class="line">		<span class="variable">value =</span> decodeURLComponent(item[<span class="number">1</span>]);</span><br><span class="line">		<span class="keyword">if</span>(name.length)&#123;</span><br><span class="line">			args[name]= value;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return args;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-2-2_位置操作">8.2.2 位置操作</h3><p>location对象可以用很多方式改变浏览器的位置。常用的是<strong>assign( )</strong>。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.<span class="function"><span class="title">assign</span><span class="params">(<span class="string">"http://huangzhuang.github.io/"</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>以上代码可以立即打开我的博客，并在浏览器中的历史记录中生成一条记录。</p>
+<blockquote>
+<p>window.location和location.href设置成URL时，也会调用assign的方法，达到相同的效果。</p>
+</blockquote>
+<p>同时设置location对象的其他属性也可以改变URL。</p>
+<p>为了禁止在浏览器器中生成历史记录，可以采用<strong>replace( )</strong>的方法。</p>
+<p>最后一个方法是reload( )，重新加载当前页面。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location.<span class="function"><span class="title">reload</span><span class="params">(true)</span></span> <span class="comment">//带true表示的是从服务器中重新加载的。</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="8-3_navigator对象">8.3 navigator对象</h2><p>关于属性，不常用，详见P210.</p>
+<h3 id="8-3-1_检测插件">8.3.1 检测插件</h3><p>对于非IE浏览器而言，使用plugins数组来实现插件检测。</p>
+<p>plugins数组有以下的属性：</p>
+<ul>
+<li>name 插件的名字。</li>
+<li>description插件的描述。</li>
+<li>filename插件的文件名。</li>
+<li>length插件所处理的MIME类型数量。</li>
+</ul>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测是否有xx插件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasPlugin</span><span class="params">(name)</span>&#123;</span></span><br><span class="line">	name = name.toLowwerCase<span class="params">()</span>;</span><br><span class="line">	<span class="keyword">for</span><span class="params">(var i=<span class="number">0</span>; i&lt;navigator.plugins.length;i++)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span><span class="params">(navigator.plugins[i].name.toLowwerCase<span class="params">()</span>.indexOf<span class="params">(name)</span> &gt; -<span class="number">1</span>)</span>&#123;</span><br><span class="line">			return <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要再IE浏览器中检查插件，则使用唯一的专有的ActiveXObjext类型。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//plugin detection for IE</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasIEPlugin</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> ActiveXObject(name);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ex)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-3-2_注册处理程序">8.3.2 注册处理程序</h3><h2 id="8-4_screen对象">8.4 screen对象</h2><p>screen对象基本上只用来表明客户端的能力。<br>属性详见P214</p>
+<h2 id="8-5history对象">8.5history对象</h2><p>history是window对象的属性。借由用户访问过的页面列表，可以实现在不知道实际URL的情况下实现后退和前进。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">history</span>.<span class="keyword">go</span>(num/url);</span><br><span class="line"><span class="keyword">history</span>.back();</span><br><span class="line"><span class="keyword">history</span>,forward();</span><br></pre></td></tr></table></figure></p>
 <h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
 <ul>
 <li>创建平滑的动画</li>
