@@ -13,7 +13,7 @@
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/angular.jpg">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/MVC.png">
-<meta property="og:updated_time" content="2015-07-24T05:39:50.000Z">
+<meta property="og:updated_time" content="2015-07-24T05:41:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular.js开发下一代web读书笔记">
 <meta name="twitter:description">
@@ -237,6 +237,15 @@
 <li>ng-app指令指定angular管理的DOM部分。</li>
 </ul>
 <h3 id="加载脚本">加载脚本</h3><p>CDN:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>google服务器快，而且可以在多个应用之间缓存脚本库。</p>
+<h3 id="使用ng-app声明Angular的边界">使用ng-app声明Angular的边界</h3><p>如果要打造一款纯angular应用，则可以把ng-app指令放在html标签内。</p>
+<h1 id="Model_View_Controller">Model View Controller</h1><ul>
+<li>容纳数据的模型</li>
+<li>展示数据的视图</li>
+<li>管理模块和视图之间关系的控制器</li>
+</ul>
+<p>双括号插值语法</p>
+<p>控制器就是编写的类，告诉angular这个模型是由哪些对象或者基本数据构成的。<br>如果数据少的话可以直接用基本数据存储，但是大部分的时候是创建模型对象来容纳数据。<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="stylus"></span><br><span class="line">	function <span class="function"><span class="title">TextController</span><span class="params">(<span class="variable">$scope</span>)</span></span></span></span><span class="expression">&#123;</span><br><span class="line">		<span class="variable">var</span> <span class="variable">messages</span> = &#123;&#125;</span><span class="xml"><span class="vim">;</span><br><span class="line">		<span class="keyword">messages</span>.sometext = <span class="string">"huangzhuang.github.io"</span>;</span><br><span class="line">		$scope.<span class="keyword">messages</span> = <span class="keyword">messages</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
