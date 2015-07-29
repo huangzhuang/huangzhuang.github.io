@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-29T02:23:12.000Z">
+<meta property="og:updated_time" content="2015-07-29T02:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1107,29 +1107,40 @@
 <p>每个节点有一个<strong>parentNode属性</strong>，指向文档树中的父节点。<br>比如someNode.childrenNodes中的每个节点都有同样的父节点someNode。而且他们之间是同胞节点（previousSibling 和 nextSbling）。</p>
 <p>firestChild和lastChild属性的意义就很明显了。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">someNode.firstChild == someNode.childrenNodes[0]<span class="comment">;</span></span><br><span class="line">someNode,lastCHild == someNode.childrenNodes[someNode.childrenNodes.length - 1]<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
 <p>hasChildNodes()方法：节点包含一个或者多个子节点的情况下返回true</p>
-<p>每个节点还有一个<strong>ownerDocument属性</strong>，指向文档的文档节点。</p>
-<p>firstChild/lastChild<br>方法：hasChildNodes();节点有子节点的时候返回true。<br>共有的属性：ownerDocument;表示节点是哪个文档的。不可以跨几个。</p>
-<ol>
-<li>操作节点<br>appendChild( )用于向childNodes列表的末尾添加一个节点。这个方法会返回新增的节点。<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> huang</span>= someNode.appendChild(newNode);</span><br><span class="line">alert (huang == newNode); <span class="comment">//返回true;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>insertBefore(插入的节点，作为参考的节点 )方法将节点插入到你想插入的地方。默认的参考节点是最后一个。<br>replaceChild（插入的节点，要替换的节点）。<br>removeChild（移除的节点）。</p>
+<p>每个节点还有一个<strong>ownerDocument属性</strong>，指向文档的文档节点。不可以跨几个。</p>
+<h4 id="3-操作节点">3.操作节点</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">appendChild( )</td>
+<td style="text-align:left">用于向childNodes列表的末尾添加一个节点。这个方法会<strong>返回新增的节点</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:left">insertBefore()</td>
+<td style="text-align:left">(插入的节点，作为参考的节点 )</td>
+</tr>
+<tr>
+<td style="text-align:left">replaceChild()</td>
+<td style="text-align:left">（插入的节点，要替换的节点）</td>
+</tr>
+<tr>
+<td style="text-align:left">removeChild</td>
+<td style="text-align:left">（移除的节点）</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> huang</span>= someNode.appendChild(newNode);</span><br><span class="line">alert (huang == newNode); <span class="comment">//返回true;</span></span><br></pre></td></tr></table></figure>
+<p>如果要传入的节点已经是DOM的一部分，则结果就是将该节点从原来的位置转移到新的位置。（实现转移！）</p>
 <blockquote>
 <p>四种操作方法都是摸个节点的子节点，如果是不支持子节点的节点就会报错的。比如文本节点没有子节点。</p>
 </blockquote>
-<p>两个所有节点类型都有的方法</p>
-<ul>
-<li>cloneChild（true）true表示深复制，就是复制节点及其子节点树。复制后孤立。不会复制js属性。</li>
-<li>normalize( )删除后代中的空文本节点，然后把相领的文本节点合并。</li>
-</ul>
-<h5 id="Document类型_nodeType_==_9">Document类型      nodeType == 9</h5><p>document对象是HTMLDocument的一个实例，表示整个HTML页面。且是window对象的一个属性。</p>
-<ol>
-<li>文档的子节点</li>
-</ol>
-<ul>
-<li>documentElement属性：始终指向页面中<html>元素。更快捷。</html></li>
-<li>document.childNodes访问文档元素。</li>
-</ul>
+<p>两个所有节点都有的方法：<br>|方法|描述|<br>|:—-|:—-|<br>|cloneNode(true)|true表示深复制，就是复制节点及其子节点树。复制后孤立。不会复制js属性。|<br>|normalize()|删除后代中的空文本节点，然后把相邻的文本节点合并。|</p>
+<h3 id="10-1-2_Document类型">10.1.2 Document类型</h3><p>nodeType == 9<br>document对象是HTMLDocument的一个实例，表示整个HTML页面。且是window对象的一个属性。</p>
 <h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
 <ul>
 <li>创建平滑的动画</li>
