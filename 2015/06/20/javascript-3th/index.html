@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-29T02:37:10.000Z">
+<meta property="og:updated_time" content="2015-07-29T07:27:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1104,8 +1104,8 @@
 <h4 id="2-_节点关系">2. 节点关系</h4><p>每个节点都有一个<strong>childNodes属性</strong>，保存着nodeList对象（一个类数组，用于保存一组有序的节点）。<br>nodeList对象有length属性，且并不是Array的实例，而是会随时变化的，随DOM的结构变化自动变化。<br>通过方括号或者item()方访问nodeList中的节点。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> firstChild</span> = someNode.childNodes[<span class="number">0</span>];</span><br><span class="line"><span class="variable"><span class="keyword">var</span> secondChild</span> = someNode.childNodes.item[<span class="number">0</span>];</span><br><span class="line"><span class="comment">//将nodeLists转化成数组。</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> arrayOfNodes</span> = Array.prototype.slice.call(someNode.childNodes, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
 <p>关于Array.prototype.slice.call()可以将arguments对象转成数组，<a href="http://www.cnblogs.com/littledu/archive/2012/05/19/2508672.html" target="_blank" rel="external">参考解释</a>。<br>大致是先调用toArray()方法，然后再执行slice()方法。</p>
 <p>关于将nodeList对象转换成数组，兼容IE8及以下的方法是：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function<span class="function"> convertToArray(</span>nodes<span class="function">)</span>&#123;</span><br><span class="line">	var<span class="instruction"> array </span>= <span class="keyword">[</span>];</span><br><span class="line">	try&#123;</span><br><span class="line">		//针对非IE8及以下浏览器</span><br><span class="line">	<span class="instruction">	array </span>=<span class="function"> Array.prototype.slice.call(</span>nodes, 0<span class="function">)</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	catch(ex<span class="function">)</span>&#123;</span><br><span class="line">	<span class="instruction">	array </span>=<span class="instruction"> new </span>Array(<span class="function">)</span>;</span><br><span class="line">		for(var i=0, len= nodes.length; i&lt; len; i++<span class="function">)</span>&#123;</span><br><span class="line">			array<span class="keyword">[</span>i].push(nodes<span class="keyword">[</span>i]<span class="function">)</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="instruction">	return </span>array; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>每个节点有一个<strong>parentNode属性</strong>，指向文档树中的父节点。<br>比如someNode.childrenNodes中的每个节点都有同样的父节点someNode。而且他们之间是同胞节点（previousSibling 和 nextSbling）。</p>
-<p>firestChild和lastChild属性的意义就很明显了。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">someNode.firstChild == someNode.childrenNodes[0]<span class="comment">;</span></span><br><span class="line">someNode,lastCHild == someNode.childrenNodes[someNode.childrenNodes.length - 1]<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>每个节点有一个<strong>parentNode属性</strong>，指向文档树中的父节点。<br>比如someNode.childNodes中的每个节点都有同样的父节点someNode。而且他们之间是同胞节点（previousSibling 和 nextSbling）。</p>
+<p>firestChild和lastChild属性的意义就很明显了。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">someNode.firstChild == someNode.childNodes[0]<span class="comment">;</span></span><br><span class="line">someNode,lastCHild == someNode.childNodes[someNode.childNodes.length - 1]<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
 <p>hasChildNodes()方法：节点包含一个或者多个子节点的情况下返回true</p>
 <p>每个节点还有一个<strong>ownerDocument属性</strong>，指向文档的文档节点。不可以跨几个。</p>
 <h4 id="3-操作节点">3.操作节点</h4><table>
@@ -1139,8 +1139,91 @@
 <blockquote>
 <p>四种操作方法都是摸个节点的子节点，如果是不支持子节点的节点就会报错的。比如文本节点没有子节点。</p>
 </blockquote>
-<p>两个所有节点都有的方法：<br>|方法|描述|<br>|:—-|:—-|<br>|cloneNode(true)|true表示深复制，就是复制节点及其子节点树。复制后孤立。不会复制js属性。|<br>|normalize()|删除后代中的空文本节点，然后把相邻的文本节点合并。|</p>
+<p>两个所有节点都有的方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">cloneNode(true)</td>
+<td style="text-align:left">true表示深复制，就是复制节点及其子节点树。复制后孤立。不会复制js属性。</td>
+</tr>
+<tr>
+<td style="text-align:left">normalize()</td>
+<td style="text-align:left">删除后代中的空文本节点，然后把相邻的文本节点合并。</td>
+</tr>
+</tbody>
+</table>
 <h3 id="10-1-2_Document类型">10.1.2 Document类型</h3><p>nodeType == 9<br>document对象是HTMLDocument的一个实例，表示整个HTML页面。且是window对象的一个属性。</p>
+<h4 id="1-文档的子节点">1.文档的子节点</h4><p>内置两个访问子节点的快捷方式,所有的浏览器均支持这两个。</p>
+<ul>
+<li>documentElement指向html标签，这个更加方便快捷。</li>
+<li>通过childNodes列表访问。</li>
+</ul>
+<p>一下三个是等价的。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> html</span> =document.documentElement;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> html1</span> = document.childNodes[<span class="number">0</span>];</span><br><span class="line"><span class="variable"><span class="keyword">var</span> html2</span> = doxument.firstChild;</span><br></pre></td></tr></table></figure></p>
+<p>document对象有body属性<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> body = <span class="built_in">document</span>.body;</span><br></pre></td></tr></table></figure></p>
+<p>documen对象有doctype属性,各浏览器支持差异，使用不多。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> dovtype = <span class="built_in">document</span>.doctype;</span><br></pre></td></tr></table></figure></p>
+<p>对于出现在html之外的注释，各个浏览器解析也存在差异。也就是document的childNodes不同。</p>
+<ul>
+<li>IE8及以前，safari3.1及以后。为第一个注释创建节点。其他的就忽略。</li>
+<li>IE9及以上，就是正常的情况，所有的注释都是创建了节点。</li>
+<li>Firefox和safari以前，完全忽略注释的存在。</li>
+</ul>
+<h4 id="2-文档信息">2.文档信息</h4><p>作为HTMLDocument的实例，有一些特别的属性。<br>|属性|描述|<br>|:—-|:—-|<br>|title|document.title|<br>|URL|包含页面完整的URL|<br>|domain|只包含域名|<br>|referrer|保存着链接到当前页面的那个页面的URL|</p>
+<p>后面的三个属性是与网页的请求有关，存在请求的http头部。且只有domian是可以设置的，但是不可以任意设置。而且可以把子域设置成域而不能把域设置成子域（不能loose到tight）。</p>
+<p>理解是这样的：<br>由于跨域，不同的子域的页面是无法通过js通信。可是将两个子域的domian设置为相同的值就可以通信了。</p>
+<h4 id="3-查找元素，document对象的几个方法。">3.查找元素，document对象的几个方法。</h4><ul>
+<li>document.getElementById():很常见，但是要注意一点就是在IE8及以下中会返回name值等于这个id名的表单元素。</li>
+<li><p>document.getElementsByTagName：返回一个HTMLCollection对象，这个对象与nodeList对象类似，也可以使用方括号或者item()来读取。<br>这个HTMLCollection对象还有一个namedItem方法，来获取这个集合中name特性的项。则可以知道：HTMLCollection而言，可以传入数值或者字符串，前者后台会调用item(),后者则调用namedItem()。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> img</span> = doceument.getElemmentdbyTagName(<span class="string">"img"</span>);</span><br><span class="line"><span class="variable"><span class="keyword">var</span> myImg</span> = img.namedItem(<span class="string">"hzhuang"</span>);<span class="comment">//可以获取到name是hzhuang的那张图片。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>document.getElementByName()。</p>
+</li>
+</ul>
+<h4 id="4-特殊集合">4.特殊集合</h4><p>这些特殊的集合都是HTMLCollection对象。<br>|集合|描述|<br>|:—-|:—-|<br>|document.anchors|包含文档中所有带name特性的a标签|<br>|document.forms|包含文档中所有的form元素|<br>|document.images|包含文档中所有img标签|<br>|document.links|包含文档中所有带href属性的a元素|</p>
+<h5 id="5-DOM一致性检测">5.DOM一致性检测</h5><p>检测浏览器实现了DOM的哪些部分。<br><strong>document.implementation</strong>属性就是来实现这个功能的。<br>它有一个方法hasFeature().如果浏览器支持给定名称和版本的功能就会返回true。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> hasXmlDom = <span class="built_in">document</span>.implementation.hasFeature(<span class="string">"XML"</span>, <span class="string">"1.0"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(hasXmlDom); <span class="regexp">//</span><span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="6-文档写入">6.文档写入</h4><p>将输出流写出到网页中。</p>
+<ul>
+<li>write:参数里面包含script标签时闭合的/要转义。</li>
+<li>writeIn会自动在后面加上（/n）。</li>
+</ul>
+<h3 id="10-1-3_Element类型">10.1.3 Element类型</h3><p>访问元素的标签名：</p>
+<ul>
+<li>nodeName属性</li>
+<li>tagName属性</li>
+</ul>
+<p>在HTML返回的都是大写的。所以采用以下的方式进行比较返回的是否是哪个。<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if<span class="list">(<span class="keyword">element</span>.nodeName.toLowerCase<span class="list">()</span> == <span class="string">"div"</span>)</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="1-html元素">1.html元素</h4><p>每个html元素都有以下的特性：</p>
+<ul>
+<li>id</li>
+<li>title</li>
+<li>dir：修改就会立即反映在页面中。</li>
+<li>lang</li>
+<li>className：改变值可以直接关联新的样式。</li>
+</ul>
+<h4 id="2-取得特性">2.取得特性</h4><p>操作特性的方法：<br>getAttribute() + setAttribute() + removeAttrvbute() </p>
+<p>两类特殊的特性：</p>
+<ul>
+<li>style：getAttribute()返回的是style里面的文本。而通过属性来访问则是一个对象。</li>
+<li>onclick：getAttribute()返回相应代码的字符串。而访问onclick属性时候返回的是一个js函数。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"huang"</span> <span class="attribute">onclick</span>=<span class="value">"huang()"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="openscad"></span><br><span class="line">	var <span class="built_in">str</span> = document.getElementById<span class="params">(<span class="string">"huang"</span>)</span>;</span><br><span class="line">	var huang = <span class="built_in">str</span>.getAttribute<span class="params">(<span class="string">"onclick"</span>)</span>;</span><br><span class="line">	console.<span class="built_in">log</span><span class="params">(str.onclick)</span>; <span class="comment">//function onclick</span></span><br><span class="line">	console.<span class="built_in">log</span><span class="params">(huang)</span>; <span class="comment">//huang()</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">huang</span><span class="params">()</span>&#123;</span></span><br><span class="line">		console.<span class="built_in">log</span><span class="params">(<span class="string">"123"</span>)</span>;</span><br><span class="line">	&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>所以一般不适用getAttribute()这个方法，而是在访问自定义属性的时候用到。</p>
+<h4 id="3-设置属性">3.设置属性</h4><p>setAttribute()<br>IE7及以下对于class和style的设置没有效果。<br>IE6不支持removeAttribute()</p>
+<h4 id="4-attributes属性">4.attributes属性</h4><p>atributes属性中包含一个NamedNodeMap，与nodeList类似。<br>有以下的方法：</p>
+<ul>
+<li>getNamedItem(name):返回nodeName等于name的节点。</li>
+<li>removeNamedItem(name);</li>
+<li>setNamedItem(name);</li>
+<li>item(pos):返回位于数字跑pos位置处的节点。</li>
+</ul>
+<p>attributes属性包含一系列节点，每个节点的nodeName就是特性的名称。每个节点的nodeValue就是特性的值。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> id</span> = element.attributes.getNamedItem(<span class="string">"id"</span>).nodeValue;</span><br><span class="line">id = <span class="string">"huang"</span>;<span class="comment">//将id设置成新值。</span></span><br></pre></td></tr></table></figure>
+<p>attributes属性一般用的不多，但是在<strong>遍历元素的特性</strong>的时候是很有用的。然后以name = value的形式输出。<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="variable">id =</span> <span class="string">"hzhuang"</span> <span class="variable">name =</span> <span class="string">"hzhuang"</span> <span class="variable">dir =</span> <span class="string">"ltr"</span> <span class="variable">class =</span> <span class="string">"hzhuang"</span> <span class="variable">title=</span><span class="string">"hzhuang"</span>&gt;&lt;/div&gt;</span><br><span class="line">function outputAttribute(element)&#123;</span><br><span class="line">	<span class="variable">element =</span> element.attributes;</span><br><span class="line">	var <span class="variable">pairs =</span> [], attrName, attrValue, i , <span class="variable">len=</span>element.length;</span><br><span class="line">	for(<span class="variable">i=</span><span class="number">0</span>; i&lt; len; i++)&#123;</span><br><span class="line">		<span class="variable">attrName =</span> element[i].nodeName;</span><br><span class="line">		<span class="variable">attrValue =</span> element[i].nodeValue;</span><br><span class="line">		pairs.push(attrName + <span class="string">"=\'"</span> + attrValue + <span class="string">"\'"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	return pairs.join(<span class="string">" "</span>);</span><br><span class="line">&#125;</span><br><span class="line">var <span class="variable">hzhuang =</span> document.getElementById(<span class="string">"hzhuang"</span>);</span><br><span class="line">var <span class="variable">output =</span> outputAttribute(hzhuang);</span><br><span class="line">console.log(output);//<span class="variable">id=</span>'hzhuang' <span class="variable">name=</span>'hzhuang' <span class="variable">dir=</span>'ltr' <span class="variable">class=</span>'hzhuang' <span class="variable">title=</span>'hzhuang'</span><br></pre></td></tr></table></figure></p>
 <h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
 <ul>
 <li>创建平滑的动画</li>
