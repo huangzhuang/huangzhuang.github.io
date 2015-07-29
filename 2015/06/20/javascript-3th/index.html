@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-25T03:20:06.000Z">
+<meta property="og:updated_time" content="2015-07-29T02:23:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1093,6 +1093,43 @@
 <p>要再IE浏览器中检查插件，则使用唯一的专有的ActiveXObjext类型。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//plugin detection for IE</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hasIEPlugin</span><span class="params">(name)</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> ActiveXObject(name);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ex)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="8-3-2_注册处理程序">8.3.2 注册处理程序</h3><h2 id="8-4_screen对象">8.4 screen对象</h2><p>screen对象基本上只用来表明客户端的能力。<br>属性详见P214</p>
 <h2 id="8-5history对象">8.5history对象</h2><p>history是window对象的属性。借由用户访问过的页面列表，可以实现在不知道实际URL的情况下实现后退和前进。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">history</span>.<span class="keyword">go</span>(num/url);</span><br><span class="line"><span class="keyword">history</span>.back();</span><br><span class="line"><span class="keyword">history</span>,forward();</span><br></pre></td></tr></table></figure></p>
+<h1 id="第十章_DOM">第十章 DOM</h1><ul>
+<li>理解包含不同层次节点的DOM</li>
+<li>使用不同的节点类型</li>
+<li>克服浏览器兼容性问题以及各种陷阱</li>
+</ul>
+<h2 id="10-1_节点层次">10.1 节点层次</h2><p>所有页面标记则表现为一个以特定节点为根节点的树形结构。</p>
+<h3 id="10-1-1_Node类型">10.1.1 Node类型</h3><p>每个节点有nodeType属性。<br> 为了兼容所有浏览器，最好是将nodeType的值与1-12之间的数值比较。<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>（somenode.<span class="keyword">nodeType</span> = =<span class="number">1</span>）&#123;alert(<span class="string">"该节点是一个元素节点"</span>)&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="1-nodeName和nodeValue属性">1.nodeName和nodeValue属性</h4><p>nodeName和nodeValue属性是节点的具体信息，使用前检测下节点的类型。<br>元素节点的nodeName是标签名，而它的nodeValues是null。</p>
+<h4 id="2-_节点关系">2. 节点关系</h4><p>每个节点都有一个<strong>childNodes属性</strong>，保存着nodeList对象（一个类数组，用于保存一组有序的节点）。<br>nodeList对象有length属性，且并不是Array的实例，而是会随时变化的，随DOM的结构变化自动变化。<br>通过方括号或者item()方访问nodeList中的节点。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> firstChild</span> = someNode.childNodes[<span class="number">0</span>];</span><br><span class="line"><span class="variable"><span class="keyword">var</span> secondChild</span> = someNode.childNodes.item[<span class="number">0</span>];</span><br><span class="line"><span class="comment">//将nodeLists转化成数组。</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> arrayOfNodes</span> = Array.prototype.slice.call(someNode.childNodes, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>关于Array.prototype.slice.call()可以将arguments对象转成数组，<a href="http://www.cnblogs.com/littledu/archive/2012/05/19/2508672.html" target="_blank" rel="external">参考解释</a>。<br>大致是先调用toArray()方法，然后再执行slice()方法。</p>
+<p>关于将nodeList对象转换成数组，兼容IE8及以下的方法是：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function<span class="function"> convertToArray(</span>nodes<span class="function">)</span>&#123;</span><br><span class="line">	var<span class="instruction"> array </span>= <span class="keyword">[</span>];</span><br><span class="line">	try&#123;</span><br><span class="line">		//针对非IE8及以下浏览器</span><br><span class="line">	<span class="instruction">	array </span>=<span class="function"> Array.prototype.slice.call(</span>nodes, 0<span class="function">)</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	catch(ex<span class="function">)</span>&#123;</span><br><span class="line">	<span class="instruction">	array </span>=<span class="instruction"> new </span>Array(<span class="function">)</span>;</span><br><span class="line">		for(var i=0, len= nodes.length; i&lt; len; i++<span class="function">)</span>&#123;</span><br><span class="line">			array<span class="keyword">[</span>i].push(nodes<span class="keyword">[</span>i]<span class="function">)</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="instruction">	return </span>array; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>每个节点有一个<strong>parentNode属性</strong>，指向文档树中的父节点。<br>比如someNode.childrenNodes中的每个节点都有同样的父节点someNode。而且他们之间是同胞节点（previousSibling 和 nextSbling）。</p>
+<p>firestChild和lastChild属性的意义就很明显了。<br><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">someNode.firstChild == someNode.childrenNodes[0]<span class="comment">;</span></span><br><span class="line">someNode,lastCHild == someNode.childrenNodes[someNode.childrenNodes.length - 1]<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>hasChildNodes()方法：节点包含一个或者多个子节点的情况下返回true</p>
+<p>每个节点还有一个<strong>ownerDocument属性</strong>，指向文档的文档节点。</p>
+<p>firstChild/lastChild<br>方法：hasChildNodes();节点有子节点的时候返回true。<br>共有的属性：ownerDocument;表示节点是哪个文档的。不可以跨几个。</p>
+<ol>
+<li>操作节点<br>appendChild( )用于向childNodes列表的末尾添加一个节点。这个方法会返回新增的节点。<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> huang</span>= someNode.appendChild(newNode);</span><br><span class="line">alert (huang == newNode); <span class="comment">//返回true;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>insertBefore(插入的节点，作为参考的节点 )方法将节点插入到你想插入的地方。默认的参考节点是最后一个。<br>replaceChild（插入的节点，要替换的节点）。<br>removeChild（移除的节点）。</p>
+<blockquote>
+<p>四种操作方法都是摸个节点的子节点，如果是不支持子节点的节点就会报错的。比如文本节点没有子节点。</p>
+</blockquote>
+<p>两个所有节点类型都有的方法</p>
+<ul>
+<li>cloneChild（true）true表示深复制，就是复制节点及其子节点树。复制后孤立。不会复制js属性。</li>
+<li>normalize( )删除后代中的空文本节点，然后把相领的文本节点合并。</li>
+</ul>
+<h5 id="Document类型_nodeType_==_9">Document类型      nodeType == 9</h5><p>document对象是HTMLDocument的一个实例，表示整个HTML页面。且是window对象的一个属性。</p>
+<ol>
+<li>文档的子节点</li>
+</ol>
+<ul>
+<li>documentElement属性：始终指向页面中<html>元素。更快捷。</html></li>
+<li>document.childNodes访问文档元素。</li>
+</ul>
 <h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
 <ul>
 <li>创建平滑的动画</li>
