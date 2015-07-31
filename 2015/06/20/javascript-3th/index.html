@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-31T11:27:24.000Z">
+<meta property="og:updated_time" content="2015-07-31T11:57:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1334,7 +1334,7 @@
 <h3 id="10-1-7_DocumentType类型(x)">10.1.7 DocumentType类型(x)</h3><p>不常用。</p>
 <h3 id="10-1-8_DocumentFragment类型(11)">10.1.8 DocumentFragment类型(11)</h3><p>nodeType == 11<br>不可以直接添加在文档中，但是可以作为仓库来使用。<br>创建方法：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br></pre></td></tr></table></figure></p>
 <p>看一个例子就明白了：<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id=<span class="string">"myList"</span>&gt;&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="reserved">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line"><span class="reserved">var</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">"myList"</span>);</span><br><span class="line"><span class="reserved">var</span> li = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="reserved">var</span> i = <span class="number">0</span>; i&lt; <span class="number">3</span>; i++)&#123;</span><br><span class="line">	li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</span><br><span class="line">	li.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">"Item "</span> + (i+<span class="number">1</span>)));</span><br><span class="line">	fragment.appendChild(li);</span><br><span class="line">&#125;</span><br><span class="line">ul.appendChild(fragment);</span><br></pre></td></tr></table></figure></p>
-<h2 id="DOM操作技术">DOM操作技术</h2><h3 id="动态脚本">动态脚本</h3><p>页面加载完的时候不存在，在将来的某一个时刻修改DOM动态添加的脚本。</p>
+<h2 id="11-2_DOM操作技术">11.2 DOM操作技术</h2><h3 id="11-2-1_动态脚本">11.2.1 动态脚本</h3><p>页面加载完的时候不存在，在将来的某一个时刻修改DOM动态添加的脚本。</p>
 <ul>
 <li>插入外部文件。</li>
 <li>直接插入js代码。</li>
@@ -1351,8 +1351,7 @@
 <h3 id="10-2-3_操作表格">10.2.3 操作表格</h3><p>忽略</p>
 <h3 id="10-2-4_使用NodeList">10.2.4 使用NodeList</h3><p>理解”NodeList”以及”nameNodeMap”和”HTMLCollection”是理解DOM的关键。<br>他们是三个集合，而且是动态的，随着DOM的变化得到更新。<br>以下的例子会进入无限循环<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var divs = document.getElementsByTagName(<span class="string">"div"</span>) ,i, <span class="keyword">div</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; divs.<span class="property">length</span>; i++)&#123;</span><br><span class="line">	<span class="keyword">div</span> = document.createElement(<span class="string">"div"</span>);</span><br><span class="line">	document.body.appendChild(<span class="keyword">div</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>解决方法是只要把divs.length赋值给len，然后使用i&lt; len即可。</p>
-<p>第11章 DOM扩展</p>
-<ul>
+<h1 id="第11章_DOM扩展">第11章 DOM扩展</h1><ul>
 <li>Selector API</li>
 <li>HTML5扩展</li>
 <li>了解专有的DOM扩展</li>
