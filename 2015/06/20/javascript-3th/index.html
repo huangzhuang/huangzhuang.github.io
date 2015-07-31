@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-29T09:23:52.000Z">
+<meta property="og:updated_time" content="2015-07-31T11:27:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1351,6 +1351,200 @@
 <h3 id="10-2-3_操作表格">10.2.3 操作表格</h3><p>忽略</p>
 <h3 id="10-2-4_使用NodeList">10.2.4 使用NodeList</h3><p>理解”NodeList”以及”nameNodeMap”和”HTMLCollection”是理解DOM的关键。<br>他们是三个集合，而且是动态的，随着DOM的变化得到更新。<br>以下的例子会进入无限循环<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var divs = document.getElementsByTagName(<span class="string">"div"</span>) ,i, <span class="keyword">div</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; divs.<span class="property">length</span>; i++)&#123;</span><br><span class="line">	<span class="keyword">div</span> = document.createElement(<span class="string">"div"</span>);</span><br><span class="line">	document.body.appendChild(<span class="keyword">div</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>解决方法是只要把divs.length赋值给len，然后使用i&lt; len即可。</p>
+<p>第11章 DOM扩展</p>
+<ul>
+<li>Selector API</li>
+<li>HTML5扩展</li>
+<li>了解专有的DOM扩展</li>
+</ul>
+<h2 id="选择符_API">选择符 API</h2><p>扩展这个API是为了让原生浏览器支持css查询。</p>
+<h3 id="11-1-1_querySelector()方法">11.1.1 querySelector()方法</h3><p>接收一个css选择符，返回与该模式匹配的第一个元素。<br>document.querySelector()在整个文档查找<br>element.querySelector()则只会在element的后代中查找匹配项。</p>
+<h3 id="11-1-2_querySelectorAll()">11.1.2 querySelectorAll()</h3><p>这个方法与querySelector类似，但是返回的是一个nodeList对象。可以用item()方法来得到各项。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">var</span> <span class="keyword">strong </span>= document.querySelectorAll(<span class="string">"p strong"</span>)<span class="comment">;</span></span><br><span class="line"><span class="label">var</span> i , len<span class="comment">;</span></span><br><span class="line"><span class="label">for</span>(i = <span class="number">0</span> , len = <span class="keyword">strong.length </span><span class="comment">; i++)&#123;</span></span><br><span class="line">	 // <span class="keyword">strong </span>= <span class="keyword">strong[i];</span><br><span class="line"></span>	 <span class="keyword">strong </span>= <span class="keyword">strong.item(i);</span><br><span class="line"></span>	 <span class="keyword">strong.className </span>= <span class="string">"important"</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="11-1-3_matchesSelector()">11.1.3 matchesSelector()</h3><p>这个是element类型的一个方法。返回的是一个布尔值。<br>考虑兼容性问题，封装一个函数里。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchesSelector</span><span class="params">(eleement, selector)</span>&#123;</span></span><br><span class="line">	<span class="keyword">if</span><span class="params">(element.matchesSelector)</span>&#123;</span><br><span class="line">		return element.matchesSelector<span class="params">(selector)</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span><span class="params">(element.msMatchesSelector)</span>&#123;</span><br><span class="line">		return element.msMatchesSelector<span class="params">(selector)</span>;</span><br><span class="line">	&#125;......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="11-2_元素遍历">11.2 元素遍历</h2><p>之前讨论过IE和其他浏览器中关于childNodes中包含空格符的不一致问题，现在为了解决这个问题，Element Traversal规范定义一组新的属性。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">childElementCount</td>
+<td style="text-align:left">返回子元素，不包含文本节点和注释</td>
+</tr>
+<tr>
+<td style="text-align:left">firstElementChild</td>
+<td style="text-align:left">指向第一个子元素</td>
+</tr>
+<tr>
+<td style="text-align:left">lastElementChild</td>
+<td style="text-align:left">指向最后一个子元素</td>
+</tr>
+<tr>
+<td style="text-align:left">previousElementSibling</td>
+<td style="text-align:left">指向前一个同辈元素</td>
+</tr>
+<tr>
+<td style="text-align:left">nextElememntSibling</td>
+<td style="text-align:left">指向下一个同辈元素</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-3_HTML5">11.3 HTML5</h2><h3 id="11-3-1与类相关的扩充">11.3.1与类相关的扩充</h3><h4 id="1-getElementsByClassName()">1.getElementsByClassName()</h4><p>H5新加了getElementsByClassName()方法。返回的是得到的所有匹配类的NodeList。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> allCurrentUserNames = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"username current"</span>);</span><br><span class="line"><span class="reserved">var</span> selected = <span class="built_in">document</span>.getElememntById(<span class="string">"myDiv"</span>).getElementsByClassName(<span class="string">"selected"</span>);</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-classList属性">2.classList属性</h4><p>可以使用className属性来添加、删除和替换类名。<br>一般，如果要把如下中的类b删除<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"a b c"</span>&gt;&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>代码如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"a b c"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="openscad"></span><br><span class="line">var div = document.getElementsByTagName<span class="params">(<span class="string">"div"</span>)</span>[<span class="number">1</span>];</span><br><span class="line">var className = div.className.split<span class="params">(/\s+/)</span>;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(className)</span>;</span><br><span class="line">var pos = -<span class="number">1</span>,</span><br><span class="line">i,</span><br><span class="line">len;</span><br><span class="line"><span class="keyword">for</span><span class="params">(i = <span class="number">0</span>,len = className.length; i&lt; len ;i++)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span><span class="params">(className[i] = <span class="string">"b"</span>)</span>&#123;</span><br><span class="line">		pos = i;</span><br><span class="line">		break;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">className.splice<span class="params">(i, <span class="number">1</span>)</span>;</span><br><span class="line">div.className = className.join<span class="params">(<span class="string">" "</span>)</span>;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(div.className)</span>;</span></span><br></pre></td></tr></table></figure></p>
+<p>可以有更简单且更安全的方法：HTML5新增的一种操作类名的方式，就是为每个元素添加classList属性。<br>classList是集合DOMTokenList的实例。类似NodeList。<br>当然就可以用item()方法来访问了。<br>同时还定义几个方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">add(value)</td>
+<td style="text-align:left">给定的字符串组添加到列表中。</td>
+</tr>
+<tr>
+<td style="text-align:left">contains(value)</td>
+<td style="text-align:left">检测列表中是否存在value类，返回布尔值。</td>
+</tr>
+<tr>
+<td style="text-align:left">remove(value)</td>
+<td style="text-align:left">显而易见的意思</td>
+</tr>
+<tr>
+<td style="text-align:left">toggle(value)</td>
+<td style="text-align:left">存在就删除，不存在就添加。</td>
+</tr>
+</tbody>
+</table>
+<p>所以，可见，之前很多行代码可以使用一行就解决了。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var div = document.getElementsByTagName<span class="params">(<span class="string">"div"</span>)</span>[<span class="number">1</span>].classList.remove<span class="params">(<span class="string">"b"</span>)</span>;</span><br><span class="line">console.<span class="built_in">log</span><span class="params">(div)</span>; <span class="comment">//undefined,说明没有返回值。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="11-3-2_焦点管理">11.3.2 焦点管理</h3><p>H5添加富足管理DOM焦点的功能:document.<strong>activeElement属性</strong>。<br>元素获得焦点的方式：</p>
+<ul>
+<li>页面加载</li>
+<li>用户输入</li>
+<li>调用focus()方法</li>
+</ul>
+<p>加载期间，activeElement属性是null，加载完之后默认的是document.body。</p>
+<p>一个方法：document.hasFocus()，用于确定文档是否获得了焦点。</p>
+<h3 id="11-3-3_HTMLDocument的变化">11.3.3 HTMLDocument的变化</h3><h4 id="1-readyState属性">1.readyState属性</h4><p>有两个可能的值：</p>
+<ul>
+<li>loading</li>
+<li>complete</li>
+</ul>
+<p>这个属性最好的用法就是用来判断文档是否加载完全。<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>)&#123;xxx&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-兼容模式">2.兼容模式</h4><p>区分渲染页面是标准模式还是混合模式，CompatMode属性来判断：<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span><span class="params">(document.compatMode == <span class="string">"CSS1Compat"</span>)</span>&#123; <span class="comment">//css要大写</span></span><br><span class="line">	alert<span class="params">(<span class="string">"标准模式"</span>)</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span><span class="params">(document.compatMode == <span class="string">"BackCompat"</span>)</span>&#123;</span><br><span class="line">	alert<span class="params">(<span class="string">"混合模式"</span>)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-head属性">3.head属性</h4><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="reserved">var</span> head = <span class="built_in">document</span>.head || <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="11-3-4_字符集属性">11.3.4 字符集属性</h3><p>charset属性<br>常用的设置UTF-8的操作就是这个。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>可以用document.charset访问到文档中的字符集，默认的是UTF-16。</p>
+<h3 id="11-3-5_自定义数据属性">11.3.5 自定义数据属性</h3><p>对于H5页面中自定义的属性，原生js可以通过元素的dataset属性来访问自定义的值。这个属性是<strong>DONStringMap</strong>的实例，是一个名值对的映射。<br><figure class="highlight dust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"hzhuang"</span> <span class="attribute">data-id</span> = "<span class="attribute">1</span>" <span class="attribute">data-name</span> = "<span class="attribute">hzhuang</span>"&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"hzhuang"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(div);<span class="comment">//DOMStringMap </span></span></span><span class="expression">&#123;<span class="variable">id</span>: <span class="string">"1"</span>, <span class="variable">name</span>: <span class="string">"hzhuang"</span>&#125;</span><span class="xml"><span class="undefined"></span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="11-3-6_插入标记">11.3.6 插入标记</h3><h4 id="1-_innerHTML属性">1. innerHTML属性</h4><p>兼容性，有的浏览器返回的标签全变成大写。<br>IE浏览器使用限制：</p>
+<ul>
+<li>插入script元素必须制定defer属性。</li>
+<li>script元素必须位于有作用域的元素之后。script元素在页面中看不见，所以是无作用域的。<br>对于解决方法：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div.innerHTML = "_<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">div</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span> = \"<span class="attribute">hidden</span>\"&gt;</span><span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="stylus"><span class="function"><span class="title">alert</span><span class="params">(<span class="string">'123'</span>)</span></span>\&lt;script&gt;<span class="string">"; //首选</span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于style就类似了。</p>
+<p>还有很多元素是不支持这个属性的，如：head，html，style，表格相关元素，title等……</p>
+<h4 id="2-outerHTML属性">2.outerHTML属性</h4><p>与innerHTML相似，但是返回的是包括元素本身的。用于读取或者设置DOM结构。</p>
+<h4 id="3-insertAdjacentHTML()方法">3.insertAdjacentHTML()方法</h4><p>接受插入位置和要插入的HTML两个参数。<br>接受插入的位置有四个值：beforebegin，afterbegin，beforeend和afterend。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">插入位置</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">beforebegin</td>
+<td style="text-align:left">当前元素的前面插入一个紧邻的同辈元素</td>
+</tr>
+<tr>
+<td style="text-align:left">afterend</td>
+<td style="text-align:left">当前元素的后面插入一个紧邻的同辈元素</td>
+</tr>
+<tr>
+<td style="text-align:left">afterbegin</td>
+<td style="text-align:left">当前元素之下插入一个子元素。第一个子元素之前</td>
+</tr>
+<tr>
+<td style="text-align:left">beforeend</td>
+<td style="text-align:left">当前元素之下插入一个子元素。最后的子元素之后</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">div</span>.insertAdjacentHTML(<span class="string">"beforebegin"</span>, <span class="string">"hzhuang"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="4-内存与性能问题">4.内存与性能问题</h4><p>使用这些方法设置新的HTML的时候，之前被删掉的还是占用内存的。</p>
+<h3 id="11-3-7_scrolltoView()方法。">11.3.7 scrolltoView()方法。</h3><p>通过滚动浏览器窗口或者某个元素，调用元素就可以出现在视口中。</p>
+<ul>
+<li>传入的参数是true或者没有的话，窗口滚动之后会让调用元素的顶部与视口顶部尽可能齐平。</li>
+<li>参数是false，则调用元素会尽可能的出现在视口中。</li>
+</ul>
+<h2 id="11-4专有扩展">11.4专有扩展</h2><p>就是不同的浏览器自己做的扩展，但是最终在H5中得到标准化。</p>
+<h3 id="11-4-1_文档模式">11.4.1 文档模式</h3><h3 id="children属性">children属性</h3><p>解决childNodes属性的差异而诞生的，children属性是HTMLCollection的实例。和childNodes很类似，但是IE9中改进，不包括注释节点。</p>
+<h3 id="11-4-3_contains()方法">11.4.3 contains()方法</h3><p>contains()方法用来检测摸个元素是否有某个后代。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">document</span><span class="class">.documentElement</span><span class="class">.contains</span>(<span class="tag">document</span><span class="class">.body</span>);</span><br></pre></td></tr></table></figure></p>
+<p>方法并不是只有这一个，<strong>compareDocumentPosition()</strong>也可以做到，这个方法是用于确定两个节点之间的关系。返回的是表示关系的数字。<br>其中参数就是给定的节点。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">返回的数字</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">表示两个节点无关</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">给点节点在参考节点的前面</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">给点节点在参考节点的后面</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">给定的节点是包含节点的祖先</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">给点的节点是参考节点的后代</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="literal">result</span> = document.documentElement.compareDocumentPosition(document.body);</span><br><span class="line">console.log(<span class="literal">result</span>);//<span class="number">20</span></span><br></pre></td></tr></table></figure>
+<p>通用的contains函数：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">contains</span><span class="params">(resNode, otherNode)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">typeof</span> refNode.contains  == <span class="string">"function"</span> &amp;&amp; (!client.engine.webkit || client.engine.webkit &gt;=<span class="number">552</span>) )&#123;</span><br><span class="line">		<span class="keyword">return</span> resNode.contains(otherNode);</span><br><span class="line"> 	&#125; <span class="keyword">else</span> <span class="keyword">if</span>(type compareDocumentPosition == <span class="string">"function"</span>)&#123;</span><br><span class="line"> 		<span class="keyword">return</span> !!(refNode.compareDocumentPosition(other) &amp; <span class="number">16</span>);<span class="comment">//</span></span><br><span class="line"> 		<span class="comment">//!!(x)的作用是如果x是nuu或者undefined的话，返回的是false。</span></span><br><span class="line"> 	&#125; <span class="keyword">else</span>&#123;</span><br><span class="line"> 		<span class="keyword">var</span> node = otherNode.parentNode;</span><br><span class="line"> 		<span class="keyword">do</span>&#123;</span><br><span class="line"> 			<span class="keyword">if</span>(node === refNode)&#123;</span><br><span class="line"> 				<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"> 			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"> 				node = node.parentNode;</span><br><span class="line"> 			&#125;</span><br><span class="line"> 		&#125;<span class="keyword">while</span>(node !== <span class="literal">null</span>);</span><br><span class="line"> 	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="11-4-4_插入文本">11.4.4 插入文本</h3><p>innerText和outerText没有被纳入H5的规范。</p>
+<h3 id="11-4-5_滚动">11.4.5 滚动</h3><p>几个扩展的方法：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">scrollToViewIfNeeded(gnCeter)</td>
+<td style="text-align:left">只有在当前的元素在视口中不可见的情况下，才滚动</td>
+</tr>
+<tr>
+<td style="text-align:left">scroolByLines(lineCount)</td>
+<td style="text-align:left">将元素的内容滚动到指定的行高</td>
+</tr>
+<tr>
+<td style="text-align:left">scrollByPages(pageCount)</td>
+<td style="text-align:left">将元素的内容滚动到指定的页面高度</td>
+</tr>
+</tbody>
+</table>
 <h1 id="第25章_新兴的API">第25章 新兴的API</h1><p>内容：</p>
 <ul>
 <li>创建平滑的动画</li>
