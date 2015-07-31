@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-07-31T11:57:44.000Z">
+<meta property="og:updated_time" content="2015-07-31T16:02:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -1356,7 +1356,7 @@
 <li>HTML5扩展</li>
 <li>了解专有的DOM扩展</li>
 </ul>
-<h2 id="选择符_API">选择符 API</h2><p>扩展这个API是为了让原生浏览器支持css查询。</p>
+<h2 id="11-1_选择符_API">11.1 选择符 API</h2><p>扩展这个API是为了让原生浏览器支持css查询。</p>
 <h3 id="11-1-1_querySelector()方法">11.1.1 querySelector()方法</h3><p>接收一个css选择符，返回与该模式匹配的第一个元素。<br>document.querySelector()在整个文档查找<br>element.querySelector()则只会在element的后代中查找匹配项。</p>
 <h3 id="11-1-2_querySelectorAll()">11.1.2 querySelectorAll()</h3><p>这个方法与querySelector类似，但是返回的是一个nodeList对象。可以用item()方法来得到各项。<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">var</span> <span class="keyword">strong </span>= document.querySelectorAll(<span class="string">"p strong"</span>)<span class="comment">;</span></span><br><span class="line"><span class="label">var</span> i , len<span class="comment">;</span></span><br><span class="line"><span class="label">for</span>(i = <span class="number">0</span> , len = <span class="keyword">strong.length </span><span class="comment">; i++)&#123;</span></span><br><span class="line">	 // <span class="keyword">strong </span>= <span class="keyword">strong[i];</span><br><span class="line"></span>	 <span class="keyword">strong </span>= <span class="keyword">strong.item(i);</span><br><span class="line"></span>	 <span class="keyword">strong.className </span>= <span class="string">"important"</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="11-1-3_matchesSelector()">11.1.3 matchesSelector()</h3><p>这个是element类型的一个方法。返回的是一个布尔值。<br>考虑兼容性问题，封装一个函数里。<br><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">matchesSelector</span><span class="params">(eleement, selector)</span>&#123;</span></span><br><span class="line">	<span class="keyword">if</span><span class="params">(element.matchesSelector)</span>&#123;</span><br><span class="line">		return element.matchesSelector<span class="params">(selector)</span>;</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span><span class="params">(element.msMatchesSelector)</span>&#123;</span><br><span class="line">		return element.msMatchesSelector<span class="params">(selector)</span>;</span><br><span class="line">	&#125;......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1444,9 +1444,9 @@
 <h3 id="11-3-6_插入标记">11.3.6 插入标记</h3><h4 id="1-_innerHTML属性">1. innerHTML属性</h4><p>兼容性，有的浏览器返回的标签全变成大写。<br>IE浏览器使用限制：</p>
 <ul>
 <li>插入script元素必须制定defer属性。</li>
-<li>script元素必须位于有作用域的元素之后。script元素在页面中看不见，所以是无作用域的。<br>对于解决方法：<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div.innerHTML = "_<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">div</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span> = \"<span class="attribute">hidden</span>\"&gt;</span><span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="stylus"><span class="function"><span class="title">alert</span><span class="params">(<span class="string">'123'</span>)</span></span>\&lt;script&gt;<span class="string">"; //首选</span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
-</li>
+<li>script元素必须位于有作用域的元素之后。script元素在页面中看不见，所以是无作用域的。<br>对于解决方法：</li>
 </ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div.innerHTML = "_<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">div</span>&gt;</span>&amp;nbsp;<span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="xml">alert('123')\<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="xml">";</span><br><span class="line">div.innerHTML = "<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span> = \"<span class="attribute">hidden</span>\"&gt;</span><span class="tag">&lt;<span class="title">script</span> <span class="attribute">defer</span>&gt;</span><span class="stylus"><span class="function"><span class="title">alert</span><span class="params">(<span class="string">'123'</span>)</span></span>\&lt;script&gt;<span class="string">"; //首选</span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
 <p>对于style就类似了。</p>
 <p>还有很多元素是不支持这个属性的，如：head，html，style，表格相关元素，title等……</p>
 <h4 id="2-outerHTML属性">2.outerHTML属性</h4><p>与innerHTML相似，但是返回的是包括元素本身的。用于读取或者设置DOM结构。</p>
@@ -1485,7 +1485,7 @@
 <li>参数是false，则调用元素会尽可能的出现在视口中。</li>
 </ul>
 <h2 id="11-4专有扩展">11.4专有扩展</h2><p>就是不同的浏览器自己做的扩展，但是最终在H5中得到标准化。</p>
-<h3 id="11-4-1_文档模式">11.4.1 文档模式</h3><h3 id="children属性">children属性</h3><p>解决childNodes属性的差异而诞生的，children属性是HTMLCollection的实例。和childNodes很类似，但是IE9中改进，不包括注释节点。</p>
+<h3 id="11-4-1_文档模式">11.4.1 文档模式</h3><h3 id="11-4-2_children属性">11.4.2 children属性</h3><p>解决childNodes属性的差异而诞生的，children属性是HTMLCollection的实例。和childNodes很类似，但是IE9中改进，不包括注释节点。</p>
 <h3 id="11-4-3_contains()方法">11.4.3 contains()方法</h3><p>contains()方法用来检测摸个元素是否有某个后代。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">document</span><span class="class">.documentElement</span><span class="class">.contains</span>(<span class="tag">document</span><span class="class">.body</span>);</span><br></pre></td></tr></table></figure></p>
 <p>方法并不是只有这一个，<strong>compareDocumentPosition()</strong>也可以做到，这个方法是用于确定两个节点之间的关系。返回的是表示关系的数字。<br>其中参数就是给定的节点。</p>
 <table>
@@ -1531,11 +1531,11 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">scrollToViewIfNeeded(gnCeter)</td>
+<td style="text-align:left">scrollToViewIfNeeded(alignCeter)</td>
 <td style="text-align:left">只有在当前的元素在视口中不可见的情况下，才滚动</td>
 </tr>
 <tr>
-<td style="text-align:left">scroolByLines(lineCount)</td>
+<td style="text-align:left">scrollByLines(lineCount)</td>
 <td style="text-align:left">将元素的内容滚动到指定的行高</td>
 </tr>
 <tr>
