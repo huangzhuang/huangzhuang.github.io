@@ -8,11 +8,11 @@
   <meta name="description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript高级程序设计第三版笔记（持续更新）">
-<meta property="og:url" content="http://huangzhuang.github.io/2015/09/20/javascript-3th/index.html">
+<meta property="og:url" content="http://huangzhuang.github.io/2015/11/08/javascript-3th/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-09-02T14:27:02.000Z">
+<meta property="og:updated_time" content="2015-11-08T13:49:10.637Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -182,8 +182,8 @@
       <div class="body-wrap"><article id="post-javascript-3th" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/20/javascript-3th/" class="article-date">
-  	<time datetime="2015-09-20T08:26:54.325Z" itemprop="datePublished">2015-09-20</time>
+      <a href="/2015/11/08/javascript-3th/" class="article-date">
+  	<time datetime="2015-11-08T13:49:10.637Z" itemprop="datePublished">2015-11-08</time>
 </a>
     </div>
   
@@ -1128,9 +1128,9 @@
 <p>两类特殊的特性：</p>
 <ul>
 <li>style：getAttribute()返回的是style里面的文本。而通过属性来访问则是一个对象。</li>
-<li>onclick：getAttribute()返回相应代码的字符串。而访问onclick属性时候返回的是一个js函数。<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"huang"</span> <span class="attribute">onclick</span>=<span class="value">"huang()"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">	<span class="keyword">var</span> str = <span class="built_in">document</span>.getElementById(<span class="string">"huang"</span>);</span><br><span class="line">	<span class="keyword">var</span> huang = str.getAttribute(<span class="string">"onclick"</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(str.onclick); <span class="comment">//function onclick</span></span><br><span class="line">	<span class="built_in">console</span>.log(huang); <span class="comment">//huang()</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">huang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"123"</span>);</span><br><span class="line">	&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
+<li>onclick：getAttribute()返回相应代码的字符串。而访问onclick属性时候返回的是一个js函数。</li>
 </ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"huang"</span> <span class="attribute">onclick</span>=<span class="value">"huang()"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span><br><span class="line">	<span class="keyword">var</span> str = <span class="built_in">document</span>.getElementById(<span class="string">"huang"</span>);</span><br><span class="line">	<span class="keyword">var</span> huang = str.getAttribute(<span class="string">"onclick"</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(str.onclick); <span class="comment">//function onclick</span></span><br><span class="line">	<span class="built_in">console</span>.log(huang); <span class="comment">//huang()</span></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">huang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"123"</span>);</span><br><span class="line">	&#125;</span></span><br></pre></td></tr></table></figure>
 <p>所以一般不适用getAttribute()这个方法，而是在访问自定义属性的时候用到。</p>
 <p>####3.设置属性<br>setAttribute()<br>IE7及以下对于class和style的设置没有效果。<br>IE6不支持removeAttribute()</p>
 <p>####4.attributes属性<br>atributes属性中包含一个NamedNodeMap，与nodeList类似。<br>有以下的方法：</p>
@@ -1216,8 +1216,9 @@
 <p>所以，以下就是封装好的函数，兼容性解决的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadScriptString</span>(<span class="params">code</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">	script.type = <span class="string">"text/javascript"</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		script.appendChild(<span class="built_in">document</span>.createTextNode(code));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (ex)&#123;</span><br><span class="line">		script.appendChild(script.text = code);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">document</span>.body.appendChild(script);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="10-2-2_动态样式">10.2.2 动态样式</h3><p>也是两种方式<br>与script类似，但是区别的是link是放在head中的。封装好的函数如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadStyleString</span>(<span class="params">css</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> style = <span class="built_in">document</span>.createElement(<span class="string">"style"</span>);</span><br><span class="line">	style.type = <span class="string">"text/css"</span>;</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		style.appendChild(<span class="built_in">document</span>.createTextNode(css));</span><br><span class="line">	&#125; <span class="keyword">catch</span> (ex)&#123;</span><br><span class="line">		style.styleSheet.cssText = css;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">var</span> head = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"head"</span>)[<span class="number">0</span>];</span><br><span class="line">	head.appendChild(style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="10-2-3_操作表格">10.2.3 操作表格</h3><p>忽略</p>
-<h3 id="10-2-4_使用NodeList">10.2.4 使用NodeList</h3><p>理解”NodeList”以及”nameNodeMap”和”HTMLCollection”是理解DOM的关键。<br>他们是三个集合，而且是动态的，随着DOM的变化得到更新。<br>以下的例子会进入无限循环<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var divs = document.getElementsByTagName(<span class="string">"div"</span>) ,i, <span class="keyword">div</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; divs.<span class="property">length</span>; i++)&#123;</span><br><span class="line">	<span class="keyword">div</span> = document.createElement(<span class="string">"div"</span>);</span><br><span class="line">	document.body.appendChild(<span class="keyword">div</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>解决方法是只要把divs.length赋值给len，然后使用i&lt; len即可。</p>
+<h3 id="10-2-4_使用NodeList">10.2.4 使用NodeList</h3><p>理解”NodeList”以及”nameNodeMap”和”HTMLCollection”是理解DOM的关键。<br>他们是三个集合，而且是动态的，随着DOM的变化得到更新。<br>以下的例子会进入无限循环</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var divs = document.getElementsByTagName(<span class="string">"div"</span>) ,i, <span class="keyword">div</span>;</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; divs.<span class="property">length</span>; i++)&#123;</span><br><span class="line">	<span class="keyword">div</span> = document.createElement(<span class="string">"div"</span>);</span><br><span class="line">	document.body.appendChild(<span class="keyword">div</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决方法是只要把divs.length赋值给len，然后使用i小于len即可。</p>
 <p>#第11章 DOM扩展</p>
 <ul>
 <li>Selector API</li>
@@ -1576,18 +1577,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/09/20/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/20/codewars/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日一战(codewars)</div>
+    <a href="/2015/09/20/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -1616,7 +1608,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="javascript-3th" data-title="javascript高级程序设计第三版笔记（持续更新）" data-url="http://huangzhuang.github.io/2015/09/20/javascript-3th/"></div>
+	<div class="ds-thread" data-thread-key="javascript-3th" data-title="javascript高级程序设计第三版笔记（持续更新）" data-url="http://huangzhuang.github.io/2015/11/08/javascript-3th/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
