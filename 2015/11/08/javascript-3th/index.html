@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-11-08T13:49:10.637Z">
+<meta property="og:updated_time" content="2015-11-08T13:52:51.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -183,7 +183,7 @@
   
     <div class="article-meta">
       <a href="/2015/11/08/javascript-3th/" class="article-date">
-  	<time datetime="2015-11-08T13:49:10.637Z" itemprop="datePublished">2015-11-08</time>
+  	<time datetime="2015-11-08T13:52:51.434Z" itemprop="datePublished">2015-11-08</time>
 </a>
     </div>
   
@@ -798,7 +798,6 @@
 <p>##7.4 私有作用域<br>没有私有成员的概念，但是有私有变量的概念。（函数中定义的都是私有变量）<br>访问私有变量的公有方法：就是在函数内部调用一个特殊的方法，利用闭包的作用链来访问这些私有变量和私有方法。构造函数实现，对每个实例都重新创建。</p>
 <p>###7.4.1 静态私有变量<br>在私有作用域中定义私有变量和函数，也可以创建特权方法。<br>在匿名函数里面，通过不声明函数的方法使这个方法成为全局的，所有就可以在私有作用域之外也可以访问到私有变量和方法。<br>区别：私有变量和方法是实例共享的。实例的参数变化会影响所有的实例。</p>
 <p>###7.4.2 模块模式<br>在定义私有变量和函数后，return一个对象字面量。这个对象字面量包含可以公开的属性和方法。</p>
-<p>第八章：BOM</p>
 <h1 id="第八章_BOM">第八章 BOM</h1><p>主要内容</p>
 <ul>
 <li>理解window对象</li>
@@ -817,7 +816,7 @@
 </blockquote>
 <h3 id="8-1-2_窗口关系及框架">8.1.2 窗口关系及框架</h3><p>页面中如果有框架，则每个框架都有自己的window对象。保存在frames集合中。每个window都有各自的name属性。<br>不常用，忽略。</p>
 <h3 id="8-1-3_窗口位置">8.1.3 窗口位置</h3><p>screenLeft和screenTop属性，分别用于表示窗口相对于屏幕左边和上面的位置。特别的是：在FireFox中，是screenX和screenY两个属性来完成相同的功能。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> leftPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenLeft == <span class="string">"number"</span>)?<span class="built_in">window</span>.screenLeft : <span class="built_in">window</span>.screenX;</span><br><span class="line"><span class="keyword">var</span> topPos = (<span class="keyword">typeof</span> <span class="built_in">window</span>.screenTop == <span class="string">"number"</span>)?<span class="built_in">window</span>.screenTop : <span class="built_in">window</span>.screenY;</span><br></pre></td></tr></table></figure></p>
-<p>关于方法moveTo( )和moveBy( )浏览器一般是禁用的。 </p>
+<p>关于方法moveTo( )和moveBy( )浏览器一般是禁用的。</p>
 <h3 id="8-1-4_窗口大小">8.1.4 窗口大小</h3><p>关于窗口大小属性的四个：outerWidth/innerWidth/outerHeight/innerOuter在各浏览器中的渲染差别。</p>
 <ul>
 <li>IE9+、Safari和FireFox：outerWidth/outerHeight返回浏览器窗口本身的尺寸。</li>
