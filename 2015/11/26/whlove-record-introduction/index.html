@@ -3,21 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | hzhuang的博客</title>
+  <title>武汉高校之恋-语音介绍页面实现总结 | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="任务实现
+设计图
+
+根据设计图，步骤如下：1.实现微信js-sdk的录音，播放，暂停的接口！具体做法是在个人页面中设定三个按钮，分别对应！2.弹窗：背景图片先写好样式，然后点击弹窗，由于毛玻璃效果不佳（后面细说），背景暂时没调！然后分别作出开始录制、结束录制和重播以及发布页面（新设计图）！3.实现初步交互过程：也就是说点击开始录制出现第二界面……(界面中的切换)。当时为了练手visio，还画了一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://huangzhuang.github.io/2015/09/20/hello-world/index.html">
+<meta property="og:title" content="武汉高校之恋-语音介绍页面实现总结">
+<meta property="og:url" content="http://huangzhuang.github.io/2015/11/26/whlove-record-introduction/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2015-09-20T11:29:50.368Z">
+<meta property="og:description" content="任务实现
+设计图
+
+根据设计图，步骤如下：1.实现微信js-sdk的录音，播放，暂停的接口！具体做法是在个人页面中设定三个按钮，分别对应！2.弹窗：背景图片先写好样式，然后点击弹窗，由于毛玻璃效果不佳（后面细说），背景暂时没调！然后分别作出开始录制、结束录制和重播以及发布页面（新设计图）！3.实现初步交互过程：也就是说点击开始录制出现第二界面……(界面中的切换)。当时为了练手visio，还画了一个">
+<meta property="og:image" content="http://hz2015.sinaapp.com/static/images/design-record.jpg">
+<meta property="og:image" content="http://hz2015.sinaapp.com/static/images/interaction1.png">
+<meta property="og:image" content="http://hz2015.sinaapp.com/static/images/func-interaction.png">
+<meta property="og:updated_time" content="2015-11-26T14:26:15.804Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="武汉高校之恋-语音介绍页面实现总结">
+<meta name="twitter:description" content="任务实现
+设计图
+
+根据设计图，步骤如下：1.实现微信js-sdk的录音，播放，暂停的接口！具体做法是在个人页面中设定三个按钮，分别对应！2.弹窗：背景图片先写好样式，然后点击弹窗，由于毛玻璃效果不佳（后面细说），背景暂时没调！然后分别作出开始录制、结束录制和重播以及发布页面（新设计图）！3.实现初步交互过程：也就是说点击开始录制出现第二界面……(界面中的切换)。当时为了练手visio，还画了一个">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -181,11 +190,11 @@ Quick">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-whlove-record-introduction" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/20/hello-world/" class="article-date">
-  	<time datetime="2015-09-20T11:29:50.368Z" itemprop="datePublished">2015-09-20</time>
+      <a href="/2015/11/26/whlove-record-introduction/" class="article-date">
+  	<time datetime="2015-11-26T14:00:00.000Z" itemprop="datePublished">2015-11-26</time>
 </a>
     </div>
   
@@ -198,7 +207,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      武汉高校之恋-语音介绍页面实现总结
     </h1>
   
 
@@ -206,6 +215,10 @@ Quick">
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-sdk/">js-sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/录音/">录音</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -214,15 +227,32 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h1 id="任务实现">任务实现</h1><ul>
+<li><p>设计图<br><img src="http://hz2015.sinaapp.com/static/images/design-record.jpg" alt="设计图"></p>
+</li>
+<li><p>根据设计图，步骤如下：<br>1.实现微信js-sdk的录音，播放，暂停的接口！具体做法是在个人页面中设定三个按钮，分别对应！<br>2.弹窗：背景图片先写好样式，然后点击弹窗，由于毛玻璃效果不佳（后面细说），背景暂时没调！然后分别作出开始录制、结束录制和重播以及发布页面（新设计图）！<br>3.实现初步交互过程：也就是说点击开始录制出现第二界面……(界面中的切换)。当时为了练手visio，还画了一个很low的图。<br><img src="http://hz2015.sinaapp.com/static/images/interaction1.png" alt="初步交互逻辑图"><br>4.圆形进度条：计时的问题，这个可以js实现！并不难，关于实时进度条的问题！<br>关于圆形进度条，可以参考以下：</p>
+<ul>
+<li><a href="http://www.w3cplus.com/css3/create-radial-progress-bar-with-jQuery-and-css3.html" target="_blank" rel="external">参考一</a></li>
+<li><a href="http://www.tuicool.com/articles/AVRvmqm" target="_blank" rel="external">参考二</a><br>但是，我现在实现的实时是每秒会转6度，看起来不连续，现在有个新思路，就是和js独立开，点击开始录音的话，js计时，此时动画开始（先右边转180度，然后左边再转180度，动画排队问题）。当点击结束录音的时候，动画停止!</li>
+</ul>
+<p>5.功能交互部分：<br><img src="http://hz2015.sinaapp.com/static/images/func-interaction.png" alt="功能交互图"><br>基本实现的差不多了！</p>
+<p>6.播放自己录音或者听别人录音的交互部分。<br>由后台传回的ogg格式的音频文件，在页面中使用html5的audio！<br>但是注意：</p>
+<hr>
+<p><strong>苹果手机不支持ios格式的文件！所以改成后台传回mp3格式！问题ok</strong></p>
+<hr>
+<p>7.bug检测，以及修复</p>
+</li>
+</ul>
+<p>#其他</p>
+<p>##毛玻璃效果<br>这是一个很炫酷的效果，但是对于图片好实现，但是对于要作为整个div块的话，实现有难度！<br>实现方法可以从几个方向：<br>1.filter的方法,微信浏览器支持性问题。<br>2.svg的方法。无效<br>3.canvas：但是效果针对resterized image，所以在此需求不符。<br>4.用背景图片的方法，没有达到效果。<br>5.要关注的是backdrop filter<br>6.高端玩法：先将当前页面截屏，然后在用canvas虚化！<br>参考文献：<br><a href="http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/" target="_blank" rel="external">张鑫旭的文章</a><br><a href="https://www.webkit.org/blog/3632/introducing-backdrop-filters/" target="_blank" rel="external">backdrop-filter</a></p>
+<p>##关于播放的按钮<br>暂停的三角不是应该中线对其，而是应该三个角对应圆周的距离相等。@skyway</p>
+<p>##关于微信页面的调试</p>
+<ul>
+<li><a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">微信自己研发的调试工具</a><br>可以看js错误，支持断点，可以调试页面，但是console.log不输出！</li>
+<li><a href="http://jsconsole.com/" target="_blank" rel="external">jsconsole</a></li>
+<li>weinre</li>
+</ul>
+<p>暂时先写这些吧，再更新！</p>
 
       
     </div>
@@ -232,18 +262,9 @@ Quick">
     
 <nav id="article-nav">
   
-    <a href="/2015/11/08/javascript-3th/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          javascript高级程序设计第三版笔记（持续更新）
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/09/20/codewars/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">每日一战(codewars)</div>
+    <a href="/2015/11/08/javascript-3th/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript高级程序设计第三版笔记（持续更新）</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -272,7 +293,7 @@ Quick">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://huangzhuang.github.io/2015/09/20/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="whlove-record-introduction" data-title="武汉高校之恋-语音介绍页面实现总结" data-url="http://huangzhuang.github.io/2015/11/26/whlove-record-introduction/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
