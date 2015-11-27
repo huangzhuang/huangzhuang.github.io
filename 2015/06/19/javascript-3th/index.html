@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="hzhuang的博客">
 <meta property="og:description">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/gjcx.jpg">
-<meta property="og:updated_time" content="2015-11-27T01:36:06.179Z">
+<meta property="og:updated_time" content="2015-11-27T14:38:30.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript高级程序设计第三版笔记（持续更新）">
 <meta name="twitter:description">
@@ -264,8 +264,7 @@
 </li>
 </ul>
 <hr>
-<p>#第二章 javascript简介</p>
-<ul>
+<h1 id="第二章_javascript简介">第二章 javascript简介</h1><ul>
 <li>netscape创建LiveScript脚本语言。搭java顺风车就改为javascript。</li>
 <li>js三部分：ECMAScript，dom，bom</li>
 <li>script标签的defer和async属性只针对外部文件，一般不用，没有这两者的时候，就会按照在页面中出现的位置先后执行的。</li>
@@ -273,31 +272,27 @@
 <li>如果浏览器不支持javascript，那么可以用noscript标签来写出替代说明文字。</li>
 </ul>
 <hr>
-<p>#第三章 基本概念</p>
-<p>##3.1 语法</p>
-<ul>
+<h1 id="第三章_基本概念">第三章 基本概念</h1><h2 id="3-1_语法">3.1 语法</h2><ul>
 <li>区分大小写</li>
 <li>标识符</li>
 <li>注释<br>单行（//） 多行（/<em>  </em>/）</li>
 <li>严格模式 use strict<br>javascript的一种不同的解析与执行模型。一些不确定的行为将得到处理以及某些不安全的操作会抛出错误。</li>
 <li>语句</li>
 </ul>
-<p>##3.2 关键字和保留字<br>全部关键字：<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span>，<span class="keyword">case</span>，catct，<span class="keyword">continue</span>，<span class="keyword">debugger</span>，<span class="keyword">default</span>，<span class="keyword">delete</span>，<span class="keyword">do</span>，<span class="keyword">else</span>，<span class="keyword">finally</span>，<span class="keyword">for</span>，<span class="keyword">function</span>，<span class="keyword">if</span>，<span class="keyword">in</span>，<span class="keyword">instanceof</span>，<span class="keyword">new</span>，<span class="keyword">return</span>，<span class="keyword">switch</span>，<span class="keyword">this</span>，<span class="keyword">throw</span>，<span class="keyword">try</span>，<span class="keyword">typeof</span>，<span class="keyword">var</span>，<span class="literal">void</span>，<span class="keyword">while</span>，<span class="keyword">with</span></span><br></pre></td></tr></table></figure></p>
-<p>##3.4 数据类型</p>
-<ul>
+<h2 id="3-2_关键字和保留字">3.2 关键字和保留字</h2><p>全部关键字：<br><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">break</span>，<span class="keyword">case</span>，catct，<span class="keyword">continue</span>，<span class="keyword">debugger</span>，<span class="keyword">default</span>，<span class="keyword">delete</span>，<span class="keyword">do</span>，<span class="keyword">else</span>，<span class="keyword">finally</span>，<span class="keyword">for</span>，<span class="keyword">function</span>，<span class="keyword">if</span>，<span class="keyword">in</span>，<span class="keyword">instanceof</span>，<span class="keyword">new</span>，<span class="keyword">return</span>，<span class="keyword">switch</span>，<span class="keyword">this</span>，<span class="keyword">throw</span>，<span class="keyword">try</span>，<span class="keyword">typeof</span>，<span class="keyword">var</span>，<span class="literal">void</span>，<span class="keyword">while</span>，<span class="keyword">with</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-4_数据类型">3.4 数据类型</h2><ul>
 <li>五个基本的数据类型：<br>string,number,boolean,null,undefined</li>
 <li>一个复杂类型：<br>object</li>
 </ul>
-<p>###3.4.1 typeof操作符<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> huang = <span class="string">"hzhaung"</span>;</span><br><span class="line"><span class="keyword">var</span> zhuang=<span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(huang)); <span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">95</span>)); <span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">1</span> == <span class="number">2</span>)); <span class="comment">//booleam</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a)); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(zhuang)); <span class="comment">//object    原因:null是被认为是一个空的对象指针</span></span><br></pre></td></tr></table></figure></p>
-<p>###3.4.2 Undefined类型<br>未申明的变量以及为初始化的变量都是undefined。</p>
-<p>###3.4.3 null类型<br>null值表示一个空的对象指针。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> 返回<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-4-1_typeof操作符">3.4.1 typeof操作符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> huang = <span class="string">"hzhaung"</span>;</span><br><span class="line"><span class="keyword">var</span> zhuang=<span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(huang)); <span class="comment">//string</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">95</span>)); <span class="comment">//number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">1</span> == <span class="number">2</span>)); <span class="comment">//booleam</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(a)); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span>(zhuang)); <span class="comment">//object    原因:null是被认为是一个空的对象指针</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-4-2_Undefined类型">3.4.2 Undefined类型</h3><p>未申明的变量以及为初始化的变量都是undefined。</p>
+<h3 id="3-4-3_null类型">3.4.3 null类型</h3><p>null值表示一个空的对象指针。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span> 返回<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
 <p>注意的是一般设置变量为null是为了用这个变量来保存对象，故而要写出var xx=null。</p>
-<p>###3.4.4 boolean类型</p>
-<ul>
+<h3 id="3-4-4_boolean类型">3.4.4 boolean类型</h3><ul>
 <li>false，””，0+NAN，null，undefined都是false。换句话说就是其他的都是true了。</li>
 <li>区别大小写。</li>
 </ul>
-<p>###3.4.5 number类型<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> num1</span> = <span class="number">070</span>; <span class="comment">//八进制</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> num2</span> = <span class="number">0xA</span>; <span class="comment">//十六进制</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> num3</span> = <span class="number">10</span>; <span class="comment">//十进制</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-4-5_number类型">3.4.5 number类型</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> num1</span> = <span class="number">070</span>; <span class="comment">//八进制</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> num2</span> = <span class="number">0xA</span>; <span class="comment">//十六进制</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> num3</span> = <span class="number">10</span>; <span class="comment">//十进制</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>NUMBER.MIN_VALUE或者NUMBER.MAX_VALUE超出就会自动转换成infinity，如果是负的就在前面加上-。</li>
 </ul>
@@ -371,12 +366,11 @@
 </tbody>
 </table>
 <p>parseInt( )示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>)); <span class="comment">//1234</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"0xA"</span>)); <span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"22.5"</span>)); <span class="comment">//22</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num1 = <span class="built_in">parseInt</span>(<span class="string">"10"</span>,<span class="number">2</span>); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseInt</span>(<span class="string">"10"</span>,<span class="number">8</span>); <span class="comment">//8</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseInt</span>(<span class="string">"10"</span>,<span class="number">10</span>); <span class="comment">//10</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="built_in">parseInt</span>(<span class="string">"10"</span>,<span class="number">16</span>); <span class="comment">//16</span></span><br></pre></td></tr></table></figure></p>
-<p>###3.4.6 String类型</p>
-<ul>
+<h3 id="3-4-6_String类型">3.4.6 String类型</h3><ul>
 <li>toString( )除null和undefined,因为他们没有这个方法。一般是不用参数的，可以加一个参数来表示数值的基数。</li>
 <li>String( )规则：null返回”null”,undefined返回“undefined”。（在不知道要转化的值是不是null或者undefined）</li>
 </ul>
-<p>###3.4.7 Object类型<br>一组数据和功能的集合。每个实例具有以下的属性和方法。对象是实例的基础。</p>
+<h3 id="3-4-7_Object类型">3.4.7 Object类型</h3><p>一组数据和功能的集合。每个实例具有以下的属性和方法。对象是实例的基础。</p>
 <table>
 <thead>
 <tr>
@@ -415,9 +409,9 @@
 </tr>
 </tbody>
 </table>
-<p>##3.5 操作符<br>在对对象使用操作符的时候，要调用valueOf( )或toString( )来获得可以操作的值。</p>
-<p>###3.5.1 一元操作符<br> 一元操作符：++，–，+，-。前置和后置的区别：前置的时候语句也改变。<br>递增和递减操作符的规则如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1"</span>;</span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"z"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> f = <span class="number">1.1</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">	valueOf: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(++str); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(++str1);<span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(++b); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(++f);<span class="comment">//2.1</span></span><br><span class="line"><span class="built_in">console</span>.log(++o);<span class="comment">//0 </span></span><br><span class="line"><span class="comment">//如果是对象，则会先调用valueOf(),然后根据返回的值来确定加减之后的值。</span></span><br></pre></td></tr></table></figure></p>
-<p>###3.5.2 位操作符<br>32位，最后一个位表示符号位，0位正1为负。 正数就是常见的，对于负数则是以补码的形式储存（绝对值，反码，加1）。<br>但是输出负数时候这些操作都是隐藏的，输出的时候就是常见负数在前面加符号的形式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num = -<span class="number">18</span>;</span><br><span class="line">console.<span class="built_in">log</span>(num.toString(<span class="number">2</span>));<span class="comment">//"-10010"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-5_操作符">3.5 操作符</h2><p>在对对象使用操作符的时候，要调用valueOf( )或toString( )来获得可以操作的值。</p>
+<h3 id="3-5-1_一元操作符">3.5.1 一元操作符</h3><p> 一元操作符：++，–，+，-。前置和后置的区别：前置的时候语句也改变。<br>递增和递减操作符的规则如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"1"</span>;</span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">"z"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">var</span> f = <span class="number">1.1</span>;</span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">	valueOf: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(++str); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(++str1);<span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(++b); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(++f);<span class="comment">//2.1</span></span><br><span class="line"><span class="built_in">console</span>.log(++o);<span class="comment">//0 </span></span><br><span class="line"><span class="comment">//如果是对象，则会先调用valueOf(),然后根据返回的值来确定加减之后的值。</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-5-2_位操作符">3.5.2 位操作符</h3><p>32位，最后一个位表示符号位，0位正1为负。 正数就是常见的，对于负数则是以补码的形式储存（绝对值，反码，加1）。<br>但是输出负数时候这些操作都是隐藏的，输出的时候就是常见负数在前面加符号的形式。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var num = -<span class="number">18</span>;</span><br><span class="line">console.<span class="built_in">log</span>(num.toString(<span class="number">2</span>));<span class="comment">//"-10010"</span></span><br></pre></td></tr></table></figure></p>
 <p>对于非数值使用位操作符，则先自动调用Number( )，然后再应用位操作。</p>
 <ul>
 <li><p>按位非( ~)<br>返回数值的反码:操作数的负数减1。</p>
@@ -430,11 +424,11 @@
 <li>左移(&lt;&lt;)<br>移出的空位就以0补充。</li>
 <li>右移</li>
 </ul>
-<p>###3.5.3 布尔操作符<br>1.逻辑非<br>对象-false；空-true；非空-false；0-true；任意非0-false；null-true；NaN-true；undefined-true</p>
+<h3 id="3-5-3_布尔操作符">3.5.3 布尔操作符</h3><p>1.逻辑非<br>对象-false；空-true；非空-false；0-true；任意非0-false；null-true；NaN-true；undefined-true</p>
 <p>2.逻辑与<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="literal">result</span> = <span class="literal">true</span> &amp;&amp; <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></p>
 <p>3.逻辑或</p>
-<p>###3.5.4 乘性操作符<br>乘法，除法和求模<br>如果有一个不是数值，则会先自动调用number（）之后再返回结果。<br>……</p>
-<p>###3.5.5 加性操作符<br><strong>加法</strong>特殊：</p>
+<h3 id="3-5-4_乘性操作符">3.5.4 乘性操作符</h3><p>乘法，除法和求模<br>如果有一个不是数值，则会先自动调用number（）之后再返回结果。<br>……</p>
+<h3 id="3-5-5_加性操作符">3.5.5 加性操作符</h3><p><strong>加法</strong>特殊：</p>
 <ul>
 <li>两个字符串：就拼接起来。</li>
 <li>只有一个字符串，则将另一个转换成字符串，然后拼接。</li>
@@ -443,9 +437,8 @@
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="number">5</span>+<span class="string">"5"</span>); <span class="comment">//"55"</span></span><br></pre></td></tr></table></figure>
 <p><strong>减法</strong>特殊：<br>不是数值的调用Number( )就OK啦。</p>
-<p>###3.5.6 关系操作符<br>规则：如示例代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="number">5</span> &gt; <span class="number">4</span>);<span class="comment">//true</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="string">"h"</span> &gt; <span class="string">"z"</span>) <span class="comment">//false 转换为字符编码比较。</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="number">5</span>&lt;<span class="string">"2"</span>) <span class="comment">//false "2"自动转化成2</span></span><br></pre></td></tr></table></figure></p>
-<p>###3.5.7 相等操作符</p>
-<table>
+<h3 id="3-5-6_关系操作符">3.5.6 关系操作符</h3><p>规则：如示例代码<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.<span class="built_in">log</span>(<span class="number">5</span> &gt; <span class="number">4</span>);<span class="comment">//true</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="string">"h"</span> &gt; <span class="string">"z"</span>) <span class="comment">//false 转换为字符编码比较。</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="number">5</span>&lt;<span class="string">"2"</span>) <span class="comment">//false "2"自动转化成2</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-5-7_相等操作符">3.5.7 相等操作符</h3><table>
 <thead>
 <tr>
 <th style="text-align:left">数据类型</th>
@@ -484,25 +477,22 @@
 <li>===：未经转化的情况下相等才会返回true<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> == <span class="literal">undefined</span>   -----<span class="literal">true</span></span><br><span class="line"><span class="literal">null</span> === <span class="literal">undefined</span> -----<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>###3.5.8 条件操作符<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">variable</span> = boolean<span class="number">_</span>expression ? true<span class="number">_</span><span class="keyword">value</span> : false<span class="number">_</span><span class="keyword">value</span> ;</span><br></pre></td></tr></table></figure></p>
-<p>###3.5.9 赋值操作符</p>
-<p>###3.5.10 逗号操作符<br><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var <span class="label">num1</span>,<span class="label">num2</span>,<span class="label">num3</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-5-8_条件操作符">3.5.8 条件操作符</h3><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="annotation">variable</span> = boolean<span class="number">_</span>expression ? true<span class="number">_</span><span class="keyword">value</span> : false<span class="number">_</span><span class="keyword">value</span> ;</span><br></pre></td></tr></table></figure>
+<h3 id="3-5-9_赋值操作符">3.5.9 赋值操作符</h3><h3 id="3-5-10_逗号操作符">3.5.10 逗号操作符</h3><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var <span class="label">num1</span>,<span class="label">num2</span>,<span class="label">num3</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="3-6_语句">3.6 语句</h2><p>整理不常用的，if，for就整理啦。</p>
-<p>###3.6.2 do-while语句<br>只有在循环体重的代码执行之后，才会测试出口条件。即，循环体内的代码至少会执行一次。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	i += <span class="number">2</span>;</span><br><span class="line">&#125;<span class="keyword">while</span>(i &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure></p>
-<p>###3.6.5 for-in 语句<br>一种准确的迭代语句，可以用来枚举对象的属性。</p>
-<p>###3.6.6 label语句<br>标签 labe：statement。这个标签可以通过break或者continue来引用，一般与for语句配合使用。</p>
-<p>###3.6.7 break和continue语句</p>
-<ul>
+<h3 id="3-6-2_do-while语句">3.6.2 do-while语句</h3><p>只有在循环体重的代码执行之后，才会测试出口条件。即，循环体内的代码至少会执行一次。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var i = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">	i += <span class="number">2</span>;</span><br><span class="line">&#125;<span class="keyword">while</span>(i &lt; <span class="number">10</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-6-5_for-in_语句">3.6.5 for-in 语句</h3><p>一种准确的迭代语句，可以用来枚举对象的属性。</p>
+<h3 id="3-6-6_label语句">3.6.6 label语句</h3><p>标签 labe：statement。这个标签可以通过break或者continue来引用，一般与for语句配合使用。</p>
+<h3 id="3-6-7_break和continue语句">3.6.7 break和continue语句</h3><ul>
 <li>break会立即退出循环</li>
 <li>continue也会立即退出循环，但是退出后会从循环的顶部继续执行。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var no = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(var i= <span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(i % <span class="number">5</span> == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">continue</span>;  </span><br><span class="line">	&#125;</span><br><span class="line">	no++ ;</span><br><span class="line">&#125;</span><br><span class="line">console.<span class="built_in">log</span>(no);<span class="comment">//8</span></span><br><span class="line"></span><br><span class="line">var no = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(var i= <span class="number">1</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">	<span class="keyword">if</span>(i % <span class="number">5</span> == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">break</span>;  </span><br><span class="line">	&#125;</span><br><span class="line">	no++ ;</span><br><span class="line">&#125;</span><br><span class="line">console.<span class="built_in">log</span>(no);<span class="comment">//4</span></span><br></pre></td></tr></table></figure>
 <p>结合label可以说明是退出的那个循环。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var num = <span class="number">0</span>;</span><br><span class="line">outermost:</span><br><span class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(var j=<span class="number">0</span>;j&lt;<span class="number">10</span>;j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(i == <span class="number">5</span> &amp;&amp; j==<span class="number">5</span>)&#123;</span><br><span class="line">			<span class="keyword">break</span> outermost;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>###3.6.8 with语句<br>将代码的作用域设置到一个特定的对象中。</p>
+<h3 id="3-6-8_with语句">3.6.8 with语句</h3><p>将代码的作用域设置到一个特定的对象中。</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">with(location)&#123;</span><br><span class="line">	<span class="variable"><span class="keyword">var</span> gs</span> = search.substring(<span class="number">1</span>);    <span class="comment">//等价于var gs = location.search.substring(1);</span></span><br><span class="line">	<span class="variable"><span class="keyword">var</span> hostName</span> = hostname;</span><br><span class="line">	<span class="variable"><span class="keyword">var</span> url</span> = href;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##3.7 函数</p>
-<p>好处：封装，任意时刻调用。</p>
+<h2 id="3-7_函数">3.7 函数</h2><p>好处：封装，任意时刻调用。</p>
 <p>ECMAScript中函数可以通过return语句返回值。执行return后就会停止。如果return语句不带返回的值，则会默认返回undefined。</p>
 <p>注：eval和arguments不可以定义为变量。</p>
 <p>函数的参数：</p>
@@ -510,20 +500,40 @@
 <li>函数内部的参数是一个数组，arguments对象。   类似array，arguments[0]是合法的，而且也有length属性。故： 在定义函数的时候参数是非必须的，在调用的时候加上参数也不会出问题。这是区别其他语言的。</li>
 <li>arguments对象可以和命名的参数一起使用。但是两者的内存空间是不一样的。</li>
 </ul>
-<p>###3.7.2 没有重载<br>没有重载：由于js函数的特点，则是无法实现重载的，如果存在两个则后取。</p>
-<p>#第五章 引用类型</p>
-<p>##5.2 Array类型<br>js的数组可以保存任何类型的数据，也可以自动增长。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建方法一：Array构造函数</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="comment">//创建长度是20</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建方法二：数组字面两表示法。</span></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"white"</span>];</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-7-2_没有重载">3.7.2 没有重载</h3><p>没有重载：由于js函数的特点，则是无法实现重载的，如果存在两个则后取。</p>
+<h1 id="第五章_引用类型">第五章 引用类型</h1><h2 id="5-2_Array类型">5.2 Array类型</h2><p>js的数组可以保存任何类型的数据，也可以自动增长。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建方法一：Array构造函数</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="comment">//创建长度是20</span></span><br><span class="line"><span class="keyword">var</span> colors = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建方法二：数组字面两表示法。</span></span><br><span class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>, <span class="string">"yellow"</span>, <span class="string">"white"</span>];</span><br></pre></td></tr></table></figure></p>
 <p>数组不仅仅是可读的。如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var colors = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"green"</span>];  </span><br><span class="line">colors.length = <span class="number">2</span>;</span><br><span class="line">alert(colors[<span class="number">2</span>]);        <span class="comment">//undefined  第三项移除了</span></span><br></pre></td></tr></table></figure></p>
-<p>###5.2.1检测数组<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">	xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-2-1检测数组">5.2.1检测数组</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(value <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">	xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>但是这种方法是有问题：</p>
 <ul>
 <li>假定单一的全局执行环境，如果有多个框架，则就会有多个全局执行环境。从而存在多个不同版本的构造函数。</li>
 </ul>
 <p>改进：<figure class="highlight"><figcaption><span>)```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```&#10;if(Array.isArray(value))&#123;&#10;&#9;xxx;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
-<p>###5.2.1转换方法<br>|转换方法|说明|<br>|:———|:—-|<br>|toLocaleString( )|类似toString( )|<br>|toString( )|会返回由数组中每个值得字符串形式凭借而成的一个以逗号分隔的字符串。|<br>|valueOf( )|返回的还是数值|</p>
+<h3 id="5-2-1转换方法">5.2.1转换方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">转换方法</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">toLocaleString( )</td>
+<td style="text-align:left">类似toString( )</td>
+</tr>
+<tr>
+<td style="text-align:left">toString( )</td>
+<td style="text-align:left">会返回由数组中每个值得字符串形式凭借而成的一个以逗号分隔的字符串。</td>
+</tr>
+<tr>
+<td style="text-align:left">valueOf( )</td>
+<td style="text-align:left">返回的还是数值</td>
+</tr>
+</tbody>
+</table>
 <p>eg：<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var colors=[<span class="string">"red"</span>,<span class="string">"blcak"</span>,<span class="string">"white"</span>]</span><br><span class="line">console.<span class="keyword">log</span>(colors.valueOf());//[<span class="string">"red"</span>, <span class="string">"blcak"</span>, <span class="string">"white"</span>]</span><br><span class="line">console.<span class="keyword">log</span>(colors.<span class="keyword">to</span>String());//red,blcak,white</span><br></pre></td></tr></table></figure></p>
 <p>join( ):方法讲数组按照（）内的参数连接起来。<br><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> colors</span>=[<span class="string">"red"</span>,<span class="string">"blcak"</span>,<span class="string">"white"</span>]</span><br><span class="line"><span class="variable"><span class="keyword">var</span> test_one</span> = colors.valueOf().join();</span><br><span class="line"><span class="variable"><span class="keyword">var</span> test_two</span> = colors.valueOf().join(<span class="string">"-"</span>);</span><br><span class="line">console.log(test_one);<span class="comment">//red,blcak,white</span></span><br><span class="line">console.log(test_two);<span class="comment">//red-blcak-white</span></span><br></pre></td></tr></table></figure></p>
-<p>###5.2.3栈方法<br>数组可以表现的像栈一样，栈是一种可以限制插入和删除项的数据结构。后进先出。</p>
+<h3 id="5-2-3栈方法">5.2.3栈方法</h3><p>数组可以表现的像栈一样，栈是一种可以限制插入和删除项的数据结构。后进先出。</p>
 <table>
 <thead>
 <tr>
@@ -543,7 +553,7 @@
 </tbody>
 </table>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">var</span> colors=[<span class="string">"red"</span>,<span class="string">"blcak"</span>,<span class="string">"white"</span>]</span><br><span class="line"> console.<span class="function"><span class="title">log</span><span class="params">(colors.push(<span class="string">"huang"</span> , <span class="string">"zhuang"</span>)</span></span>)<span class="comment">//5;</span></span><br></pre></td></tr></table></figure>
-<p>###5.2.4 队列方法<br>队列的访问规则是“先进先出”，表现在队列的末端添加项，在队列的前端移除项。</p>
+<h3 id="5-2-4_队列方法">5.2.4 队列方法</h3><p>队列的访问规则是“先进先出”，表现在队列的末端添加项，在队列的前端移除项。</p>
 <table>
 <thead>
 <tr>
@@ -563,11 +573,50 @@
 </tbody>
 </table>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//模拟队列的组合</span></span><br><span class="line"><span class="function"><span class="title">push</span><span class="params">( )</span></span> + <span class="function"><span class="title">shift</span><span class="params">( )</span></span> </span><br><span class="line"><span class="function"><span class="title">unshift</span><span class="params">( )</span></span> + <span class="function"><span class="title">pop</span><span class="params">( )</span></span></span><br></pre></td></tr></table></figure>
-<p>###5.2.5 重排序方法<br>|方法|功能|<br>|:—-|:—-|<br>|reverse( )|反转数组项的排序|<br>|sort( )|按照升序的方法排列数组项，会调用每个项的toString( )转型方法，比较的是<strong>字符串</strong>|</p>
+<h3 id="5-2-5_重排序方法">5.2.5 重排序方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">reverse( )</td>
+<td style="text-align:left">反转数组项的排序</td>
+</tr>
+<tr>
+<td style="text-align:left">sort( )</td>
+<td style="text-align:left">按照升序的方法排列数组项，会调用每个项的toString( )转型方法，比较的是<strong>字符串</strong></td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</span><br><span class="line">values.sort( );</span><br><span class="line">console.<span class="built_in">log</span>(values);<span class="comment">//[0, 1, 10, 15, 5]因为是比较的字符串，所以5在最后。</span></span><br></pre></td></tr></table></figure>
 <p>可见以上的sort( ）的方法不够完美。<br>sort( )可以接受<em>一个比较函数</em>作为参数来完善不足。<br><figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> compare(<span class="keyword">value</span><span class="number">1</span>, <span class="keyword">value</span><span class="number">2</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">value</span><span class="number">1</span> - <span class="keyword">value</span><span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">values.sort(compare);</span><br><span class="line">console.log(values);<span class="comment">//[0, 1, 5, 10, 15]</span></span><br></pre></td></tr></table></figure></p>
 <p>可见，完美解决，达到排序的效果。</p>
-<p>###5.2.6 操作方法<br>|方法|功能|<br>|:—-|:—-|<br>|concat( )|基于当前数组中的所有项创建一个新的数组（副本），然后将接受到的参数添加到这个副本的末尾。|<br>|slice( )|基于当前的数组中的一个或者多个创建一个新的数组|<br>|splice( )|向数组的中部插入项。|<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// <span class="atom">concat</span></span><br><span class="line"><span class="atom">var</span> <span class="atom">colors</span> = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"yellow"</span>];</span><br><span class="line"><span class="atom">var</span> <span class="atom">color_new</span> = <span class="atom">colors</span>.<span class="atom">concat</span>(<span class="string">"huang"</span>,[<span class="string">"zhuang"</span>,<span class="string">"hz"</span>]);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">color_new</span>);//[<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"yellow"</span>, <span class="string">"huang"</span>, <span class="string">"zhuang"</span>, <span class="string">"hz"</span>]</span><br><span class="line"></span><br><span class="line">// <span class="atom">slice</span></span><br><span class="line">// 接受一个或者两个参数指定位置开始和到当前数组末尾的所有项。不会影响原始数组。</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors</span> = [<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>,<span class="string">"yellow"</span>,<span class="string">"purple"</span>];</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors2</span> = <span class="atom">colors</span>.<span class="atom">slice</span>(<span class="number">1</span>);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">colors2</span>);//[<span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>]</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors3</span> = <span class="atom">colors</span>.<span class="atom">slice</span>(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">colors3</span>);//[<span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>]</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-2-6_操作方法">5.2.6 操作方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">concat( )</td>
+<td style="text-align:left">基于当前数组中的所有项创建一个新的数组（副本），然后将接受到的参数添加到这个副本的末尾。</td>
+</tr>
+<tr>
+<td style="text-align:left">slice( )</td>
+<td style="text-align:left">基于当前的数组中的一个或者多个创建一个新的数组</td>
+</tr>
+<tr>
+<td style="text-align:left">splice( )</td>
+<td style="text-align:left">向数组的中部插入项。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// <span class="atom">concat</span></span><br><span class="line"><span class="atom">var</span> <span class="atom">colors</span> = [<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"yellow"</span>];</span><br><span class="line"><span class="atom">var</span> <span class="atom">color_new</span> = <span class="atom">colors</span>.<span class="atom">concat</span>(<span class="string">"huang"</span>,[<span class="string">"zhuang"</span>,<span class="string">"hz"</span>]);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">color_new</span>);//[<span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"yellow"</span>, <span class="string">"huang"</span>, <span class="string">"zhuang"</span>, <span class="string">"hz"</span>]</span><br><span class="line"></span><br><span class="line">// <span class="atom">slice</span></span><br><span class="line">// 接受一个或者两个参数指定位置开始和到当前数组末尾的所有项。不会影响原始数组。</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors</span> = [<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>,<span class="string">"yellow"</span>,<span class="string">"purple"</span>];</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors2</span> = <span class="atom">colors</span>.<span class="atom">slice</span>(<span class="number">1</span>);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">colors2</span>);//[<span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>]</span><br><span class="line"><span class="atom">var</span> <span class="atom">colors3</span> = <span class="atom">colors</span>.<span class="atom">slice</span>(<span class="number">1</span>,<span class="number">4</span>);</span><br><span class="line"><span class="atom">console</span>.<span class="atom">log</span>(<span class="atom">colors3</span>);//[<span class="string">"green"</span>, <span class="string">"blue"</span>, <span class="string">"yellow"</span>]</span><br></pre></td></tr></table></figure>
 <p>splice( )详解：<br>1.删除<br>可以删除任意数量的项，指定两个参数：要删除的第一项的位置和要删除的项数。会返回删除的项。返回的是一个数组。<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var colors = [<span class="string">"red"</span>,<span class="string">"green"</span>,<span class="string">"blue"</span>,<span class="string">"yellow"</span>,<span class="string">"purple"</span>];</span><br><span class="line">var <span class="built_in">remove</span> = colors.splice(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">console.<span class="built_in">log</span>(colors);//[<span class="string">"blue"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>]</span><br><span class="line">console.<span class="built_in">log</span>(<span class="built_in">remove</span>);//<span class="string">"red"</span>, <span class="string">"green"</span>]</span><br></pre></td></tr></table></figure></p>
 <p>2.插入<br>可以添加任意数量的项，提供3个参数，起始位置，0和要插入的项。<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var removed = colors.<span class="keyword">splice</span>(<span class="number">1</span>,<span class="number">0</span>,<span class="string">"huang"</span>,<span class="string">"zhuang"</span>);</span><br><span class="line">console.<span class="keyword">log</span>(colors);<span class="regexp">//</span>[<span class="string">"blue"</span>, <span class="string">"huang"</span>, <span class="string">"zhuang"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>]</span><br><span class="line">console.<span class="keyword">log</span>(removed);<span class="regexp">//</span>[ ]</span><br></pre></td></tr></table></figure></p>
 <p>3.替换<br>可以在指定的地方出入任意数量的项，同事删除任意数量的项。<br><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var removed = colors.<span class="keyword">splice</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="string">"huang"</span>,<span class="string">"zhuang"</span>);</span><br><span class="line">console.<span class="keyword">log</span>(colors);<span class="regexp">//</span>[<span class="string">"blue"</span>, <span class="string">"huang"</span>, <span class="string">"zhuang"</span>, <span class="string">"zhuang"</span>, <span class="string">"yellow"</span>, <span class="string">"purple"</span>]</span><br><span class="line">console.<span class="keyword">log</span>(removed);<span class="regexp">//</span>[<span class="string">"huang"</span>]</span><br></pre></td></tr></table></figure></p>
@@ -576,15 +625,77 @@
 <li>splice( )始终会返回一个数组。</li>
 <li>返回的数组包含从原始数组中删除的项，如果没有删除过，就会返回一个空数组。</li>
 </ul>
-<p>###5.2.7 位置方法<br>|方法|功能|<br>|:—-|:—-|<br>|indexOf( )|返回项在数组中的位置|<br>|lastIndexOf( )|同上|</p>
+<h3 id="5-2-7_位置方法">5.2.7 位置方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">indexOf( )</td>
+<td style="text-align:left">返回项在数组中的位置</td>
+</tr>
+<tr>
+<td style="text-align:left">lastIndexOf( )</td>
+<td style="text-align:left">同上</td>
+</tr>
+</tbody>
+</table>
 <p>接受两个参数：第一个是要查找的项，第二个参数表示的是表示起点位置的索引。</p>
-<p>###5.2.8 迭代方法<br>|方法|功能|<br>|:—-|:—-|<br>|every( )|对数组的每一项运行给定函数，全部是true就会返回true|<br>|filter( )|对数组的每一项运行给点函数，返回改函数会返回<strong>true</strong>的项组成的数组|<br>|foeEach( )|对数组的每一项运行给点函数,无返回值|<br>|map( )|对数组的每一项运行给点函数,返回每次调用函数的结果组成的数组|<br>|some( )|对数组的每一项运行给点函数,如果该函数给任一项返回true，则就会返回true|</p>
+<h3 id="5-2-8_迭代方法">5.2.8 迭代方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">every( )</td>
+<td style="text-align:left">对数组的每一项运行给定函数，全部是true就会返回true</td>
+</tr>
+<tr>
+<td style="text-align:left">filter( )</td>
+<td style="text-align:left">对数组的每一项运行给点函数，返回改函数会返回<strong>true</strong>的项组成的数组</td>
+</tr>
+<tr>
+<td style="text-align:left">foeEach( )</td>
+<td style="text-align:left">对数组的每一项运行给点函数,无返回值</td>
+</tr>
+<tr>
+<td style="text-align:left">map( )</td>
+<td style="text-align:left">对数组的每一项运行给点函数,返回每次调用函数的结果组成的数组</td>
+</tr>
+<tr>
+<td style="text-align:left">some( )</td>
+<td style="text-align:left">对数组的每一项运行给点函数,如果该函数给任一项返回true，则就会返回true</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//filter</span></span><br><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">var filterResult = numbers.filter(function(item)&#123;</span><br><span class="line">	<span class="keyword">return</span> (item &gt;<span class="number">2</span>);<span class="comment">//[3, 4, 5, 4, 3]</span></span><br><span class="line">&#125;);</span><br><span class="line">console.<span class="built_in">log</span>(filterResult);</span><br><span class="line"></span><br><span class="line"><span class="comment">//map</span></span><br><span class="line">var numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</span><br><span class="line">var mapResult = numbers.<span class="built_in">map</span>(function(item)&#123;</span><br><span class="line">	<span class="keyword">return</span> item*<span class="number">2</span>;</span><br><span class="line">&#125;);</span><br><span class="line">console.<span class="built_in">log</span>(mapResult);<span class="comment">//[2, 4, 6, 8, 10, 8, 6, 4, 2]</span></span><br></pre></td></tr></table></figure>
-<p>###5.2.9 缩小方法<br>|方法|功能|<br>|:—-|:—-|<br>|reduce( )|迭代数组的所有项，然后构建一个最终返回的值，从第一项开始|<br>|reduceRight( )|迭代数组的所有项，然后构建一个最终返回的值，从最后一项开始|</p>
+<h3 id="5-2-9_缩小方法">5.2.9 缩小方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">方法</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">reduce( )</td>
+<td style="text-align:left">迭代数组的所有项，然后构建一个最终返回的值，从第一项开始</td>
+</tr>
+<tr>
+<td style="text-align:left">reduceRight( )</td>
+<td style="text-align:left">迭代数组的所有项，然后构建一个最终返回的值，从最后一项开始</td>
+</tr>
+</tbody>
+</table>
 <p>作为参数的函数接受4个参数：前一个值，当前值，项的索引和数组对象。这个函数返回的任何值都会作为第一个参数自动传给下一项。第一次迭代发生在数组的第二项，因此第一个参数是数组的第一项，第二个参数就是数组的第二项。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var values =[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</span><br><span class="line">var sum = values.reduce(function(prev, cur, index, <span class="built_in">array</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> prev+cur;</span><br><span class="line">&#125;);</span><br><span class="line">console.<span class="built_in">log</span>(sum);<span class="comment">//15</span></span><br></pre></td></tr></table></figure></p>
 <hr>
-<p>##5.3 Date类型</p>
-<p>#第六章 面向对象的程序设计<br>内容：</p>
+<h2 id="5-3_Date类型">5.3 Date类型</h2><p>#第六章 面向对象的程序设计<br>内容：</p>
 <ul>
 <li>理解对象属性</li>
 <li>理解并创建对象</li>
