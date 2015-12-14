@@ -204,75 +204,6 @@
 
       </header>
 
-           <div class="entry">
-      
-        <div id="toc" class="toc-article">
-    <div class="toc-title">目录</div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题记"><span class="toc-text">题记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置过程"><span class="toc-text">配置过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-1_tbs安装"><span class="toc-text">No.1 tbs安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-2_adb安装"><span class="toc-text">No.2 adb安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-3_调试前奏"><span class="toc-text">No.3 调试前奏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-4_正式调试啦"><span class="toc-text">No.4 正式调试啦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-5_一键自动化"><span class="toc-text">No.5 一键自动化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾声"><span class="toc-text">尾声</span></a></li></ol>
-</div>
-
-      
-        <p><img src="https://unsplash.it/1568/500/?random" alt=""></p>
-<h1 id="题记">题记</h1><p>记得在简书中很早就发现并收藏这篇文章了，但是点进去一看，又是tbs又是java和android，被吓傻了，果断关了网页。而后的契机（主要有大神带啦）让我重新来学习这篇文章，原因有几个：</p>
-<a id="more"></a>
-<ul>
-<li>由于基于微信开发公众号，微信调试肯定是家常便饭，之前一直都是alert，alert，alert。呵呵，想想之前的自己都很好笑。</li>
-<li>研究微信的调试方法，发现微信不久前开发了<a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">微信调试工具</a>。还有就是<a href="http://jsconsole.com/" target="_blank" rel="external">jsconsole</a>等等等</li>
-<li>然后就学习微信的调试方法，可是噩梦呀。必须下载qq浏览器，然后就各种恶心人呀。<br>1.qq上打开的网页都是qq浏览器打开的。我可是深度chrome控呀，除非要调试页面的兼容性，不然我不会用别的浏览器的。<br>2.强制成为默认浏览器，我每次进chrome都要重新设置它是默认浏览器。<br>3.竟然可以同步chrome的书签，额的亲娘呀，果断不同步呀。说不定密码什么的也记住了。</li>
-</ul>
-<p>当然，qq浏览器还是有优点的，三内核浏览器，666！打开网页还是挺快的。</p>
-<p>好了，废话over！！！</p>
-<h1 id="配置过程">配置过程</h1><p><strong>需要安装python和java</strong><br>主要是参考以下两篇文章：</p>
-<ul>
-<li><a href="http://www.jianshu.com/p/ccf124f1f74b#" target="_blank" rel="external">屌爆了,完美调试 微信webview(x5)</a></li>
-<li><a href="http://www.jianshu.com/p/e62e99050084" target="_blank" rel="external">微信浏览器webview调试</a></li>
-</ul>
-<h2 id="No-1_tbs安装">No.1 tbs安装</h2><ol>
-<li>下载<a href="http://res.imtt.qq.com///tbs_inspect/TbsSuiteNew.zip" target="_blank" rel="external">TbsSuiteNew.apk</a>,然后传到手机上，安装。</li>
-<li>在微信上的任意输入框内输入：<code>//deletetbs</code>,目的是为了删除手机中之前或许安装过的tbs。</li>
-<li>如下图：安装步骤完成即可。（亲测可用）<br><img src="http://hz2015.sinaapp.com/static/images/tbs.png" alt="tbs"><br>上面的下拉框三个选项分别对应着：微信、qq和qq空间。</li>
-<li>之间可能有问题的是安装tbs是要在某个微信网页停留一分钟，重点是<strong>一分钟后是切换到TbsSuiteNew，而不是重新打开那个软件</strong>。</li>
-<li>然后基本就ok了。</li>
-</ol>
-<p>如果上面的方法试了几次也不成功的话，还有另外的方法：<br>我在配置qq浏览器的微信调试工具的时候上面有<a href="http://blog.qqbrowser.cc/ru-he-shou-dong-kao-bei-tbs-apk/" target="_blank" rel="external">安装的方法</a></p>
-<h2 id="No-2_adb安装">No.2 adb安装</h2><ol>
-<li><a href="http://pan.baidu.com/s/1mhcE1zq" target="_blank" rel="external">下载android-sdk</a></li>
-<li>点击安装之后，安装tools/Android SDK Platform-tools。图见<a href="http://upload-images.jianshu.io/upload_images/326507-057ea7e0dbdb8a3d.png" target="_blank" rel="external">此图</a></li>
-<li>此时安装android-sdk的时候需要安装java的，按提示要求下载java后安装即可。</li>
-<li>配置环境变量，参见以下：</li>
-</ol>
-<ul>
-<li><a href="http://blog.csdn.net/rflyee/article/details/8973529" target="_blank" rel="external">Android SDK环境变量配置(windows和Linux)</a></li>
-<li><a href="http://jingyan.baidu.com/article/f71d603757965b1ab641d12a.html" target="_blank" rel="external">androidSDK配置环境变量</a></li>
-<li><a href="http://blog.sina.com.cn/s/blog_6804f09d01011vi3.html" target="_blank" rel="external">Android SDK的安装与环境变量配置 </a></li>
-</ul>
-<p>注意事项:(亲自踩过)</p>
-<blockquote>
-<p>每次设定环境变量之后，需要先将界面中打开的cmd关掉后重新打开。</p>
-</blockquote>
-<p>ok，可以开始调试了。</p>
-<h2 id="No-3_调试前奏">No.3 调试前奏</h2><ul>
-<li>连接设备<br>将文件打开到android-sdk中的platform-tools文件夹下，可以使用cmd打开命令行后cd，cd，cd…,当然我不是这样的，我使用<strong>Git bash</strong>也可以的。<br>然后运行<code>adb.exe devices</code></li>
-</ul>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\android-sdk\<span class="keyword">platform</span>-tools&gt;adb.exe devices</span><br><span class="line">List <span class="keyword">of</span> devices attached</span><br><span class="line">adb server <span class="keyword">is</span> <span class="keyword">out</span>-<span class="keyword">of</span>-date. killing</span><br><span class="line">* daemon started successfully</span><br><span class="line"><span class="number">95</span>CANR4H6T9S7HPJ        device</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启动/停止adb<br>在各连接设备中的同一路径下，分别运行<code>adb.exe start</code>和<code>adb.exe kill</code>来控制是开启调试或者是关闭adb。</li>
-</ul>
-<h2 id="No-4_正式调试啦">No.4 正式调试啦</h2><ul>
-<li>下载<a href="http://res.imtt.qq.com///tbs_inspect/wx_sq_webview_debug.zip" target="_blank" rel="external">wx_sq_webview_debug</a></li>
-<li>将上面下载的文件解压后，放在任意你想防止的地方。然后进到…\wx_sq_webview_debug\inspector_client20150401的路径后，执行如下：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ./inspector<span class="class">.py</span> --adb <span class="string">"D:\android-sdk\platform-tools\adb.exe"</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>然后就ok了，在温馨上打开要调试的页面，然后打开chrome，输入<code>http://localhost:9222/。</code>就可以开始调试了，爽歪歪！</p>
-<h2 id="No-5_一键自动化">No.5 一键自动化</h2><p>之前研究compress的时候看到别人写了一个bat文件，可以一键压缩css/js，觉得666，得之大神在写bat的时候，觉得好牛呀。然后学习过来。研究了下，好像我还是大致可以学习基础自己去写的，因为后面好多需要这种一键式的，在这里附上我通过<a href="http://www.jianshu.com/users/f7ff0caec507/latest_articles" target="_blank" rel="external">skywatcher</a>的文件修改成我自己目录后的文件。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd "D:android-sdk\platform-tools\"</span><br><span class="line"><span class="operator"><span class="keyword">start</span> adb <span class="keyword">start</span>-<span class="keyword">server</span></span><br><span class="line"><span class="keyword">start</span> python <span class="string">"E:\frontEnd-work\debug\wx_sq_webview_debug\inspector_client20150401\inspector.py"</span> <span class="comment">--adb "D:\android-sdk\platform-tools\adb.exe"</span></span><br><span class="line">echo <span class="keyword">begin</span> <span class="keyword">server</span> <span class="keyword">at</span>:<span class="keyword">http</span>://localhost:<span class="number">9222</span>/</span><br><span class="line">:<span class="keyword">begin</span></span><br><span class="line"><span class="keyword">set</span> /<span class="keyword">p</span> <span class="keyword">INPUT</span>= <span class="keyword">Stop</span> <span class="keyword">server</span>(Y/<span class="keyword">N</span>)?:</span><br><span class="line"><span class="keyword">if</span> /<span class="keyword">i</span> <span class="string">"%INPUT%"</span>==<span class="string">"y"</span> (<span class="keyword">goto</span> <span class="keyword">stop</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="keyword">goto</span> <span class="keyword">begin</span></span><br><span class="line">)</span><br><span class="line">:<span class="keyword">stop</span></span><br><span class="line">echo <span class="keyword">stop</span> <span class="keyword">server</span></span><br><span class="line"><span class="keyword">start</span> adb <span class="keyword">kill</span>-<span class="keyword">server</span></span><br><span class="line"><span class="keyword">exit</span></span></span><br></pre></td></tr></table></figure>
-<h1 id="尾声">尾声</h1><p>本来今天晚上实验室有事，利用空余时间完成python的falsk框架来搭建一个<a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms" target="_blank" rel="external">博客教程</a>的，可是数据库实在是太难了，几个小时都没有搞定，就果断先暂停了，找大神求带去。想到之前学习的这个调试方法还没有整理。故整理之。。。</p>
-<p>最后附一张调试ing的图。<br><img src="http://hz2015.sinaapp.com/static/images/debug.png" alt="调试爽歪歪"></p>
-<p><a href="http://huangzhuang.github.io/2015/12/15/wx-debug/#more">原文链接</a></p>
-
-      
-    </div>     
-
       
       <div class="article-info article-info-post">
         
@@ -349,6 +280,74 @@
       
     </div>
 
+          <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#题记"><span class="toc-text">题记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置过程"><span class="toc-text">配置过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-1_tbs安装"><span class="toc-text">No.1 tbs安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-2_adb安装"><span class="toc-text">No.2 adb安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-3_调试前奏"><span class="toc-text">No.3 调试前奏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-4_正式调试啦"><span class="toc-text">No.4 正式调试啦</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#No-5_一键自动化"><span class="toc-text">No.5 一键自动化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#尾声"><span class="toc-text">尾声</span></a></li></ol>
+</div>
+
+      
+        <p><img src="https://unsplash.it/1568/500/?random" alt=""></p>
+<h1 id="题记">题记</h1><p>记得在简书中很早就发现并收藏这篇文章了，但是点进去一看，又是tbs又是java和android，被吓傻了，果断关了网页。而后的契机（主要有大神带啦）让我重新来学习这篇文章，原因有几个：</p>
+<a id="more"></a>
+<ul>
+<li>由于基于微信开发公众号，微信调试肯定是家常便饭，之前一直都是alert，alert，alert。呵呵，想想之前的自己都很好笑。</li>
+<li>研究微信的调试方法，发现微信不久前开发了<a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">微信调试工具</a>。还有就是<a href="http://jsconsole.com/" target="_blank" rel="external">jsconsole</a>等等等</li>
+<li>然后就学习微信的调试方法，可是噩梦呀。必须下载qq浏览器，然后就各种恶心人呀。<br>1.qq上打开的网页都是qq浏览器打开的。我可是深度chrome控呀，除非要调试页面的兼容性，不然我不会用别的浏览器的。<br>2.强制成为默认浏览器，我每次进chrome都要重新设置它是默认浏览器。<br>3.竟然可以同步chrome的书签，额的亲娘呀，果断不同步呀。说不定密码什么的也记住了。</li>
+</ul>
+<p>当然，qq浏览器还是有优点的，三内核浏览器，666！打开网页还是挺快的。</p>
+<p>好了，废话over！！！</p>
+<h1 id="配置过程">配置过程</h1><p><strong>需要安装python和java</strong><br>主要是参考以下两篇文章：</p>
+<ul>
+<li><a href="http://www.jianshu.com/p/ccf124f1f74b#" target="_blank" rel="external">屌爆了,完美调试 微信webview(x5)</a></li>
+<li><a href="http://www.jianshu.com/p/e62e99050084" target="_blank" rel="external">微信浏览器webview调试</a></li>
+</ul>
+<h2 id="No-1_tbs安装">No.1 tbs安装</h2><ol>
+<li>下载<a href="http://res.imtt.qq.com///tbs_inspect/TbsSuiteNew.zip" target="_blank" rel="external">TbsSuiteNew.apk</a>,然后传到手机上，安装。</li>
+<li>在微信上的任意输入框内输入：<code>//deletetbs</code>,目的是为了删除手机中之前或许安装过的tbs。</li>
+<li>如下图：安装步骤完成即可。（亲测可用）<br><img src="http://hz2015.sinaapp.com/static/images/tbs.png" alt="tbs"><br>上面的下拉框三个选项分别对应着：微信、qq和qq空间。</li>
+<li>之间可能有问题的是安装tbs是要在某个微信网页停留一分钟，重点是<strong>一分钟后是切换到TbsSuiteNew，而不是重新打开那个软件</strong>。</li>
+<li>然后基本就ok了。</li>
+</ol>
+<p>如果上面的方法试了几次也不成功的话，还有另外的方法：<br>我在配置qq浏览器的微信调试工具的时候上面有<a href="http://blog.qqbrowser.cc/ru-he-shou-dong-kao-bei-tbs-apk/" target="_blank" rel="external">安装的方法</a></p>
+<h2 id="No-2_adb安装">No.2 adb安装</h2><ol>
+<li><a href="http://pan.baidu.com/s/1mhcE1zq" target="_blank" rel="external">下载android-sdk</a></li>
+<li>点击安装之后，安装tools/Android SDK Platform-tools。图见<a href="http://upload-images.jianshu.io/upload_images/326507-057ea7e0dbdb8a3d.png" target="_blank" rel="external">此图</a></li>
+<li>此时安装android-sdk的时候需要安装java的，按提示要求下载java后安装即可。</li>
+<li>配置环境变量，参见以下：</li>
+</ol>
+<ul>
+<li><a href="http://blog.csdn.net/rflyee/article/details/8973529" target="_blank" rel="external">Android SDK环境变量配置(windows和Linux)</a></li>
+<li><a href="http://jingyan.baidu.com/article/f71d603757965b1ab641d12a.html" target="_blank" rel="external">androidSDK配置环境变量</a></li>
+<li><a href="http://blog.sina.com.cn/s/blog_6804f09d01011vi3.html" target="_blank" rel="external">Android SDK的安装与环境变量配置 </a></li>
+</ul>
+<p>注意事项:(亲自踩过)</p>
+<blockquote>
+<p>每次设定环境变量之后，需要先将界面中打开的cmd关掉后重新打开。</p>
+</blockquote>
+<p>ok，可以开始调试了。</p>
+<h2 id="No-3_调试前奏">No.3 调试前奏</h2><ul>
+<li>连接设备<br>将文件打开到android-sdk中的platform-tools文件夹下，可以使用cmd打开命令行后cd，cd，cd…,当然我不是这样的，我使用<strong>Git bash</strong>也可以的。<br>然后运行<code>adb.exe devices</code></li>
+</ul>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">D:\android-sdk\<span class="keyword">platform</span>-tools&gt;adb.exe devices</span><br><span class="line">List <span class="keyword">of</span> devices attached</span><br><span class="line">adb server <span class="keyword">is</span> <span class="keyword">out</span>-<span class="keyword">of</span>-date. killing</span><br><span class="line">* daemon started successfully</span><br><span class="line"><span class="number">95</span>CANR4H6T9S7HPJ        device</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启动/停止adb<br>在各连接设备中的同一路径下，分别运行<code>adb.exe start</code>和<code>adb.exe kill</code>来控制是开启调试或者是关闭adb。</li>
+</ul>
+<h2 id="No-4_正式调试啦">No.4 正式调试啦</h2><ul>
+<li>下载<a href="http://res.imtt.qq.com///tbs_inspect/wx_sq_webview_debug.zip" target="_blank" rel="external">wx_sq_webview_debug</a></li>
+<li>将上面下载的文件解压后，放在任意你想防止的地方。然后进到…\wx_sq_webview_debug\inspector_client20150401的路径后，执行如下：<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ./inspector<span class="class">.py</span> --adb <span class="string">"D:\android-sdk\platform-tools\adb.exe"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然后就ok了，在温馨上打开要调试的页面，然后打开chrome，输入<code>http://localhost:9222/。</code>就可以开始调试了，爽歪歪！</p>
+<h2 id="No-5_一键自动化">No.5 一键自动化</h2><p>之前研究compress的时候看到别人写了一个bat文件，可以一键压缩css/js，觉得666，得之大神在写bat的时候，觉得好牛呀。然后学习过来。研究了下，好像我还是大致可以学习基础自己去写的，因为后面好多需要这种一键式的，在这里附上我通过<a href="http://www.jianshu.com/users/f7ff0caec507/latest_articles" target="_blank" rel="external">skywatcher</a>的文件修改成我自己目录后的文件。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">cd "D:android-sdk\platform-tools\"</span><br><span class="line"><span class="operator"><span class="keyword">start</span> adb <span class="keyword">start</span>-<span class="keyword">server</span></span><br><span class="line"><span class="keyword">start</span> python <span class="string">"E:\frontEnd-work\debug\wx_sq_webview_debug\inspector_client20150401\inspector.py"</span> <span class="comment">--adb "D:\android-sdk\platform-tools\adb.exe"</span></span><br><span class="line">echo <span class="keyword">begin</span> <span class="keyword">server</span> <span class="keyword">at</span>:<span class="keyword">http</span>://localhost:<span class="number">9222</span>/</span><br><span class="line">:<span class="keyword">begin</span></span><br><span class="line"><span class="keyword">set</span> /<span class="keyword">p</span> <span class="keyword">INPUT</span>= <span class="keyword">Stop</span> <span class="keyword">server</span>(Y/<span class="keyword">N</span>)?:</span><br><span class="line"><span class="keyword">if</span> /<span class="keyword">i</span> <span class="string">"%INPUT%"</span>==<span class="string">"y"</span> (<span class="keyword">goto</span> <span class="keyword">stop</span></span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="keyword">goto</span> <span class="keyword">begin</span></span><br><span class="line">)</span><br><span class="line">:<span class="keyword">stop</span></span><br><span class="line">echo <span class="keyword">stop</span> <span class="keyword">server</span></span><br><span class="line"><span class="keyword">start</span> adb <span class="keyword">kill</span>-<span class="keyword">server</span></span><br><span class="line"><span class="keyword">exit</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="尾声">尾声</h1><p>本来今天晚上实验室有事，利用空余时间完成python的falsk框架来搭建一个<a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms" target="_blank" rel="external">博客教程</a>的，可是数据库实在是太难了，几个小时都没有搞定，就果断先暂停了，找大神求带去。想到之前学习的这个调试方法还没有整理。故整理之。。。</p>
+<p>最后附一张调试ing的图。<br><img src="http://hz2015.sinaapp.com/static/images/debug.png" alt="调试爽歪歪"></p>
+<p><a href="http://huangzhuang.github.io/2015/12/15/wx-debug/#more">原文链接</a></p>
+
+      
+    </div>
 
     
   </div>
