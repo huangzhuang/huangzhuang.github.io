@@ -206,7 +206,6 @@
   
 
       </header>
-
       
       <div class="article-info article-info-post">
         
@@ -337,131 +336,6 @@
 
       
     </div>
-
-          <div class="entry">
-      
-        <div id="toc" class="toc-article">
-    <div class="toc-title">目录</div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li></ol>
-</div>
-
-      
-        <p>#简介<br>transitionde的功能：就是实现css的属性值在一定的时间区间内平滑的过渡。<br>除了javascript处罚外，还有一些伪类来触发：:hover; :focus; :active; :target; :checked。<br><a id="more"></a></p>
-<p>###创建过渡的步骤</p>
-<ul>
-<li>在默认样式中声明元素的初始状态的样式；</li>
-<li>声明过渡元素最终状态样式；</li>
-<li>在默认样式中通过添加<strong>过渡函数</strong>，添加一些不同的样式。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.transition</span><span class="rules">&#123;</span><br><span class="line"><span class="comment">/*第一步：常规样式*/</span></span><br><span class="line">	<span class="rule"><span class="attribute">background</span>:<span class="value">  <span class="hexcolor">#8ec63f</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"> .<span class="number">5em</span></span></span>;</span><br><span class="line"><span class="comment">/*第三步：添加过渡函数*/</span></span><br><span class="line">	<span class="rule"><span class="attribute">-webkit-transition</span>:<span class="value"> background <span class="number">2s</span> linear <span class="number">2s</span>, border-radius <span class="number">3s</span> ease-in-out</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">-o-transition</span>:<span class="value"> background <span class="number">2s</span> linear <span class="number">2s</span>, border-radius <span class="number">3s</span> ease-in-out</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">transition</span>:<span class="value"> background <span class="number">2s</span> linear <span class="number">2s</span>, border-radius <span class="number">3s</span> ease-in-out</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="comment">/*第二步：声明最终样式*/</span></span><br><span class="line"><span class="rule"><span class="attribute">.transition</span>:<span class="value">hover&#123;</span><br><span class="line">	background: <span class="hexcolor">#f7941d</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>#兼容性<br>| chrome|IE|opera|safari|firefox|<br>|:——|:-|:—-|:—–|:——|<br>|4.0+   |10+|10.5+|3.1+|4.0+|</p>
-<p>当然虽然支持很好，但是在使用的时候还是要加上浏览器的前缀。</p>
-<p>#过渡属性详解<br>复合属性：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">transition</span>:<span class="value">transition-property transition-duration transition-timing-function transition-delay </span></span>;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>transition-property:指定过渡的css属性</li>
-<li>transition-duration:过渡所需的时间</li>
-<li>transition-timing-function:过渡函数</li>
-<li>transition-delay:过渡开始出现的延迟时间</li>
-</ul>
-<p>##transition-property<br>1.取值：all/none/single-transition-property<br>2.关于single-transition-property；并不是所有的属性值均可以用这个的。具有中值属性的属性才可以。<br>3.整理</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left">值eg</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">颜色属性</td>
-<td style="text-align:left">background/color…</td>
-</tr>
-<tr>
-<td style="text-align:left">长度值或者百分比</td>
-<td style="text-align:left">word-spacing/width/vertical-align/top../min-width/max-height/line-height/backgroung-position</td>
-</tr>
-<tr>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">z-index</td>
-</tr>
-<tr>
-<td style="text-align:left">number</td>
-<td style="text-align:left">zoom/opacity/font-weight</td>
-</tr>
-<tr>
-<td style="text-align:left">变形</td>
-<td style="text-align:left">rotate()/scale()/skew()/translate()</td>
-</tr>
-<tr>
-<td style="text-align:left">visibility</td>
-<td style="text-align:left">0~1</td>
-</tr>
-<tr>
-<td style="text-align:left">阴影</td>
-<td style="text-align:left">text-shadow</td>
-</tr>
-<tr>
-<td style="text-align:left">渐变：每次停止时的位置和颜色进行变化</td>
-<td style="text-align:left">必须有相同的类型和相同的停止数值</td>
-</tr>
-<tr>
-<td style="text-align:left">…</td>
-<td style="text-align:left">…</td>
-</tr>
-</tbody>
-</table>
-<p>##transition-duration</p>
-<p>##transition-timing-function<br>各个函数详解<br>1.单一的过渡函数<br>ease：默认值。由快变慢。<br><img src="http://hz2015.sinaapp.com/static/pictures/ease.jpg" alt=""><br>linear：匀速。<br>ease-in：速度越来越快，加速。<br><img src="http://hz2015.sinaapp.com/static/pictures/ease-in.jpg" alt=""><br>ease-out：越来越慢，减速。<br><img src="http://hz2015.sinaapp.com/static/pictures/ease-out.jpg" alt=""><br>ease-in-out：先加速再减速，渐显渐隐效果。<br><img src="http://hz2015.sinaapp.com/static/pictures/ease-in-out.jpg" alt=""></p>
-<p>2.三次贝塞尔函数<br>使用方法： </p>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="label">transition</span>-timing-<span class="preprocessor">function</span>: cubic-<span class="keyword">bezier(P0, </span><span class="literal">P1</span>, <span class="literal">P2</span>, <span class="literal">P3</span>)</span><br></pre></td></tr></table></figure>
-<p>自定义过渡函数<br><img src="http://hz2015.sinaapp.com/static/pictures/cubic-bezier.jpg" alt=""><br>如图：可以明白自定义函数的原理。</p>
-<p>显然，可以用cubic-bezier自定义出单一的过渡函数。</p>
-<p>3.step()<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">step(<span class="keyword">integer</span>,<span class="built_in">start</span>/<span class="keyword">end</span>)</span><br></pre></td></tr></table></figure></p>
-<p>一张图来说明：<br><img src="http://hz2015.sinaapp.com/static/pictures/step.jpg" alt=""></p>
-<p>##transition-delay<br>这个属性和transition-duration一样简单，继续略。</p>
-<p>#触发过渡<br>1.伪元素触发</p>
-<ul>
-<li>:active点击鼠标并且需要按住。</li>
-<li>:focus</li>
-<li>:checked</li>
-<li>:hover<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">input</span><span class="attr_selector">[type="radio"]</span> ~ <span class="tag">span</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">100px</span></span></span>;</span><br><span class="line">	<span class="comment">/*display:block;*/</span></span><br><span class="line">	<span class="rule"><span class="attribute">border</span>:<span class="value"><span class="number">1px</span> solid red</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">transition</span>:<span class="value">width <span class="number">2s</span> ease-in <span class="number">1s</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="tag">input</span><span class="attr_selector">[type="radio"]</span><span class="pseudo">:checked</span> ~ <span class="tag">span</span><span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">200px</span></span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>2.媒体查询触发<br>这种方法可以在实现不同的屏幕大小的时候可以平滑过渡。</p>
-<p>3.javascript触发</p>
-<p>#css3过渡技巧</p>
-<p>#css Dock示例总结</p>
-<ul>
-<li>webkit独有的镜像属性box-reflec<br>使用方法：<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-webkit-box-reflect：<span class="keyword">none</span> | <span class="variable">&lt;direction&gt;</span> <span class="variable">&lt;offset&gt;</span>? <span class="variable">&lt;mask-box-image&gt;</span></span><br><span class="line">box-reflect：<span class="keyword">none</span> | <span class="variable">&lt;direction&gt;</span> <span class="variable">&lt;offset&gt;</span>? <span class="variable">&lt;mask-box-image&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>取值说明：</p>
-<ul>
-<li>none:此值为box-reflect默认值，表示无倒影效果；</li>
-<li><direction>:此值表示box-reflect生成倒影的方向，主要包括以下几个值：<ul>
-<li>above:表示生成的倒影在对象（原图）的上方；</li>
-<li>below:表示生成的倒影在对象（原图）的下方；</li>
-<li>left:表示生成的倒影在对象(原图)的左侧；</li>
-<li>right:表示生成的倒影在对象(原图)的右侧；</li>
-</ul>
-</direction></li>
-<li><offset>:用来设置生成倒影与对象（原图）之间的间距，其取值可以是固定的像素值，也可以是百分比值，如：<ul>
-<li>:使用长度值来设置生成的倒影与原图之间的间距，只要是CSS中的长度单位都可以，此值可以使用负值；</li>
-<li>:使用百分比来设置生成的倒影与原图之间的间距，此值也可以使用负值。</li>
-</ul>
-</offset></li>
-<li><p><mask-box-image>:用来设置倒影的遮罩效果，可以是背景图片，也可以是渐变生成的背景图像。</mask-box-image></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">-webkit-box-reflect</span>:<span class="value"> below -<span class="number">16px</span> <span class="function">-webkit-gradient</span>(</span><br><span class="line">	linear, left top, left bottom,</span><br><span class="line">	<span class="function">from</span>(transparent),</span><br><span class="line">	<span class="function">color-stop</span>(<span class="number">91%</span>, <span class="function">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, .<span class="number">1</span>)),</span><br><span class="line">	<span class="function">color-stop</span>(<span class="number">91.01%</span>, transparent),</span><br><span class="line">	<span class="function">to</span>(transparent)</span><br><span class="line">)</span></span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>模仿tooltips效果</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.dock</span> <span class="tag">em</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">top</span>:<span class="value"> -<span class="number">34px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">display</span>:<span class="value"> none</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">150px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">75px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.dock</span> <span class="rule"><span class="attribute">em</span>:<span class="value">after &#123;</span><br><span class="line">	content: <span class="string">" "</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">margin-left</span>:<span class="value"> -<span class="number">6px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">	<span class="comment">/*下三角实现方法*/</span></span><br><span class="line">	<span class="rule"><span class="attribute">border-left</span>:<span class="value"> <span class="number">6px</span> solid transparent</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-right</span>:<span class="value"> <span class="number">6px</span> solid transparent</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-top</span>:<span class="value"> <span class="number">6px</span> solid <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">6</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-bottom</span>:<span class="value"> none</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.dock</span> <span class="tag">em</span> <span class="tag">span</span> <span class="rules">&#123;</span><br><span class="line">	<span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5px</span> <span class="number">12px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">14px</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">font-style</span>:<span class="value"> normal</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#FFF</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#000</span></span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">6</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">text-shadow</span>:<span class="value"> <span class="number">1px</span> <span class="number">1px</span> <span class="number">1px</span> <span class="function">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, .<span class="number">9</span>)</span></span>;</span><br><span class="line">	<span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">12px</span></span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="class">.dock</span> <span class="rule"><span class="attribute">li</span>:<span class="value">hover em, </span><br><span class="line">.dock li a:focus em &#123;</span><br><span class="line">	display: block</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="说明">说明</h1><p>这个是看大漠编写的《图解css3》的笔记系列。源码均来自书上。</p>
-
-      
-    </div>
-
     
   </div>
   
@@ -486,7 +360,6 @@
 </nav>
 
   
-
 </article>
 
 
