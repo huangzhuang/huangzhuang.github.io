@@ -902,6 +902,9 @@ a {
   visibility: hidden;
 }
 .article img {
+  max-width: 350px;
+}
+.article a:first-child img {
   max-width: 100%;
 }
 @-webkit-keyframes cd-bounce-1 {
