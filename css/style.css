@@ -902,7 +902,7 @@ a {
   visibility: hidden;
 }
 .article img {
-  max-width: 350px;
+  max-width: 300px;
 }
 .article a:first-child img {
   max-width: 100%;
