@@ -229,6 +229,12 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p><img src="https://unsplash.it/1568/500/?random" alt=""></p>
+<h1 id="题记">题记</h1><p>记得在简书中很早就发现并收藏这篇文章了，但是点进去一看，又是tbs又是java和android，被吓傻了，果断关了网页。而后的契机（主要有大神带啦）让我重新来学习这篇文章，原因有几个：</p>
+      
+    </div>
 </article>
 
 
@@ -268,6 +274,16 @@
     
   </div>
   
+    <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    
+</div>
+
+      
+      
+    </div>
 </article>
 
 
@@ -326,6 +342,11 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p><img src="https://unsplash.it/1568/500/?random" alt="封面"><br>
+      
+    </div>
 </article>
 
 
@@ -389,6 +410,16 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p>#1.DNA<br>题目：</p>
+<blockquote>
+<p>In DNA strings, symbols “A” and “T” are complements of each other, as “C” and “G”. You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).<br>DNAStrand (“ATTGC”) # return “TAACG”<br>DNAStrand (“GTAT”) # return “CATA”</p>
+</blockquote>
+<p>以下的解决方法是摘录并分析掌握：</p>
+<p>解决一：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DNAStrand</span><span class="params">(dna)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> dna.replace(/./g, <span class="function"><span class="keyword">function</span><span class="params">(c)</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> DNAStrand.<span class="built_in">pairs</span>[c]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DNAStrand.<span class="built_in">pairs</span> = &#123;</span><br><span class="line">  A: <span class="string">'T'</span>,</span><br><span class="line">  T: <span class="string">'A'</span>,</span><br><span class="line">  C: <span class="string">'G'</span>,</span><br><span class="line">  G: <span class="string">'C'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+      
+    </div>
 </article>
 
 
@@ -447,6 +478,11 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p><img src="http://hz2015.sinaapp.com/static/pictures/angular.jpg" alt=""><br>
+      
+    </div>
 </article>
 
 
@@ -520,6 +556,26 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p>#javascript设计模式<br>模式内容：</p>
+<ul>
+<li>Constructor构造器模式</li>
+<li>Module模块模式</li>
+<li>Revealing Module揭示模块模式</li>
+<li>Singleton单例模式</li>
+<li>Observer观察者模式</li>
+<li>Mediator中介者模式</li>
+<li>Prototype模式</li>
+<li>Command模式</li>
+<li>Facade外观模式</li>
+<li>Factory工厂模式</li>
+<li>Mixin混入模式</li>
+<li>Decorator装饰者模式</li>
+<li>Flyweight享元模式</li>
+</ul>
+      
+    </div>
 </article>
 
 
@@ -584,6 +640,17 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p>#高质量的javascript</p>
+<p>##养成良好的编程习惯</p>
+<ul>
+<li>用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。</li>
+<li>使用命名空间</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">	<span class="keyword">var</span> GLOBAL = &#123;&#125;;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">	(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">var</span> a=<span class="number">123</span>,b=<span class="string">"hello world"</span>;</span><br><span class="line">		GLOBAL.A=&#123;&#125;;</span><br><span class="line">		GLOBAL.A.str2 = a;</span><br><span class="line">		GLOBAL.A.str = b;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
 </article>
 
 
@@ -649,6 +716,18 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p>#高质量的css</p>
+<ul>
+<li>css的API使用(基础)</li>
+<li>css的组织(base.css+ common.js + page.css)<br>三个css是层叠的关系。</li>
+</ul>
+<p>###base.css<br>位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。<strong>相对稳定，基本不需要维护</strong></p>
+<p>###common.js<br>位于中间层，是样式的模块化。<br>是要高度重用的模块，可以视为组件，放在common.css<br>不同的网站有不同的common层，但是同一个网站只应该有一个common层。</p>
+<p>###page.css<br>位于最高层，提供页面级的样式。</p>
+      
+    </div>
 </article>
 
 
@@ -715,6 +794,19 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p>#1.flexbox的基本知识</p>
+<p>##布局模式<br>之前css2：</p>
+<ul>
+<li>块布局</li>
+<li>行内布局</li>
+<li>表格布局</li>
+<li>定位布局</li>
+</ul>
+<p>现在：css3引入布局模式Flexbox布局；<br>主要思路：以最佳的方式填充可用空间。</p>
+      
+    </div>
 </article>
 
 
@@ -773,6 +865,11 @@
     
   </div>
   
+    <div class="entry">
+      
+        <p><img src="https://unsplash.it/1568/500/?random" alt=""></p>
+      
+    </div>
 </article>
 
 
