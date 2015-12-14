@@ -227,6 +227,252 @@
 
       </header>
 
+           <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    
+</div>
+
+      
+        <p>#css3选择器分类</p>
+<ul>
+<li>基本选择器</li>
+<li>层次选择器</li>
+<li>伪类选择器</li>
+<li>伪元素</li>
+<li>属性选择器</li>
+</ul>
+<p>其中最为复杂的是伪类选择器。<br>以下是css3选择器的分类图<br><img src="http://hz2015.sinaapp.com/static/pictures/selector-strucate.jpg" alt=""><br><a id="more"></a></p>
+<p>#1.基本选择器<br>*/E/#id/.class/selector1,delectorN</p>
+<p>##兼容性<br>所有的浏览器都支持基本的选择器。</p>
+<p>#2.层次选择器</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E F</td>
+<td style="text-align:left">选择E的后代F</td>
+</tr>
+<tr>
+<td style="text-align:left">E&gt;F</td>
+<td style="text-align:left">选择E的子元素F</td>
+</tr>
+<tr>
+<td style="text-align:left">E+F</td>
+<td style="text-align:left">选择E的相邻元素F(后面的)，相当于next</td>
+</tr>
+<tr>
+<td style="text-align:left">E~F</td>
+<td style="text-align:left">选择E后面的所有元素F，相当于sibilings</td>
+</tr>
+</tbody>
+</table>
+<p>##兼容性<br>IE6不支持下面3个，其他的基本ok。不用考虑IE6就随便用。</p>
+<p>#3伪类选择器</p>
+<ul>
+<li>动态伪类</li>
+<li>目标伪类</li>
+<li>语言伪类</li>
+<li>UI状态伪类</li>
+<li>结构伪类</li>
+<li>否定伪类</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">E:</span>pseudo-<span class="class"><span class="keyword">class</span> &#123;</span> <span class="string">property:</span> value&#125;</span><br></pre></td></tr></table></figure>
+<p>##3.1动态伪类选择器</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:link</td>
+<td style="text-align:left">链接伪类</td>
+<td style="text-align:left">未点击过的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:visited</td>
+<td style="text-align:left">链接伪类</td>
+<td style="text-align:left">访问过的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:active</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">被激活的超链接</td>
+</tr>
+<tr>
+<td style="text-align:left">E:hover</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">不解释</td>
+</tr>
+<tr>
+<td style="text-align:left">E:focus</td>
+<td style="text-align:left">用户行为链伪类</td>
+<td style="text-align:left">也不解释</td>
+</tr>
+</tbody>
+</table>
+<p>###兼容性<br>除了:active和:focus是IE8+以上才支持的，其他基本是没有兼容性问题的。</p>
+<p>##3.2目标伪类选择器<br>:target用于选取锚点或者链接#后面的目标元素。</p>
+<blockquote>
+<p>目标伪类是属于动态的，只在存在URL指向时候才有效。</p>
+</blockquote>
+<p>###兼容性<br>IE8+才支持。</p>
+<p>对于8以下的解决方案。<br><a href="http://www.htmldog.com/articles/suckerfish/target" target="_blank" rel="external">解决方案</a></p>
+<p>##3.3语言伪类选择器<br>略</p>
+<p>##3.4UI元素状态伪类选择器<br>包括：启用，禁用，选中，未选中，获得焦点，失去焦点，锁定和待机。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:checked</td>
+<td style="text-align:left">选中</td>
+<td style="text-align:left">选中的复选按钮或者单选按钮</td>
+</tr>
+<tr>
+<td style="text-align:left">E:enabled</td>
+<td style="text-align:left">启用</td>
+<td style="text-align:left">选中所有启动的表单元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:disabled</td>
+<td style="text-align:left">禁用</td>
+<td style="text-align:left">选中所有禁用的表单元素</td>
+</tr>
+</tbody>
+</table>
+<p>###兼容性<br>IE9+以上才支持，对于IE6-8则可以采用一下两种方式：</p>
+<ul>
+<li>定义类，然后设置样式。</li>
+<li><a href="http://selectivizr.com" target="_blank" rel="external">js库</a></li>
+</ul>
+<p>##3.5结构伪类选择器</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E:first-child</td>
+<td style="text-align:left">作为父元素的第一个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:last-child</td>
+<td style="text-align:left">作为父元素的最后一个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:root</td>
+<td style="text-align:left">E所在文档的根目录</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-child(n)</td>
+<td style="text-align:left">作为父元素的第n个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-last-child(n)</td>
+<td style="text-align:left">作为父元素的倒数第n个子元素的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-of-type(n)</td>
+<td style="text-align:left">作为父元素指定的第n个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:nth-last-of-type(n)</td>
+<td style="text-align:left">作为父元素指定的倒数第n个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:first-of-type</td>
+<td style="text-align:left">作为父元素指定的第一个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:last-of-type</td>
+<td style="text-align:left">作为父元素指定的最后一个元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E:only-child</td>
+<td style="text-align:left">父元素只包含一个子元素，且该子元素匹配E元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:only-of-type</td>
+<td style="text-align:left">作为父元素只包含同一类子元素</td>
+</tr>
+<tr>
+<td style="text-align:left">E:empty</td>
+<td style="text-align:left">作为父元素指定的第一个元素E</td>
+</tr>
+</tbody>
+</table>
+<p>用一张图来说明：<br><img src="http://hz2015.sinaapp.com/static/pictures/strucate-pseudo.png" alt=""></p>
+<p>###兼容性<br>IE9+</p>
+<p>##3.6否定伪类选择器<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="function"><span class="title">not</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></p>
+<p>#4伪元素选择器<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">::first-letter</span><br><span class="line">::first-line</span><br><span class="line"><span class="attribute">::before/::after:生成内容，内容不属于DOM，但是可以设置样式。</span></span><br><span class="line"><span class="attribute">::selection:(只能是background和color)</span></span><br></pre></td></tr></table></figure></p>
+<p>#5属性选择器</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">选择器</th>
+<th style="text-align:left">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">E[attr]</td>
+<td style="text-align:left">具有属性attr的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr=val]</td>
+<td style="text-align:left">具有属性是attr=val的元素E</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr~=val]</td>
+<td style="text-align:left">attr属性具有多个空格分割的值，其中一个值是val</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr竖=val]</td>
+<td style="text-align:left">attr属性的值是val或者以val-开头的值</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr*=val]</td>
+<td style="text-align:left">attr属性的值包含val即可</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr^=val]</td>
+<td style="text-align:left">attr属性的值以val开头</td>
+</tr>
+<tr>
+<td style="text-align:left">E[attr$=val]</td>
+<td style="text-align:left">attr属性的值以val结尾</td>
+</tr>
+</tbody>
+</table>
+<p>##兼容性<br>IE7+</p>
+<p>#说明</p>
+<ul>
+<li>整理自《图解css3》</li>
+<li>无技术含量，就是写博客的过程中整理思路。</li>
+</ul>
+
+      
+    </div>     
+
       
       <div class="article-info article-info-post">
         
@@ -480,251 +726,6 @@
       
     </div>
 
-          <div class="entry">
-      
-        <div id="toc" class="toc-article">
-    <div class="toc-title">目录</div>
-    
-</div>
-
-      
-        <p>#css3选择器分类</p>
-<ul>
-<li>基本选择器</li>
-<li>层次选择器</li>
-<li>伪类选择器</li>
-<li>伪元素</li>
-<li>属性选择器</li>
-</ul>
-<p>其中最为复杂的是伪类选择器。<br>以下是css3选择器的分类图<br><img src="http://hz2015.sinaapp.com/static/pictures/selector-strucate.jpg" alt=""><br><a id="more"></a></p>
-<p>#1.基本选择器<br>*/E/#id/.class/selector1,delectorN</p>
-<p>##兼容性<br>所有的浏览器都支持基本的选择器。</p>
-<p>#2.层次选择器</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">E F</td>
-<td style="text-align:left">选择E的后代F</td>
-</tr>
-<tr>
-<td style="text-align:left">E&gt;F</td>
-<td style="text-align:left">选择E的子元素F</td>
-</tr>
-<tr>
-<td style="text-align:left">E+F</td>
-<td style="text-align:left">选择E的相邻元素F(后面的)，相当于next</td>
-</tr>
-<tr>
-<td style="text-align:left">E~F</td>
-<td style="text-align:left">选择E后面的所有元素F，相当于sibilings</td>
-</tr>
-</tbody>
-</table>
-<p>##兼容性<br>IE6不支持下面3个，其他的基本ok。不用考虑IE6就随便用。</p>
-<p>#3伪类选择器</p>
-<ul>
-<li>动态伪类</li>
-<li>目标伪类</li>
-<li>语言伪类</li>
-<li>UI状态伪类</li>
-<li>结构伪类</li>
-<li>否定伪类</li>
-</ul>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">E:</span>pseudo-<span class="class"><span class="keyword">class</span> &#123;</span> <span class="string">property:</span> value&#125;</span><br></pre></td></tr></table></figure>
-<p>##3.1动态伪类选择器</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">E:link</td>
-<td style="text-align:left">链接伪类</td>
-<td style="text-align:left">未点击过的超链接</td>
-</tr>
-<tr>
-<td style="text-align:left">E:visited</td>
-<td style="text-align:left">链接伪类</td>
-<td style="text-align:left">访问过的超链接</td>
-</tr>
-<tr>
-<td style="text-align:left">E:active</td>
-<td style="text-align:left">用户行为链伪类</td>
-<td style="text-align:left">被激活的超链接</td>
-</tr>
-<tr>
-<td style="text-align:left">E:hover</td>
-<td style="text-align:left">用户行为链伪类</td>
-<td style="text-align:left">不解释</td>
-</tr>
-<tr>
-<td style="text-align:left">E:focus</td>
-<td style="text-align:left">用户行为链伪类</td>
-<td style="text-align:left">也不解释</td>
-</tr>
-</tbody>
-</table>
-<p>###兼容性<br>除了:active和:focus是IE8+以上才支持的，其他基本是没有兼容性问题的。</p>
-<p>##3.2目标伪类选择器<br>:target用于选取锚点或者链接#后面的目标元素。</p>
-<blockquote>
-<p>目标伪类是属于动态的，只在存在URL指向时候才有效。</p>
-</blockquote>
-<p>###兼容性<br>IE8+才支持。</p>
-<p>对于8以下的解决方案。<br><a href="http://www.htmldog.com/articles/suckerfish/target" target="_blank" rel="external">解决方案</a></p>
-<p>##3.3语言伪类选择器<br>略</p>
-<p>##3.4UI元素状态伪类选择器<br>包括：启用，禁用，选中，未选中，获得焦点，失去焦点，锁定和待机。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">类型</th>
-<th style="text-align:left">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">E:checked</td>
-<td style="text-align:left">选中</td>
-<td style="text-align:left">选中的复选按钮或者单选按钮</td>
-</tr>
-<tr>
-<td style="text-align:left">E:enabled</td>
-<td style="text-align:left">启用</td>
-<td style="text-align:left">选中所有启动的表单元素</td>
-</tr>
-<tr>
-<td style="text-align:left">E:disabled</td>
-<td style="text-align:left">禁用</td>
-<td style="text-align:left">选中所有禁用的表单元素</td>
-</tr>
-</tbody>
-</table>
-<p>###兼容性<br>IE9+以上才支持，对于IE6-8则可以采用一下两种方式：</p>
-<ul>
-<li>定义类，然后设置样式。</li>
-<li><a href="http://selectivizr.com" target="_blank" rel="external">js库</a></li>
-</ul>
-<p>##3.5结构伪类选择器</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">E:first-child</td>
-<td style="text-align:left">作为父元素的第一个子元素的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:last-child</td>
-<td style="text-align:left">作为父元素的最后一个子元素的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:root</td>
-<td style="text-align:left">E所在文档的根目录</td>
-</tr>
-<tr>
-<td style="text-align:left">E:nth-child(n)</td>
-<td style="text-align:left">作为父元素的第n个子元素的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:nth-last-child(n)</td>
-<td style="text-align:left">作为父元素的倒数第n个子元素的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:nth-of-type(n)</td>
-<td style="text-align:left">作为父元素指定的第n个元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:nth-last-of-type(n)</td>
-<td style="text-align:left">作为父元素指定的倒数第n个元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:first-of-type</td>
-<td style="text-align:left">作为父元素指定的第一个元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:last-of-type</td>
-<td style="text-align:left">作为父元素指定的最后一个元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E:only-child</td>
-<td style="text-align:left">父元素只包含一个子元素，且该子元素匹配E元素</td>
-</tr>
-<tr>
-<td style="text-align:left">E:only-of-type</td>
-<td style="text-align:left">作为父元素只包含同一类子元素</td>
-</tr>
-<tr>
-<td style="text-align:left">E:empty</td>
-<td style="text-align:left">作为父元素指定的第一个元素E</td>
-</tr>
-</tbody>
-</table>
-<p>用一张图来说明：<br><img src="http://hz2015.sinaapp.com/static/pictures/strucate-pseudo.png" alt=""></p>
-<p>###兼容性<br>IE9+</p>
-<p>##3.6否定伪类选择器<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:<span class="function"><span class="title">not</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure></p>
-<p>#4伪元素选择器<br><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">::first-letter</span><br><span class="line">::first-line</span><br><span class="line"><span class="attribute">::before/::after:生成内容，内容不属于DOM，但是可以设置样式。</span></span><br><span class="line"><span class="attribute">::selection:(只能是background和color)</span></span><br></pre></td></tr></table></figure></p>
-<p>#5属性选择器</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">选择器</th>
-<th style="text-align:left">功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">E[attr]</td>
-<td style="text-align:left">具有属性attr的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr=val]</td>
-<td style="text-align:left">具有属性是attr=val的元素E</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr~=val]</td>
-<td style="text-align:left">attr属性具有多个空格分割的值，其中一个值是val</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr竖=val]</td>
-<td style="text-align:left">attr属性的值是val或者以val-开头的值</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr*=val]</td>
-<td style="text-align:left">attr属性的值包含val即可</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr^=val]</td>
-<td style="text-align:left">attr属性的值以val开头</td>
-</tr>
-<tr>
-<td style="text-align:left">E[attr$=val]</td>
-<td style="text-align:left">attr属性的值以val结尾</td>
-</tr>
-</tbody>
-</table>
-<p>##兼容性<br>IE7+</p>
-<p>#说明</p>
-<ul>
-<li>整理自《图解css3》</li>
-<li>无技术含量，就是写博客的过程中整理思路。</li>
-</ul>
-
-      
-    </div>
 
     
   </div>
