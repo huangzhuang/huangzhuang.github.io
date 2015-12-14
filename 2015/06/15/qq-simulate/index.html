@@ -215,6 +215,7 @@
   
 
       </header>
+
       
       <div class="article-info article-info-post">
         
@@ -307,6 +308,93 @@
 
       
     </div>
+
+          <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习体会"><span class="toc-text">学习体会</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li></ol></li></ol>
+</div>
+
+      
+        <p>###题记<br>私信对话框，类似于QQ，微信等等这些社交软件很常见的东西，但是实现起来却有它自己的难度。页面的实现还可以，关键就是下拉和上拉很自然的，感觉很不错。其实这都是好的，关键是用微信浏览器打开的网站默认的下拉会出现如下情况：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/119307-b2776098ddd306fd.png" alt="默认微信网页下拉"></p>
+<p>是不是很烦，反正我觉得是！</p>
+<a id="more"></a>
+<p>###解决方法</p>
+<ul>
+<li><p><a href="http://m.jiayuan.com/chat/chat.php?to_uid=135945386&amp;f=&amp;pin=130081687_0_1429704048_602c1bd6e07fb63a0cfdfe99758ddc091c60afca&amp;v=6" target="_blank" rel="external">世纪佳缘</a>在这个地方处理的很好，它的网站上有类似的需求，下拉刷新，而且在微信的内置浏览器中打开也不会出现以上那种默认的形式，看它的源码，尼玛，什么和什么呀，完全看不下去，几千行，看你妹夫，后来才发现，它是把所有自定义的函数都写在webchat_1.0.js,所以从这个着手困难太大。<br><img src="http://upload-images.jianshu.io/upload_images/119307-31fce345d425d9d4.png" alt="世纪佳缘文件"></p>
+</li>
+<li><p>度娘搜索了些许时间发现了<a href="http://cubiq.org/iscroll-5" target="_blank" rel="external">iscroll.js</a>这个插件。然后就疯狂的看官网，然后还有一个iscroll-master文件夹，下载下来，里面全是demos，反复研究。其实这样就够了，但是自己没有经验的毛病就暴漏出来了，走了很多弯路。比如我自己想的把<strong>滚动条定位到最下面</strong>的方法：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setTimeout<span class="list">(<span class="keyword">function</span><span class="list">()</span>&#123;</span><br><span class="line">    var scrollToTop = $<span class="list">(<span class="string">"#wrapper"</span>)</span>[<span class="number">0</span>].scrollHeight<span class="comment">;</span></span><br><span class="line">    $<span class="list">(<span class="string">"#wrapper"</span>)</span>.scrollTop<span class="list">(<span class="keyword">scrollToTop</span>)</span><span class="comment">;</span></span><br><span class="line">&#125;,<span class="number">200</span>)</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样就会出现很严重的问题，发送信息后定位到最下面，可是下一步的时候这个可以滑动的部分就乱了，可以直接划到很上面的地方然就就不见了（输入的文字）。可是demos中明明有个很明显的<em>scroll-to-element</em>啊，自己当时没有在意这个，可是这个是解决问题的<strong>关键</strong>。<br>由于iscroll.js内置<code>scrollToElement</code>函数，则：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">myScroll</span><span class="class">.scrollToElement</span>("<span class="rule"><span class="attribute">div.mes_me</span>:<span class="value"><span class="function">nth-last-child</span>(<span class="number">1</span>)<span class="string">");</span></span></span></span><br></pre></td></tr></table></figure></p>
+<p>其中myScroll是每次调用的时候初始化的对象。<br><img src="http://upload-images.jianshu.io/upload_images/119307-eeffe96b0258b708.png" alt="demos"></p>
+<p>至此基本可以解决我们现在的需求，那下面来谈谈需求吧。</p>
+<p>###私信对话框需求（对话内容部分）</p>
+<ul>
+<li>user打开私信对话框，历史的聊天记录全部用jinjia2渲染出来，然后自动定位到最下面的一条消息。</li>
+<li>user点击输入框，输入内容，输入完之后点击发送，此时将输入框里面的内容ajax到后台保存，成功就将之前的内容append到对话框里面，同时定位到最下面，如果ajax发送到后台失败，则alert内容提醒。这是我们原神带我飞的。<br><img src="http://upload-images.jianshu.io/upload_images/119307-be8b88b93f59e90c.png" alt="ajax代码"></li>
+</ul>
+<p>不对，突然发现一个问题，我的ajax好水呀，仅仅知道这个用法，其他的很长时间没有使用了，不行，要复习复习，做个简书。</p>
+<p>最后来看看现在的页面效果<br><img src="http://upload-images.jianshu.io/upload_images/119307-530f527e1014cd00.png" alt="下拉ok"></p>
+<p>私信部分基本上就完成了，下面就谈谈个人的学习体会。</p>
+<h3 id="学习体会">学习体会</h3><p>iscroll可以实现很多功能，常使用是：<em>下拉加载</em>和<em>上拉刷新</em>。这两个功能在QQ里面非常常见吧。下面就来详细的学习下<a href="http://cubiq.org/iscroll-5" target="_blank" rel="external">iscroll.js</a>。</p>
+<h4 id="使用方法">使用方法</h4><p>1.html<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> <span class="property">id</span>= <span class="string">"wrapper"</span>&gt;</span><br><span class="line">    &lt;<span class="keyword">div</span> <span class="property">id</span>=<span class="string">"scroller"</span>&gt;</span><br><span class="line">        content</span><br><span class="line">    &lt;/<span class="keyword">div</span>&gt;</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如上：id是scroller的这个div是可以滑动的部分。</p>
+<p>2.引入iscroll.js，自定义loaded( )函数，然后在里面将iscroll实例化，在<code>$(document).ready()</code>中调用loaded( )函数。<br><img src="http://upload-images.jianshu.io/upload_images/119307-d1db6f2c7a167610.png" alt="实例化"></p>
+<p>3.iscroll.js可以实现很多功能是在实例化中设置不同的参数。下面就简要介绍这些参数：</p>
+<ul>
+<li>hScroll, 用来锁定水平滚动，默认情况下，水平和垂直滚动都是支持的。如果被设定为false，则不能水平方向滚动.</li>
+<li>vScroll, 用来锁定垂直滚动</li>
+<li>bounce, enable/disable 当滚动超出范围时，是否有弹跳动画。</li>
+<li>momentum, enable/disable inertia. Default: true. 设置是否开始惯性，如果想要节省计算资源，可以设置为false。</li>
+<li>lockDirection, 当元素在一个方向滚动时(如水平)，另一个方向(如垂直)的滚动会被锁定。</li>
+<li>fixedScrollbar：在IOS中拖动滚动条的时候可能会使内容（或滚动条，）缩小，设置该参数为true可防止该现象。同样适用于Android。Android默认为true，IOS默认为FALSE。<br><img src="http://upload-images.jianshu.io/upload_images/119307-0964df8662ced106.png" alt="参数设定"></li>
+</ul>
+<p>4.内部方法</p>
+<ul>
+<li>refresh( )<br>iScroll需要知道滚动区域的大小和滚动条才可以正常的工作。在实例化的时候iScroll会自动计算一次。但如果滚动区域里的内容发生变化后，需要告诉iScroll内容发生了变化。这个很重要！！！</li>
+<li>scrollTo( ) + scrollToElement + scrollToPage<br><strong>scrollTo(x, y, time, relative)</strong>在time时间内内容滚动的x/y距离，relative是boolean值，true表示相对现在的位置滑动。<br><strong>scrollToElement(element, time)</strong>在指定的时间内内容滑动设定的元素位置处。<br><strong>snapToPage(pageX, pageY, time)</strong>在time时间内滑动到设定的页面。这一块暂时没需求还没有学习，等有需求时候分分钟秒了它。</li>
+</ul>
+<p>5.注销<br>由于iScroll是全局内容，所以用完之后就要销毁它，清楚内存。将其设置为null就ok了。</p>
+<p>6.几个实例demo</p>
+<ul>
+<li><a href="http://cubiq.org/dropbox/iscroll4/examples/pull-to-refresh/" target="_blank" rel="external">‘Pull to refresh’ demo</a></li>
+<li><a href="http://cubiq.org/dropbox/iscroll4/examples/pull-to-refresh/" target="_blank" rel="external">‘Pull to refresh’ demo</a></li>
+<li><a href="http://cubiq.org/dropbox/iscroll4/examples/carousel/" target="_blank" rel="external">‘Carousel’ demo</a></li>
+<li><a href="http://cubiq.org/dropbox/iscroll4/examples/custom-scrollbar/" target="_blank" rel="external">‘Custom scrollbars’ demo</a></li>
+</ul>
+<p>###注意事项</p>
+<ul>
+<li>官方iscroll5下载的文件夹里面的iscroll.js实例化的对象是<code>IScroll</code>,而我用的则是<code>iScroll</code>，,这是一个坑，我弄了好久才发现。这是因为前者是版本5，而后者是版本4，使用的时候不要弄混了。其实用5的那几个实例就很简单了，自己走弯路去网上找别人的文档，人家用的是版本4的。</li>
+<li>如果要实现下拉小菊花的效果，是在iScroll实例化中自定义一些函数。<br><img src="http://upload-images.jianshu.io/upload_images/119307-2b46c02a9ec7c983.png" alt="小菊花"><br>###参考文献</li>
+<li><a href="http://www.cnblogs.com/duanhuajian/archive/2013/04/08/3008323.html" target="_blank" rel="external">iScroll.js 用法参考 （share）</a></li>
+<li><a href="http://blog.nnnv.cn/index.php/archives/65" target="_blank" rel="external">移动设备web开发插件iScroll的使用详解</a></li>
+</ul>
+<p>###私信对话框其他</p>
+<ul>
+<li>qq表情是使用的jquery.qqFace.js,可以实现效果，但是现在有两个问题：<br>1:每次jinjia2渲染后将图片解析成<img src="xxx">;<br>2:每次点表情图标需要发送非常多的http请求，这是不合适的。<br>待解决……</li>
+<li>关于输入框输入换行的时候自动增加高度，然后会有一个max-height，这个实现使用的是autosize.js插件，暂时没什么问题。<br>小知识补充：设置textarea默认的行数可以用<code>cols=&quot;1&quot; rows=&quot;1&quot;</code>,这些属性之前一直被我忽略的。</li>
+</ul>
+<p>###最后说<br>发现简书写东西感觉太爽歪歪了，直接截图然后粘贴就会自动有网址，非常方便，而且markdown语法写东西也很酷，所以现阶段就准备一直用简书写东西，等水平达到一定的高度之后，再去博客园写博客吧。</p>
+<p>入前端时间不到一年，还在努力提升自己中，希望可以多交同行朋友，相互学习，共同进步。</p>
+<blockquote>
+<p>人若无名，便可专心练剑。</p>
+</blockquote>
+<p>##补充<br>之前部分是简书po过来的，但是在这个基础上实现完美的界面还是做了一些必要的优化。</p>
+<ul>
+<li>打造qq表情，高仿真版本。(原神打造)</li>
+<li>修复加入表情的时候textarea也会自动高度的bug</li>
+</ul>
+<p>##qq表情打造<br>这个是原神花了一天的时间通过兴趣部落，然后chrome上手机模拟打开然后研究代码实现出来的。大赞一下。<br><a href="http://www.jianshu.com/p/099d50e8abeb" target="_blank" rel="external">原文文章</a></p>
+<p>##autosize.js的bug修复<br><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在表情插入到textarea中之后执行</span></span><br><span class="line"><span class="keyword">var</span> ta = <span class="built_in">document</span>.<span class="built_in">querySelector</span>(<span class="string">'textarea'</span>);</span><br><span class="line">autosize.update(ta);</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://www.jacklmoore.com/autosize/" target="_blank" rel="external">autosize.js插件官网</a></p>
+
+      
+    </div>
+
     
   </div>
   
@@ -331,6 +419,7 @@
 </nav>
 
   
+
 </article>
 
 

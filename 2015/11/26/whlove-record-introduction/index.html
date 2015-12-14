@@ -204,6 +204,7 @@
   
 
       </header>
+
       
       <div class="article-info article-info-post">
         
@@ -262,6 +263,59 @@
 
       
     </div>
+
+          <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#任务实现"><span class="toc-text">任务实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#毛玻璃效果"><span class="toc-text">毛玻璃效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于播放的按钮"><span class="toc-text">关于播放的按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于微信页面的调试"><span class="toc-text">关于微信页面的调试</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新1"><span class="toc-text">更新1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于手按住手机屏幕计时停止"><span class="toc-text">关于手按住手机屏幕计时停止</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新2"><span class="toc-text">更新2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于毛玻璃的最终解决方案"><span class="toc-text">关于毛玻璃的最终解决方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新3"><span class="toc-text">更新3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于audio的播放和停止切换的方法"><span class="toc-text">关于audio的播放和停止切换的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新4"><span class="toc-text">更新4</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于录音中退出页面后再调用录音接口失败"><span class="toc-text">关于录音中退出页面后再调用录音接口失败</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更新5"><span class="toc-text">更新5</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于在非wechat中的提示问题"><span class="toc-text">关于在非wechat中的提示问题</span></a></li></ol></li></ol>
+</div>
+
+      
+        <p><img src="https://unsplash.it/1568/500/?random" alt="封面"><br><a id="more"></a></p>
+<h1 id="任务实现">任务实现</h1><ul>
+<li><p>设计图<br><img src="http://hz2015.sinaapp.com/static/images/design-record.jpg" alt="设计图"></p>
+</li>
+<li><p>根据设计图，步骤如下：<br>1.实现微信js-sdk的录音，播放，暂停的接口！具体做法是在个人页面中设定三个按钮，分别对应！<br>2.弹窗：背景图片先写好样式，然后点击弹窗，由于毛玻璃效果不佳（后面细说），背景暂时没调！然后分别作出开始录制、结束录制和重播以及发布页面（新设计图）！<br>3.实现初步交互过程：也就是说点击开始录制出现第二界面……(界面中的切换)。当时为了练手visio，还画了一个很low的图。<br><img src="http://hz2015.sinaapp.com/static/images/interaction1.png" alt="初步交互逻辑图"><br>4.圆形进度条：计时的问题，这个可以js实现！并不难，关于实时进度条的问题！<br>关于圆形进度条，可以参考以下：</p>
+<ul>
+<li><a href="http://www.w3cplus.com/css3/create-radial-progress-bar-with-jQuery-and-css3.html" target="_blank" rel="external">参考一</a></li>
+<li><a href="http://www.tuicool.com/articles/AVRvmqm" target="_blank" rel="external">参考二</a><br>但是，我现在实现的实时是每秒会转6度，看起来不连续，现在有个新思路，就是和js独立开，点击开始录音的话，js计时，此时动画开始（先右边转180度，然后左边再转180度，动画排队问题）。当点击结束录音的时候，动画停止!</li>
+</ul>
+<p>5.功能交互部分：<br><img src="http://hz2015.sinaapp.com/static/images/func-interaction.png" alt="功能交互图"><br>基本实现的差不多了！</p>
+<p>6.播放自己录音或者听别人录音的交互部分。<br>由后台传回的ogg格式的音频文件，在页面中使用html5的audio！<br>但是注意：</p>
+<hr>
+<p><strong>苹果手机不支持ogg格式的文件！所以改成后台传回mp3格式！问题ok</strong></p>
+<hr>
+<p>7.bug检测，以及修复</p>
+</li>
+</ul>
+<h1 id="其他">其他</h1><h2 id="毛玻璃效果">毛玻璃效果</h2><p>这是一个很炫酷的效果，但是对于图片好实现，但是对于要作为整个div块的话，实现有难度！<br>实现方法可以从几个方向：<br>1.filter的方法,微信浏览器支持性问题。<br>2.svg的方法。无效<br>3.canvas：但是效果针对resterized image，所以在此需求不符。<br>4.用背景图片的方法，没有达到效果。<br>5.要关注的是backdrop filter<br>6.高端玩法：先将当前页面截屏，然后在用canvas虚化！<br>参考文献：<br><a href="http://www.zhangxinxu.com/wordpress/2013/11/%E5%B0%8Ftip-%E4%BD%BF%E7%94%A8css%E5%B0%86%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2%E6%88%90%E6%A8%A1%E7%B3%8A%E6%AF%9B%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C/" target="_blank" rel="external">张鑫旭的文章</a><br><a href="https://www.webkit.org/blog/3632/introducing-backdrop-filters/" target="_blank" rel="external">backdrop-filter</a></p>
+<h2 id="关于播放的按钮">关于播放的按钮</h2><p>暂停的三角不是应该中线对其，而是应该三个角对应圆周的距离相等。@skyway</p>
+<h2 id="关于微信页面的调试">关于微信页面的调试</h2><ul>
+<li><a href="http://blog.qqbrowser.cc/" target="_blank" rel="external">微信自己研发的调试工具</a><br>可以看js错误，支持断点，可以调试页面，但是console.log不输出！</li>
+<li><a href="http://jsconsole.com/" target="_blank" rel="external">jsconsole</a></li>
+<li>weinre</li>
+</ul>
+<p>暂时先写这些吧，再更新！</p>
+<h1 id="更新1">更新1</h1><h2 id="关于手按住手机屏幕计时停止">关于手按住手机屏幕计时停止</h2><ul>
+<li>mask出现，让屏幕overflow:hidden。但是。。。问题没这么简单！</li>
+<li>必须是html和body同时设定才可以，不然只有pc端达到效果，但是微信端是没有效果的！</li>
+</ul>
+<pre><code>但是，事情往往没有这么简单，安卓手机上基本是已经没有问题了，但是坑爹的ios是这样的，它还可以上下滑，虽然没有了<span class="value">scroll</span>。
+</code></pre><p>解决方法就是：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'body'</span>).on(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;event.preventDefault();&#125;); <span class="comment">//mask出现时。</span></span><br><span class="line">$(<span class="string">'body'</span>).unbind();<span class="comment">//取消mask时。</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="更新2">更新2</h1><h2 id="关于毛玻璃的最终解决方案">关于毛玻璃的最终解决方案</h2><ul>
+<li>安卓上是那种很low的纯色，估计是设计打架没有打过那个PM吧！</li>
+<li>ios上由于支持<code>filter:blur(15px)</code>所以事先的是毛玻璃的效果。<br><a href="http://x5.tencent.com/guide?id=2002%E3%80%81" target="_blank" rel="external">qqX5内核常见问题</a><br>虽然微信的服务器比这坑的多，不过也是可以参考一二的！<br>代码如下：</li>
+</ul>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">u</span> = navigator.userAgent, <span class="keyword">app</span> = navigator.appVersion;</span><br><span class="line"><span class="keyword">var</span> isAndroid = <span class="keyword">u</span>.indexOf('Android') &gt; -1;</span><br><span class="line"><span class="keyword">var</span> isiOS = !!<span class="keyword">u</span>.<span class="literal">match</span>(/\(i[^;]+;( <span class="keyword">U</span>;)? CPU.+<span class="keyword">Mac</span> OS X/);</span><br></pre></td></tr></table></figure>
+<h1 id="更新3">更新3</h1><h2 id="关于audio的播放和停止切换的方法">关于audio的播放和停止切换的方法</h2><p>就是通过<strong>audio.src</strong>来切换。<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(audio_url)&#123;</span><br><span class="line">    <span class="keyword">if</span>(audio.paused)&#123;</span><br><span class="line">        audio.src= audio_url;</span><br><span class="line">        audio.<span class="keyword">play</span>();</span><br><span class="line">        <span class="variable">$(</span><span class="string">".record_play_icon .play"</span>).html(<span class="string">"&amp;#x5799;"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        audio.<span class="keyword">pause</span>();</span><br><span class="line">        <span class="variable">$(</span><span class="string">".record_play_icon .play"</span>).html(<span class="string">"&amp;#x5798;"</span>);</span><br><span class="line">        audio.src= <span class="string">" "</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    alert(<span class="string">"请先录音！"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="更新4">更新4</h1><h2 id="关于录音中退出页面后再调用录音接口失败">关于录音中退出页面后再调用录音接口失败</h2><p>错误原因是recording<br>解决方案：在每次调用开始录音的接口是先执行一次wx_stopRecord()</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wx.stopRecord<span class="comment">()</span>;</span><br><span class="line"><span class="keyword">if</span><span class="comment">(wx_record)</span>&#123;</span><br><span class="line">    wx.startRecord<span class="comment">(&#123;</span><br><span class="line">    ......</span></span><br></pre></td></tr></table></figure>
+<h1 id="更新5">更新5</h1><h2 id="关于在非wechat中的提示问题">关于在非wechat中的提示问题</h2><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// 判断能否使用微信接口</span><br><span class="line">var wx_support = <span class="keyword">false</span>;</span><br><span class="line">var wx_record = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">wx.ready(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">   wx.checkJsApi(&#123;</span><br><span class="line">        jsApiList: [<span class="string">'chooseImage'</span>,<span class="string">'startRecord'</span>,], // 需要检测的JS接口列表</span><br><span class="line">        success: <span class="function"><span class="keyword">function</span><span class="params">(res)</span></span> &#123;</span><br><span class="line">//console.log(<span class="string">'ok'</span>);</span><br><span class="line">// 以键值对的形式返回，可用的api值<span class="keyword">true</span>，不可用为<span class="keyword">false</span></span><br><span class="line">// 如：&#123;<span class="string">"checkResult"</span>:&#123;<span class="string">"chooseImage"</span>:<span class="keyword">true</span>&#125;,<span class="string">"errMsg"</span>:<span class="string">"checkJsApi:ok"</span>&#125;</span><br><span class="line">        <span class="keyword">if</span>(res[<span class="string">'checkResult'</span>][<span class="string">'chooseImage'</span>])&#123;</span><br><span class="line">            //alert(<span class="string">'ok'</span>);</span><br><span class="line">            wx_support = <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            wx_support = <span class="keyword">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">if</span>(res[<span class="string">'checkResult'</span>][<span class="string">'startRecord'</span>])&#123;</span><br><span class="line">            wx_record = <span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            wx_record = <span class="keyword">false</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        // 蛋疼呀？但是不稳定，还是分开写吧！</span><br><span class="line">        // <span class="keyword">if</span>(res[<span class="string">'checkResult'</span>][<span class="string">'chooseImage'</span>] &amp;&amp; res[<span class="string">'checkResult'</span>][<span class="string">'startRecord'</span>])&#123;</span><br><span class="line">        //     alert(<span class="string">"I am True"</span>);</span><br><span class="line">        // &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
     
   </div>
   
@@ -286,6 +340,7 @@
 </nav>
 
   
+
 </article>
 
 

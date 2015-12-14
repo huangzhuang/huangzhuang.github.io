@@ -218,6 +218,7 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
   
 
       </header>
+
       
       <div class="article-info article-info-post">
         
@@ -318,6 +319,101 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 
       
     </div>
+
+          <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <div class="toc-title">目录</div>
+    
+</div>
+
+      
+        <p>#高质量的css</p>
+<ul>
+<li>css的API使用(基础)</li>
+<li>css的组织(base.css+ common.js + page.css)<br>三个css是层叠的关系。</li>
+</ul>
+<p>###base.css<br>位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。<strong>相对稳定，基本不需要维护</strong></p>
+<p>###common.js<br>位于中间层，是样式的模块化。<br>是要高度重用的模块，可以视为组件，放在common.css<br>不同的网站有不同的common层，但是同一个网站只应该有一个common层。</p>
+<p>###page.css<br>位于最高层，提供页面级的样式。</p>
+<a id="more"></a>
+<p>#css的命名</p>
+<ul>
+<li>结合<strong>骆驼命名法</strong>和<strong>划线命名法</strong><ul>
+<li>骆驼表示区别不同的单词</li>
+<li>划线表示从属关系</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"timeList"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"timeList-lastItem"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在多人合作写page.css的时候在命名的时在前面加上姓名的缩写前缀，这样就可以避免不同的人会命令相同的类名。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">li</span> <span class="keyword">class</span>=<span class="string">"hz-timeList-LastItem"</span>&gt; &lt;/<span class="keyword">li</span>&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>多用组合，少用继承</p>
+<blockquote>
+<p>通过添加多个类实现组合：将一个复杂的类分成容易产生变化的部分和相对稳定的部分，将容易变化的部分拆分出去，没一种可能的变化设计成一个个单独的类，相对稳定的部分设计成一个主体类。</p>
+</blockquote>
+</li>
+<li><p>如何处理margin</p>
+<blockquote>
+<p>如果不确定上下margin特别稳定，最好不要将它写到模块的类里，而是使用类的组合，单独为上下margin挂用于边距的原子类。模块最好不要<strong>混用</strong>margin-top和margin-bottom，同一使用margin-top或者margin-bottom。</p>
+</blockquote>
+</li>
+<li><p>低权重原则—尽量避免使用<strong>子选择器</strong><br>关于权重：标签是1；class的是10，id的是100。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div em - 权重(<span class="number">2</span>);</span><br><span class="line">strong.demo  - 权重(<span class="number">11</span>)</span><br><span class="line"><span class="preprocessor">#test.red - 权重(<span class="number">110</span>)</span></span><br></pre></td></tr></table></figure>
+<p>与使用在选择器相比，新添class反而更利于维护。</p>
+<p>#css的常见问题</p>
+<ul>
+<li><p>编码风格<br>多行式：易读。但增加行数，增加文件大小。<br>一行式：推荐。</p>
+</li>
+<li><p>css hack<br>1.IE条件注释法</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- [if IE 6/7/8/9] --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">href</span>=<span class="value">"test.css"</span> <span class="attribute">class</span>=<span class="value">"src"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- [endIf] --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.选择符前缀法<br>在css选择符的前面加上一些特定的符号只有特定的浏览器才可以识别的前缀。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">	<span class="class">.test</span><span class="rules">&#123;&#125;</span> <span class="tag">IE6</span>/7/8</span><br><span class="line">	*<span class="tag">html</span> <span class="class">.test</span><span class="rules">&#123;&#125;</span> <span class="tag">IE6</span></span><br><span class="line">	*+<span class="tag">html</span> <span class="class">.test</span><span class="rules">&#123;&#125;</span> <span class="tag">IE7</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.样式属性前缀法<br>_xxx:IE6识别；<br>*xxx：IE6/7识别。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">	<span class="class">.test</span><span class="rules">&#123;<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">80px</span></span></span>;*<span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">70px</span></span></span>;<span class="rule"><span class="attribute">_width</span>:<span class="value"><span class="number">60px</span></span></span>;&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>4.解决超链接访问后hover样式不出现的问题<br>注意visited和hover伪类的顺序。<br>love hate原则。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">	<span class="rule"><span class="attribute">a</span>:<span class="value">visited&#123;color:green</span></span>;&#125;</span><br><span class="line">	<span class="rule"><span class="attribute">a</span>:<span class="value">hover&#123;color:red</span></span>;&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>5.hasLayout<br>IE浏览器的专有属性，用于css的解析引擎。<br>手动触发hasLayout可以解决一些用于解析的时候引起的bug。<br>触发方式：</p>
+<ul>
+<li>设置宽度和高度，比如height：1%；</li>
+<li>设置position:relative;</li>
+<li>zoom:1最安全，最常用，成本最低。</li>
+</ul>
+<p>6.块级元素和行内元素的区别<br>块级：div p form ul ol li<br>行内：span strong em<br>区别：<br>块级可以设置宽度和高度，行内元素设置的话无效。<br>块级元素的margin和padding，而行内元素的很奇怪：水平有效，数值无效。</p>
+<p>7.display：inline-block和hasLayout<br>Inline-block设置之后，它就是行内的块级元素，可以设置长宽，可以设置margin和padding，但是并不是独占一行，和其他元素并排。</p>
+<p>IE6/7不兼容display：inline-block，但是触发hasLayout可以模拟出这个效果。</p>
+<p>8.relative，absolute和float</p>
+<ul>
+<li>relative和absolute会改变元素在文档流中的位置。relative会保留z-index为0的占位。</li>
+<li>float则是没有改变元素在文档流的位置。</li>
+<li>absolute和float会改变display的值（none除外）成为inline-block。</li>
+</ul>
+<p>9.居中</p>
+<ul>
+<li>水平居中：<br>1)文本和图片等行内元素</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">text-align</span>:<span class="value">center</span></span>;</span><br></pre></td></tr></table></figure>
+<p>2)确定宽度的块级元素<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="rule"><span class="attribute">width</span>:<span class="value">xxx</span></span>;<span class="rule"><span class="attribute">margin-left</span>:<span class="value">auto</span></span>;<span class="rule"><span class="attribute">margin-right</span>:<span class="value">auto</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>3)不确定宽度的块级元素<br>三种方法：<br>用table标签来实现，table不是块级元素，不设置宽度，它的宽度就是由内部的元素撑起，则即使不设置宽度，由margin-left:auto;margin-right:auto;也可以时居中。</p>
+<p>设置display:inline然后配合text-align:center来实现。</p>
+<p>设置父元素float，然后position:relative和left:50%,然后设置子元素position:relative和left:-50%。</p>
+<ul>
+<li>竖直居中<br>1)父元素高度不确定的文本和图片以及块级元素的竖直居中。<br>通过给父容器设置相同的上下边距padding实现的。</li>
+</ul>
+<p>2)父元素高度确定的单行文本的竖直居中<br>so easy! 行高等于父元素的高度即可。</p>
+<p>3)父辈高度确定的多行文本，图片，块级元素的竖直居中。<br>方法一：<br>vertical-align:只有父元素是td或者th的时候才生效，所以设置display:table-cell来激活。但是IE6/7是不支持的。所以可以直接使用table。</p>
+<p>方法二：<br>对于一般的使用display:table-cell和vertical-align:middle;来实现，对于不支持的IE6/7则使用hack<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"wrap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"verticalWrap"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"xxx"</span> <span class="attribute">class</span>=<span class="value">"vertical"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line"><span class="class">.verticalWrap</span><span class="rules">&#123;*<span class="rule"><span class="attribute">position</span>:<span class="value">absolute</span></span>;*<span class="rule"><span class="attribute">top</span>:<span class="value"><span class="number">50%</span></span></span>;&#125;</span></span><br><span class="line"><span class="class">.vertical</span><span class="rules">&#123;*<span class="rule"><span class="attribute">position</span>:<span class="value">relative</span></span>;*<span class="rule"><span class="attribute">top</span>:<span class="value">-<span class="number">50%</span></span></span>;&#125;</span></span><br><span class="line"></span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>10.z-index的相关问题以及IE6下的select元素<br>z轴在元素设置position为absolute或者relative的时候激活。</p>
+<p>select在IE6中是以窗口的形式存在，bug。如何设置z-index是不起作用的。解决方法就是把要放在select上面的内容放在一个iframe里面。</p>
+<p>11.插入png图片的问题<br>IE6对png的透明不友好。脚本解决。</p>
+
+      
+    </div>
+
     
   </div>
   
@@ -342,6 +438,7 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 </nav>
 
   
+
 </article>
 
 
