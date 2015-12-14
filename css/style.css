@@ -903,6 +903,7 @@ a {
 }
 .article img {
   max-width: 300px;
+  width: 100%;
 }
 .article a:first-child img {
   max-width: 100%;
