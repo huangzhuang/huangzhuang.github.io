@@ -9,10 +9,7 @@
 
 核心特性:MVC，模块化，自动化双向数据绑定，语义化标签，依赖注入(首次应用于前端框架。)。
 TDD(测试驱动)。
-解决html实现动态页面的困难。
-
-#angular框架中的基本概念
-##1.客户端模板区别于基于ajax的单页面是在服务器端装配模板和data，然后把生成的页面发送到浏览器。而angular.js是服务器把数据和模板都发到浏览器，然后再">
+解决html实现动态页面的困难。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="angular.js开发下一代web读书笔记">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/07/23/angular-nextWeb/index.html">
@@ -21,23 +18,17 @@ TDD(测试驱动)。
 
 核心特性:MVC，模块化，自动化双向数据绑定，语义化标签，依赖注入(首次应用于前端框架。)。
 TDD(测试驱动)。
-解决html实现动态页面的困难。
-
-#angular框架中的基本概念
-##1.客户端模板区别于基于ajax的单页面是在服务器端装配模板和data，然后把生成的页面发送到浏览器。而angular.js是服务器把数据和模板都发到浏览器，然后再">
+解决html实现动态页面的困难。">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/MVC.png">
 <meta property="og:image" content="http://hz2015.sinaapp.com/static/pictures/angular-workflow.png">
-<meta property="og:updated_time" content="2015-12-15T19:04:49.595Z">
+<meta property="og:updated_time" content="2015-12-15T19:17:44.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angular.js开发下一代web读书笔记">
 <meta name="twitter:description" content="##谈到angular.js可以想到什么？
 
 核心特性:MVC，模块化，自动化双向数据绑定，语义化标签，依赖注入(首次应用于前端框架。)。
 TDD(测试驱动)。
-解决html实现动态页面的困难。
-
-#angular框架中的基本概念
-##1.客户端模板区别于基于ajax的单页面是在服务器端装配模板和data，然后把生成的页面发送到浏览器。而angular.js是服务器把数据和模板都发到浏览器，然后再">
+解决html实现动态页面的困难。">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -244,13 +235,13 @@ TDD(测试驱动)。
 </div>
 
       
-        <a id="more"></a>
-<p>##谈到angular.js可以想到什么？</p>
+        <p>##谈到angular.js可以想到什么？</p>
 <ul>
 <li>核心特性:MVC，模块化，自动化双向数据绑定，语义化标签，依赖注入(首次应用于前端框架。)。</li>
 <li>TDD(测试驱动)。</li>
 <li>解决html实现动态页面的困难。</li>
 </ul>
+<a id="more"></a>
 <p>#angular框架中的基本概念</p>
 <p>##1.客户端模板<br>区别于基于ajax的单页面是在服务器端装配模板和data，然后把生成的页面发送到浏览器。而angular.js是服务器把数据和模板都发到浏览器，然后再客户端中进行装配。<br><figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">ng-controller</span>=<span class="value">"HelloController"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">p</span>&gt;</span></span><span class="expression">&#123;&#123;<span class="variable">greeting.text</span>&#125;&#125;</span><span class="xml">, world<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 应用逻辑 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">HelloController</span><span class="params">($scope)</span></span>&#123;</span><br><span class="line">		$scope.greeting = &#123;text: <span class="string">"Hello"</span>&#125;;</span><br><span class="line">	&#125;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>$scope对象是模板的<strong>域模型</strong>，也称为作用域实例，为其赋值，可以传到模板中渲染。<br>$scope对象可以精确的控制域模型的那些数据和操作在视图上是有效的。</p>
