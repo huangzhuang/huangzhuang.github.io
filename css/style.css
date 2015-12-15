@@ -693,11 +693,6 @@ a {
 #header .header-nav .social a.zhihu:hover {
   border: 1px solid #0078d8;
 }
-/*添加简述图标*/
-#header .header-nav .social a.jianshu {
-  background: url("/img/jianshu.png") center no-repeat #06c611;
-  border: 1px solid #06c611;
-}
 #header .header-nav .social a.douban {
   background: url("/img/douban.png") center no-repeat #06c611;
   border: 1px solid #06c611;
