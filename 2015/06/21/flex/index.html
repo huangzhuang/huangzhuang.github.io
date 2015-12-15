@@ -5,8 +5,7 @@
   
   <title>css3之伸缩盒布局(flex) | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#1.flexbox的基本知识
-##布局模式之前css2：
+  <meta name="description" content="1.flexbox的基本知识布局模式之前css2：
 
 块布局
 行内布局
@@ -18,8 +17,7 @@
 <meta property="og:title" content="css3之伸缩盒布局(flex)">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/21/flex/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="#1.flexbox的基本知识
-##布局模式之前css2：
+<meta property="og:description" content="1.flexbox的基本知识布局模式之前css2：
 
 块布局
 行内布局
@@ -27,11 +25,10 @@
 定位布局
 
 现在：css3引入布局模式Flexbox布局；主要思路：以最佳的方式填充可用空间。">
-<meta property="og:updated_time" content="2015-12-08T09:45:00.209Z">
+<meta property="og:updated_time" content="2015-12-15T19:08:31.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3之伸缩盒布局(flex)">
-<meta name="twitter:description" content="#1.flexbox的基本知识
-##布局模式之前css2：
+<meta name="twitter:description" content="1.flexbox的基本知识布局模式之前css2：
 
 块布局
 行内布局
@@ -241,12 +238,11 @@
       
         <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-flexbox的基本知识"><span class="toc-text">1.flexbox的基本知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#布局模式"><span class="toc-text">布局模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flexbox功能"><span class="toc-text">Flexbox功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flexbox中术语"><span class="toc-text">flexbox中术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型规范状态"><span class="toc-text">模型规范状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flexbox的兼容性问题"><span class="toc-text">flexbox的兼容性问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flexbox模型语法"><span class="toc-text">flexbox模型语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#旧版本flexbox详解"><span class="toc-text">旧版本flexbox详解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#混合模式"><span class="toc-text">混合模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#新版本flexbox模型"><span class="toc-text">新版本flexbox模型</span></a></li></ol>
 </div>
 
       
-        <p>#1.flexbox的基本知识</p>
-<p>##布局模式<br>之前css2：</p>
+        <h1 id="1-flexbox的基本知识">1.flexbox的基本知识</h1><h2 id="布局模式">布局模式</h2><p>之前css2：</p>
 <ul>
 <li>块布局</li>
 <li>行内布局</li>
@@ -255,8 +251,8 @@
 </ul>
 <p>现在：css3引入布局模式Flexbox布局；<br>主要思路：以最佳的方式填充可用空间。</p>
 <a id="more"></a>
-<p>##Flexbox功能<br>flexbox布局对于复杂的页面非常有用。可以轻松实现屏幕和浏览器窗口大小发生变化时候。</p>
-<p>##flexbox中术语<br>1.主轴和侧轴<br>一图以示之：<br><img src="" alt=""><br>2.伸缩容器和伸缩项目<br>伸缩容器：通过diaplay属性显式的给元素设置为flex/inline-flex，则容器就是一个伸缩容器。</p>
+<h2 id="Flexbox功能">Flexbox功能</h2><p>flexbox布局对于复杂的页面非常有用。可以轻松实现屏幕和浏览器窗口大小发生变化时候。</p>
+<h2 id="flexbox中术语">flexbox中术语</h2><p>1.主轴和侧轴<br>一图以示之：<br><img src="" alt=""><br>2.伸缩容器和伸缩项目<br>伸缩容器：通过diaplay属性显式的给元素设置为flex/inline-flex，则容器就是一个伸缩容器。</p>
 <blockquote>
 <p>若元素display的指定值是inline-flex且元素是一个浮动或绝对定位元素，则display的计算值是flex。</p>
 </blockquote>
@@ -322,13 +318,13 @@
 </tr>
 </tbody>
 </table>
-<p>##模型规范状态<br>三个版本：</p>
+<h2 id="模型规范状态">模型规范状态</h2><p>三个版本：</p>
 <ul>
 <li>旧版本：2009年版本。display:box或者display:inline-box;</li>
 <li>混合版本：2011年版本。display:flxebox或者display:inline-flexbox;</li>
 <li>新版本：display:flex或者display:inline-flex;</li>
 </ul>
-<p>##flexbox的兼容性问题<br>1.旧版本</p>
+<h2 id="flexbox的兼容性问题">flexbox的兼容性问题</h2><p>1.旧版本</p>
 <table>
 <thead>
 <tr>
@@ -374,7 +370,7 @@
 </tr>
 </tbody>
 </table>
-<p>##flexbox模型语法<br>1.主轴对齐方式：指定伸缩项目的主轴对齐方式</p>
+<h2 id="flexbox模型语法">flexbox模型语法</h2><p>1.主轴对齐方式：指定伸缩项目的主轴对齐方式</p>
 <table>
 <thead>
 <tr>
@@ -556,7 +552,7 @@
 </tr>
 </tbody>
 </table>
-<p>#旧版本flexbox详解<br>开启的方法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:<span class="built_in">box</span> | inline-<span class="built_in">box</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="旧版本flexbox详解">旧版本flexbox详解</h1><p>开启的方法：<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:<span class="built_in">box</span> | inline-<span class="built_in">box</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向：<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-orient:horizontal |<span class="string"> vertical </span>|<span class="string"> inline-axis </span>|<span class="string"> block-axis</span></span><br></pre></td></tr></table></figure></p>
 <p>布局顺序：伸缩项目在伸缩容器中的流动顺序。<br><figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">box</span>-direction:<span class="built_in">normal</span> | <span class="built_in">reverse</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩换行：处理溢出情况<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-lines</span>: <span class="string">single | multiple</span></span><br></pre></td></tr></table></figure></p>
@@ -579,7 +575,7 @@
 <li>设置main、sidebar-left和sidebar-right的显示顺序。</li>
 <li>最后，page的侧轴对齐方式设置成stretch。</li>
 </ul>
-<p>#混合模式<br>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flexbox <span class="string">| inline-flexbox</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="混合模式">混合模式</h1><p>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flexbox <span class="string">| inline-flexbox</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row |<span class="string"> row-reserve </span>|<span class="string"> column </span>|<span class="string"> column-reserve</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩换行flex-wrap<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flex-<span class="operator">wrap</span>: nowrap | <span class="operator">wrap</span> | <span class="operator">wrap</span>-reserve<span class="comment"></span><br><span class="line">//nowrap:类似box-lines的取值single</span><span class="comment"></span><br><span class="line">//wrap:类似box-lines的取值multiple</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向和换行：flex-flow<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: <span class="tag">&lt;<span class="title">flex-direction</span>&gt;</span> | <span class="tag">&lt;<span class="title">flex-wrap</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -590,7 +586,7 @@
 <p>伸缩性flex<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex</span>: <span class="string">&lt;number&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>显示顺序flex-order<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">flex-order</span>: <span class="string">&lt;integer&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>类似老版本的box-ordinal-group</p>
-<p>#新版本flexbox模型<br>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flex <span class="string">| inline-flex</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="新版本flexbox模型">新版本flexbox模型</h1><p>开启：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">display:flex <span class="string">| inline-flex</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向<br><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-direction: row |<span class="string"> row-reverse </span>|<span class="string"> column </span>|<span class="string"> column-reverse</span></span><br></pre></td></tr></table></figure></p>
 <p>伸缩换行flex-wrap<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-<span class="operator">wrap</span>: nowrap | <span class="operator">wrap</span> | <span class="operator">wrap</span>-reverse</span><br></pre></td></tr></table></figure></p>
 <p>伸缩流方向和换行<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flex-flow: <span class="tag">&lt;<span class="title">flex-firection</span>&gt;</span> | <span class="tag">&lt;<span class="title">flex-wrap</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -600,7 +596,6 @@
 <p>会更改flex-wrap的行为。它和align-items相似，但不是对齐伸缩项目，而是对齐的是伸缩行。</p>
 <p>伸缩性flex</p>
 <p>显示顺序order<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">order</span>: <span class="string">&lt;number&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>##说明<br>整理思路的文章。</p>
 
       
     </div>

@@ -5,34 +5,31 @@
   
   <title>前端代码规范-css | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#高质量的css
-
+  <meta name="description" content="高质量的css
 css的API使用(基础)
 css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 
-###base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
-###common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的c">
+base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
+common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的common层，但">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端代码规范-css">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/21/codeRule/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="#高质量的css
-
+<meta property="og:description" content="高质量的css
 css的API使用(基础)
 css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 
-###base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
-###common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的c">
-<meta property="og:updated_time" content="2015-06-24T12:15:28.000Z">
+base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
+common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的common层，但">
+<meta property="og:updated_time" content="2015-12-15T19:07:38.252Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端代码规范-css">
-<meta name="twitter:description" content="#高质量的css
-
+<meta name="twitter:description" content="高质量的css
 css的API使用(基础)
 css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 
-###base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
-###common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的c">
+base.css位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。相对稳定，基本不需要维护
+common.js位于中间层，是样式的模块化。是要高度重用的模块，可以视为组件，放在common.css不同的网站有不同的common层，但">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -235,21 +232,19 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
       
         <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高质量的css"><span class="toc-text">高质量的css</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#base-css"><span class="toc-text">base.css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common-js"><span class="toc-text">common.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#page-css"><span class="toc-text">page.css</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css的命名"><span class="toc-text">css的命名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#css的常见问题"><span class="toc-text">css的常见问题</span></a></li></ol>
 </div>
 
       
-        <p>#高质量的css</p>
-<ul>
+        <h1 id="高质量的css">高质量的css</h1><ul>
 <li>css的API使用(基础)</li>
 <li>css的组织(base.css+ common.js + page.css)<br>三个css是层叠的关系。</li>
 </ul>
-<p>###base.css<br>位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。<strong>相对稳定，基本不需要维护</strong></p>
-<p>###common.js<br>位于中间层，是样式的模块化。<br>是要高度重用的模块，可以视为组件，放在common.css<br>不同的网站有不同的common层，但是同一个网站只应该有一个common层。</p>
-<p>###page.css<br>位于最高层，提供页面级的样式。</p>
+<h3 id="base-css">base.css</h3><p>位于最底层，提供reset.css功能以及粒度最小的通用类——原子类。<strong>相对稳定，基本不需要维护</strong></p>
+<h3 id="common-js">common.js</h3><p>位于中间层，是样式的模块化。<br>是要高度重用的模块，可以视为组件，放在common.css<br>不同的网站有不同的common层，但是同一个网站只应该有一个common层。</p>
+<h3 id="page-css">page.css</h3><p>位于最高层，提供页面级的样式。</p>
 <a id="more"></a>
-<p>#css的命名</p>
-<ul>
+<h1 id="css的命名">css的命名</h1><ul>
 <li>结合<strong>骆驼命名法</strong>和<strong>划线命名法</strong><ul>
 <li>骆驼表示区别不同的单词</li>
 <li>划线表示从属关系</li>
@@ -275,8 +270,7 @@ css的组织(base.css+ common.js + page.css)三个css是层叠的关系。
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">div em - 权重(<span class="number">2</span>);</span><br><span class="line">strong.demo  - 权重(<span class="number">11</span>)</span><br><span class="line"><span class="preprocessor">#test.red - 权重(<span class="number">110</span>)</span></span><br></pre></td></tr></table></figure>
 <p>与使用在选择器相比，新添class反而更利于维护。</p>
-<p>#css的常见问题</p>
-<ul>
+<h1 id="css的常见问题">css的常见问题</h1><ul>
 <li><p>编码风格<br>多行式：易读。但增加行数，增加文件大小。<br>一行式：推荐。</p>
 </li>
 <li><p>css hack<br>1.IE条件注释法</p>

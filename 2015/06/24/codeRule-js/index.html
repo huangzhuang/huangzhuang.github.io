@@ -5,34 +5,28 @@
   
   <title>前端代码规范-js | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#高质量的javascript
-##养成良好的编程习惯
-
+  <meta name="description" content="高质量的javascript养成良好的编程习惯
 用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
 使用命名空间
 
-1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		G">
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端代码规范-js">
 <meta property="og:url" content="http://huangzhuang.github.io/2015/06/24/codeRule-js/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="#高质量的javascript
-##养成良好的编程习惯
-
+<meta property="og:description" content="高质量的javascript养成良好的编程习惯
 用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
 使用命名空间
 
-1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		G">
-<meta property="og:updated_time" content="2015-07-24T05:32:12.000Z">
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
+<meta property="og:updated_time" content="2015-12-15T19:07:07.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端代码规范-js">
-<meta name="twitter:description" content="#高质量的javascript
-##养成良好的编程习惯
-
+<meta name="twitter:description" content="高质量的javascript养成良好的编程习惯
 用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。
 使用命名空间
 
-1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		G">
+1234567891011&amp;lt;script&amp;gt;	var GLOBAL = &amp;#123;&amp;#125;;&amp;lt;/script&amp;gt;&amp;lt;script&amp;gt;	(function()&amp;#123;		var a=123,b=&quot;hello world&quot;;		GLOBAL">
   
     <link rel="alternative" href="/atom.xml" title="hzhuang的博客" type="application/atom+xml">
   
@@ -235,13 +229,11 @@
       
         <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#高质量的javascript"><span class="toc-text">高质量的javascript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#养成良好的编程习惯"><span class="toc-text">养成良好的编程习惯</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给程序统一的入口"><span class="toc-text">给程序统一的入口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#文件压缩"><span class="toc-text">文件压缩</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#javascript的分层概念和javascript库"><span class="toc-text">javascript的分层概念和javascript库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#如何分层"><span class="toc-text">如何分层</span></a></li></ol></li></ol>
 </div>
 
       
-        <p>#高质量的javascript</p>
-<p>##养成良好的编程习惯</p>
-<ul>
+        <h1 id="高质量的javascript">高质量的javascript</h1><h2 id="养成良好的编程习惯">养成良好的编程习惯</h2><ul>
 <li>用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。</li>
 <li>使用命名空间</li>
 </ul>
@@ -251,7 +243,7 @@
 <li>给代码添加适当的注释，以提高代码的可维护性。</li>
 </ul>
 <p>添加必要的注释，可以大大的提高代码的可维护性，对于团队合作来说，更是十分有必要的。<br>让js不产生冲突，需要避免全局变量的泛滥，合理使用命名空间以及为代码添加必要的注释。</p>
-<p>##给程序统一的入口—window.onload和DOMReady<br>js从功能上分：框架部分和应用部分。</p>
+<h2 id="给程序统一的入口">给程序统一的入口</h2><p><strong>window.onload和DOMReady</strong><br>js从功能上分：框架部分和应用部分。</p>
 <ul>
 <li>框架部分：提供的是将js代码的组织作用，包括定义全局变量，定义命名空间。</li>
 <li>应用部分：页面逻辑功能，不同的页面会有不同的功能，不同页面的应用部分的代码也不相同。</li>
@@ -262,9 +254,8 @@
 <figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = init;</span><br></pre></td></tr></table></figure>
 <p>但是按照以上的方法必须网页的全部的内容加载完才执行，如果页面很大，就要等很久的时间了，最好的方法就是只要DOM加载完成即可啦。DOMReady来啦。<br>DOMReady是结合框架来使用的，jquery的，就非常明了啦。</p>
 <p>在调用init( )函数时候，更稳妥的方法。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">init</span>)&#123;<span class="keyword">init</span>( );&#125;</span><br></pre></td></tr></table></figure></p>
-<p>##文件压缩<br>最流行的压缩工具<a href="http://dean.edwards.name/packer/" target="_blank" rel="external">Packer</a>和<a href="http://refresh-sf.com/yui/" target="_blank" rel="external">YUI Compresser</a></p>
-<p>#javascript的分层概念和javascript库</p>
-<p>##如何分层<br>分层可以让我们的代码组织条理更清晰，减少冗余，提高代码重用率。<br>推荐：base.js + common.js + page.js<br>1.base.js<br>最底层，职责：</p>
+<h2 id="文件压缩">文件压缩</h2><p>最流行的压缩工具<a href="http://dean.edwards.name/packer/" target="_blank" rel="external">Packer</a>和<a href="http://refresh-sf.com/yui/" target="_blank" rel="external">YUI Compresser</a></p>
+<h1 id="javascript的分层概念和javascript库">javascript的分层概念和javascript库</h1><h2 id="如何分层">如何分层</h2><p>分层可以让我们的代码组织条理更清晰，减少冗余，提高代码重用率。<br>推荐：base.js + common.js + page.js<br>1.base.js<br>最底层，职责：</p>
 <ul>
 <li>封装不同浏览器下js的差异，提供统一的接口，完成兼容性的工作。</li>
 <li>扩展js语言底层提供的接口。</li>

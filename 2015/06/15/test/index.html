@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/119307-1a70218c41827914.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/119307-e7e5e9a98c8db119.png">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/119307-7a82c515e405f9af.png">
-<meta property="og:updated_time" content="2015-06-16T02:28:52.000Z">
+<meta property="og:updated_time" content="2015-12-15T19:13:51.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式-javascript">
 <meta name="twitter:description" content="说明：博客终于搭建的差不多了，现在去简书post以前写的一篇笔记来测试测试。
@@ -224,7 +224,7 @@
       
         <div id="toc" class="toc-article">
     <strong class="toc-title">目录</strong>
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-_什么是正则表达式"><span class="toc-text">1. 什么是正则表达式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-_ReqExp"><span class="toc-text">2. ReqExp</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#构造正则表达式的方法"><span class="toc-text">构造正则表达式的方法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元字符"><span class="toc-text">元字符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ReqExp的实例属性"><span class="toc-text">ReqExp的实例属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ReqExp实例方法—exec(_)主力"><span class="toc-text">ReqExp实例方法—exec( )主力</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-_元字符整理"><span class="toc-text">3. 元字符整理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-text">参考</span></a></li></ol></li></ol>
 </div>
 
       
@@ -232,14 +232,13 @@
 <p>测试内容：<br>1.标签可行<br>2.more的使用<br>3.是否可以评论</p>
 <a id="more"></a>
 <p><a href="http://www.jianshu.com/p/0e8f4a43c1e5" target="_blank" rel="external">简书原文</a></p>
-<p>##前言<br>由于经常被正则虐，看见就不知如何处理，已断断续续学习过一些，但是一段时间没有接触就连最基本的东西也忘了，原因就是不系统，也没有实战。现在把正则表达式整理一下，方便以后的学习和实践中掌握。</p>
+<h2 id="前言">前言</h2><p>由于经常被正则虐，看见就不知如何处理，已断断续续学习过一些，但是一段时间没有接触就连最基本的东西也忘了，原因就是不系统，也没有实战。现在把正则表达式整理一下，方便以后的学习和实践中掌握。</p>
 <p><a href="http://regexpal.com/" target="_blank" rel="external">正则表达式在线测试</a></p>
-<p>###1. 什么是正则表达式<br>正则表达式也叫做<em>匹配模式(Pattern)</em>，它由一组具有特定含义的字符串组成，通常用于<strong>匹配和替换</strong>文本。</p>
+<h3 id="1-_什么是正则表达式">1. 什么是正则表达式</h3><p>正则表达式也叫做<em>匹配模式(Pattern)</em>，它由一组具有特定含义的字符串组成，通常用于<strong>匹配和替换</strong>文本。</p>
 <p>正则表达式是一个高效匹配检测的东西，对于表单检测，高亮显示搜索结果还是进行URL的地址映射，一般都需要用到它。</p>
 <hr>
-<p>##2. ReqExp<br>这一块是基于《javascript高级程序设计的第三版》整理部分。<br>ECMAScript是通过ReqExp类型来支持正则表达式</p>
-<p>#####构造正则表达式的方法</p>
-<ul>
+<h2 id="2-_ReqExp">2. ReqExp</h2><p>这一块是基于《javascript高级程序设计的第三版》整理部分。<br>ECMAScript是通过ReqExp类型来支持正则表达式</p>
+<h5 id="构造正则表达式的方法">构造正则表达式的方法</h5><ul>
 <li>以字面量的形式来定义(method1)</li>
 <li>使用ReqExp构造函数(method2)</li>
 </ul>
@@ -267,7 +266,7 @@
 </tbody>
 </table>
 <hr>
-<p>####元字符<br>在正则表达式中有一些特殊的字符符号我们是不能直接使用的，必须对其进行转义后才能使用。如“\”，因为这些字符在正则表达式中有特殊的语法含义，这类字符被称为元字符，正则表达式中的元字符有：</p>
+<h4 id="元字符">元字符</h4><p>在正则表达式中有一些特殊的字符符号我们是不能直接使用的，必须对其进行转义后才能使用。如“\”，因为这些字符在正则表达式中有特殊的语法含义，这类字符被称为元字符，正则表达式中的元字符有：</p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="list">(<span class="collection">[<span class="collection">&#123;\^$|)?*+.]</span>&#125;</span>都属于元字符</span></span><br></pre></td></tr></table></figure>
 <p>如果要在正则表达式中直接匹配这些元字符，需要对它们转义。</p>
 <ul>
@@ -275,8 +274,7 @@
 <li>参数都是字符串，所以涉及到双重转义。(method2)</li>
 </ul>
 <p><img src="http://upload-images.jianshu.io/upload_images/119307-d3bf6cdc2a34e22d.png" alt="等价关系"></p>
-<p>#####ReqExp的实例属性</p>
-<table>
+<h5 id="ReqExp的实例属性">ReqExp的实例属性</h5><table>
 <thead>
 <tr>
 <th style="text-align:left"><del>属性名称</del></th>
@@ -306,8 +304,7 @@
 </tr>
 </tbody>
 </table>
-<p>#####ReqExp实例方法—exec( )主力</p>
-<hr>
+<h5 id="ReqExp实例方法—exec(_)主力">ReqExp实例方法—exec( )主力</h5><hr>
 <p><strong>exec(应用模式的字符串 )</strong>，返回包含第一个匹配项信息的<strong>数组</strong>，但是这个数组有两个额外的属性<code>index</code>和<code>input</code>。</p>
 <ul>
 <li>index 表示匹配项在字符串中的位置。</li>
@@ -346,7 +343,7 @@
 <p>基于此，test( )一般是用在if语句中的。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">var</span> text = <span class="string">"000-00-0000"</span></span><br><span class="line">	<span class="keyword">var</span> pattern = /\<span class="keyword">d</span>&#123;3&#125;-\<span class="keyword">d</span>&#123;2&#125;-\<span class="keyword">d</span>&#123;4&#125;/;</span><br><span class="line">	<span class="keyword">if</span>(pattern.<span class="keyword">test</span>(text))&#123;</span><br><span class="line">		console.<span class="literal">log</span>(<span class="string">"matched"</span>);</span><br><span class="line"><span class="comment">//很明显会在chorme的控制台console中输出matched</span></span><br></pre></td></tr></table></figure>
 <hr>
-<p><strong>继承的方法</strong></p>
+<p><strong> 继承的方法</strong></p>
 <table>
 <thead>
 <tr>
@@ -370,8 +367,7 @@
 <hr>
 <p>以上就把正则在javascript中的大致整理了下，下面就主要整理正则表达式中的（pattern）写法以及常用元字符的功能。</p>
 <hr>
-<p>####3. 元字符整理</p>
-<table>
+<h4 id="3-_元字符整理">3. 元字符整理</h4><table>
 <thead>
 <tr>
 <th style="text-align:left">元字符(常用)</th>
@@ -503,8 +499,7 @@
 </table>
 <p>到此打住，关于后向引用，零宽断言，负向零宽断言，贪婪与懒惰先不整理。</p>
 <hr>
-<p>###参考</p>
-<ul>
+<h3 id="参考">参考</h3><ul>
 <li><a href="http://www.cnblogs.com/hustskyking/archive/2013/06/04/regexp.html" target="_blank" rel="external">正则表达式30分钟入门</a></li>
 <li><a href="http://book.douban.com/subject/10546125/" target="_blank" rel="external">《javascript高级程序设计第三版》</a></li>
 <li><a href="http://www.nowamagic.net/librarys/veda/detail/1283" target="_blank" rel="external">veda原型 js正则专题</a></li>
