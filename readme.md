@@ -9,4 +9,4 @@
 - 增加简书，以及背景图标
 - 增加网页标题icon
 - 解决增加目录残留问题
-- hexo d上传不被渲染成html的问题
+- hexo d上传readme.md不被渲染成html的问题
