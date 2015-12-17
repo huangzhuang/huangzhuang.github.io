@@ -10,3 +10,6 @@
 - 增加网页标题icon
 - 解决增加目录残留问题
 - hexo d上传readme.md不被渲染成html的问题
+
+### 2015.12.17
+- 设定container的max-width是1400px，增加body背景色。
