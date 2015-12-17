@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
   
     <div class="article-meta">
       <a href="/2015/12/17/bootstrap/bootstrapOverallArchitecture/" class="article-date">
-  	<time datetime="2015-12-17T15:24:45.237Z" itemprop="datePublished">2015-12-17</time>
+  	<time datetime="2015-12-17T15:26:59.608Z" itemprop="datePublished">2015-12-17</time>
 </a>
     </div>
   
@@ -213,66 +213,13 @@ var _hmt = _hmt || [];
 
       <div class="entry">
       
-        <div id="toc" class="toc-article">
-    <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件结构"><span class="toc-text">文件结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#整体架构"><span class="toc-text">整体架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12格栅格系统"><span class="toc-text">12格栅格系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现原理"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#设计思想"><span class="toc-text">设计思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本用法（以md为例）"><span class="toc-text">基本用法（以md为例）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#css布局"><span class="toc-text">css布局</span></a></li></ol></li></ol>
-</div>
-
-      
         <p>title: bootstrap源码分析之整体架构<br>date: 2015-12-17<br>comments: true<br>tags: [bootstrap, 源码, 系列]</p>
 <hr>
 <h1 id="说明">说明</h1><ul>
-<li>本书是以<a href="http://book.douban.com/subject/25886197/" target="_blank" rel="external">&lt;&lt;深入理解Bootstrap&gt;&gt;</a>为指导基础。</li>
+<li>本书是以<a href="http://book.douban.com/subject/25886197/">&lt;&lt;深入理解Bootstrap&gt;&gt;</a>为指导基础。</li>
 <li>结合最新版本的bootstrap，对新增知识做大致的理解和总结。</li>
 <li>准备做整个系列，时间跨度估计不会短，旨在不追求快，追求吸收程度和实践整理。</li>
 </ul>
-<h1 id="简介">简介</h1><p>bootstrap是由Twitter的两位前员工于2010年8月创建，现在已经成为最流行的前端框架之一，不管是不是专业前端都可以很方便的使用它。<br><a href="http://getbootstrap.com/" target="_blank" rel="external">官方网站</a></p>
-<blockquote>
-<p>简介、直观、强悍的前端开发框架，让web开发更迅速、简单。</p>
-</blockquote>
-<p>且现在是开源的，完全免费。详见bootstrap的<a href="https://github.com/twbs/bootstrap/tree/v3.3.5" target="_blank" rel="external">github项目</a></p>
-<p>bootstrap的重要特性：</p>
-<ul>
-<li>一套完整的基础css插件</li>
-<li>有很丰富的预定义样式表</li>
-<li>一组基于jQuery的Js插件集</li>
-<li>有一个非常灵活的响应式栅格系统，并且是移动先行的思想</li>
-</ul>
-<h1 id="文件结构">文件结构</h1><p>在官网，下载最新的版本的sourceCode，解压后，由于知识分析它的css和js文件，所以只取其中的dist文本夹来说明。<br><img src="http://7xp83s.com1.z0.glb.clouddn.com/bootstrap-jy.PNG" alt="源码结构图"><br>打开dist文件后，得到基本文件结构。</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">bootstrap/</span><br><span class="line">├── css/</span><br><span class="line">│   ├── bootstrap<span class="class">.css</span></span><br><span class="line">│   ├── bootstrap<span class="class">.css</span><span class="class">.map</span></span><br><span class="line">│   ├── bootstrap<span class="class">.min</span><span class="class">.css</span></span><br><span class="line">│   ├── bootstrap-theme<span class="class">.css</span></span><br><span class="line">│   ├── bootstrap-theme<span class="class">.css</span><span class="class">.map</span></span><br><span class="line">│   └── bootstrap-theme<span class="class">.min</span><span class="class">.css</span></span><br><span class="line">├── js/</span><br><span class="line">│   ├── bootstrap<span class="class">.js</span></span><br><span class="line">│   └── bootstrap<span class="class">.min</span><span class="class">.js</span></span><br><span class="line">└── fonts/（字体图标文件）</span><br></pre></td></tr></table></figure>
-<p>其中，<code>bootstrap.css.map</code>是提供css的<a href="https://developer.chrome.com/devtools/docs/css-preprocessors" target="_blank" rel="external">源码映射表</a></p>
-<p>bootstrap源码较之前有几个改变。详见<a href="http://v3.bootcss.com/getting-started/#translations" target="_blank" rel="external">中文教程起步</a></p>
-<ul>
-<li>使用grunt来编译css个js文件。</li>
-<li>内容很丰富：包含了预先编译的 CSS、JavaScript 和图标字体文件，并且还有 LESS、JavaScript 和文档的源码。</li>
-<li>所有文档的源码文件。</li>
-<li>examples/ 目录是 Bootstrap 官方提供的实例工程。</li>
-<li>还包含 Bootstrap 安装包的定义文件、许可证文件和编译脚本。</li>
-</ul>
-<h1 id="整体架构">整体架构</h1><p><img src="http://7xp83s.com1.z0.glb.clouddn.com/bootstrapztjg.PNG" alt="整体架构图"></p>
-<h2 id="12格栅格系统">12格栅格系统</h2><p>将网页的总宽度平均分成12格，然后通过所占的比例在确定响应式的宽度。很简单的道理，如果想设置宽度50%，则可以定义宽度占用12格的6格。</p>
-<h3 id="实现原理">实现原理</h3><ul>
-<li>行（row）必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。</li>
-<li>通过“行（row）”在水平方向创建一组“列（column）”。</li>
-<li>你的内容应当放置于“列（column）”内，并且，只有“列（column）”可以作为行（row）”的直接子元素。</li>
-<li>类似 .row 和 .col-xs-4 这种预定义的类，可以用来快速创建栅格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。</li>
-<li>通过为“列（column）”设置 padding 属性，从而创建列与列之间的间隔（gutter）。通过为 .row 元素设置负值 margin 从而抵消掉为 .container 元素设置的 padding，也就间接为“行（row）”所包含的“列（column）”抵消掉了padding。</li>
-<li>栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个 .col-xs-4 来创建。</li>
-<li><p>如果一“行（row）”中包含了的“列（column）”大于12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。</p>
-<h3 id="设计思想">设计思想</h3><p>区分了四种屏幕：</p>
-</li>
-<li><p>超小屏幕(xs)手机，<strong>小于768px</strong>，移动优先，所以不会用@media，因为就是默认的呀。</p>
-</li>
-<li>小屏幕(sm)平板，<strong>大于768px，小于992px</strong>。</li>
-<li>中等屏幕(md)电脑，<strong>大于992px，小于1200px</strong>。</li>
-<li>大屏幕(lg)大显示器，<strong>大于1200px</strong>。</li>
-</ul>
-<p>类<code>.container</code>的样式源码<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">  <span class="rule"><span class="attribute">padding-right</span>:<span class="value"> <span class="number">15px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">padding-left</span>:<span class="value"> <span class="number">15px</span></span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">margin-right</span>:<span class="value"> auto</span></span>;</span><br><span class="line">  <span class="rule"><span class="attribute">margin-left</span>:<span class="value"> auto</span></span>;</span><br><span class="line">&#125;</span></span><br><span class="line"><span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">768px</span>) </span>&#123;</span><br><span class="line">  <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">750px</span></span></span>; </span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">992px</span>) </span>&#123;</span><br><span class="line">  <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">970px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="at_rule">@<span class="keyword">media</span> (min-width: <span class="number">1200px</span>) </span>&#123;</span><br><span class="line">  <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">1170px</span></span></span>;</span><br><span class="line">  &#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="基本用法（以md为例）">基本用法（以md为例）</h3><p>1.列组合<br><a href="http://v3.bootcss.com/css/#grid-example-basic" target="_blank" rel="external">实例demo</a><br>实现方法：左浮动加百分比。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.col-md-1</span>, <span class="class">.col-md-2</span>, <span class="class">.col-md-3</span>, <span class="class">.col-md-4</span>, <span class="class">.col-md-5</span>, <span class="class">.col-md-6</span>, <span class="class">.col-md-7</span>, <span class="class">.col-md-8</span>, <span class="class">.col-md-9</span>, <span class="class">.col-md-10</span>, <span class="class">.col-md-11</span>, <span class="class">.col-md-12</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">float</span>:<span class="value"> left</span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-12</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-11</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">91.66666667%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-10</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">83.33333333%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-9</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">75%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-8</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">66.66666667%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-7</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">58.33333333%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-6</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">50%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-5</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">41.66666667%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-4</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">33.33333333%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-3</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">25%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-2</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">16.66666667%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br><span class="line"> <span class="class">.col-md-1</span> <span class="rules">&#123;</span><br><span class="line">   <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">8.33333333%</span></span></span>;</span><br><span class="line"> &#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="css布局"><a href="http://v3.bootcss.com/css/" target="_blank" rel="external">css布局</a></h2><p>这是深入理解bootstrap底层结构的关键部分。<br><img src="http://7xp83s.com1.z0.glb.clouddn.com/cssbj.PNG" alt="css布局组件"></p>
-<p>未完，待续，只是看看效果先。。。</p>
-
       
     </div>
 
@@ -283,6 +230,10 @@ var _hmt = _hmt || [];
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/17/bootstrap/bootstrapOverallArchitecture/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
