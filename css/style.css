@@ -920,7 +920,7 @@ body {
 .article a:first-child img {
   max-width: 100%;
 }
-.article p > img {
+.article p a img {
   max-width: 300px;
   width: 100%;
 }
