@@ -920,6 +920,10 @@ body {
 .article a:first-child img {
   max-width: 100%;
 }
+.article p > img {
+  max-width: 300px;
+  width: 100%;
+}
 @-webkit-keyframes cd-bounce-1 {
   0% {
     opacity: 0;
