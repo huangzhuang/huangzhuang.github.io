@@ -222,9 +222,14 @@ a {
     width: 100%;
   }
 }
+body {
+  backgroung: #bbbdbd;
+}
 #container {
   position: relative;
   min-height: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 #container #mobile-nav {
   display: none;
