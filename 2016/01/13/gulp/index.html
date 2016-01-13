@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>hzhuang的博客</title>
+  <title>gulp学习笔记 | hzhuang的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="华中科技大学13级硕士，研三在读。准易中人，现在正在全力提升中。。。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hzhuang的博客">
-<meta property="og:url" content="http://huangzhuang.github.io/index.html">
+  <meta name="description" content="gulp简介gulp是基于nodeJs的一种对代码构建的构建工具，可以自动化完成项目任务，包括javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。即相比于 grunt 的频繁 IO操作，gulp的流操作，能更快地更便捷地完成构建工作。
+gulp与grunt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp学习笔记">
+<meta property="og:url" content="http://huangzhuang.github.io/2016/01/13/gulp/index.html">
 <meta property="og:site_name" content="hzhuang的博客">
-<meta property="og:description" content="华中科技大学13级硕士，研三在读。准易中人，现在正在全力提升中。。。">
+<meta property="og:description" content="gulp简介gulp是基于nodeJs的一种对代码构建的构建工具，可以自动化完成项目任务，包括javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。即相比于 grunt 的频繁 IO操作，gulp的流操作，能更快地更便捷地完成构建工作。
+gulp与grunt">
+<meta property="og:updated_time" content="2016-01-13T14:43:04.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hzhuang的博客">
-<meta name="twitter:description" content="华中科技大学13级硕士，研三在读。准易中人，现在正在全力提升中。。。">
+<meta name="twitter:title" content="gulp学习笔记">
+<meta name="twitter:description" content="gulp简介gulp是基于nodeJs的一种对代码构建的构建工具，可以自动化完成项目任务，包括javascript/coffee/sass/less/html/image/css 等文件的的测试、检查、合并、压缩、格式化、浏览器自动刷新、部署文件生成，并监听文件在改动后重复指定的这些步骤。即相比于 grunt 的频繁 IO操作，gulp的流操作，能更快地更便捷地完成构建工作。
+gulp与grunt">
   
   
     <link rel="icon" href="http://hz2015.sinaapp.com/static/images/zhuang.jpg">
@@ -197,8 +201,6 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
-  
-    
 <article id="post-gulp" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -215,12 +217,23 @@ var _hmt = _hmt || [];
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/13/gulp/">gulp学习笔记</a>
+    <h1 class="article-title" itemprop="name">
+      gulp学习笔记
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -363,663 +376,62 @@ var _hmt = _hmt || [];
 
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/构建工具/">构建工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/12/25/jquery/jquery-sources1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jquery源码分析总体架构</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
-
-
-
-
-
-  
-    
-<article id="post-jquery/jquery-sources1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/25/jquery/jquery-sources1/" class="article-date">
-  	<time datetime="2015-12-25T08:56:30.000Z" itemprop="datePublished">2015-12-25</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/25/jquery/jquery-sources1/">jquery源码分析总体架构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h2 id="说明">说明</h2><p>今年的年中2015.06.18，就在京东买了<a href="http://item.jd.com/11401240.html">jquery技术内幕</a>,今年九月初拿到offer以来就没有再找工作了，所以开始看了一部分这本书，当时只是看并没有整理成博客，现在自己的博客功能迭代的也可以了，还用<a href="http://www.jianshu.com/p/6dce6094bf61">七牛云做图床</a>，所以就开始折腾整理成博客(加深学习理解)。</p>
-<ul>
-<li>我的这个博客系列其实就是学习笔记。</li>
-<li>下载的jquery1.7.1的方法：随便找一个cdn的输入网址后，改下版本就ok了。看<a href="http://libs.baidu.com/jquery/1.7.1/jquery.js">这里</a></li>
-</ul>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系列/">系列</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/jquery/">jquery</a>
-	</div>
 
 
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/25/jquery/jquery-sources1/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="gulp" data-title="gulp学习笔记" data-url="http://huangzhuang.github.io/2016/01/13/gulp/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-  
-    
-<article id="post-bootstrap/bootstrapOverallArchitecture" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/17/bootstrap/bootstrapOverallArchitecture/" class="article-date">
-  	<time datetime="2015-12-17T15:30:30.000Z" itemprop="datePublished">2015-12-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/17/bootstrap/bootstrapOverallArchitecture/">bootstrap源码分析之整体架构</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="说明">说明</h1><ul>
-<li>本书是以<a href="http://book.douban.com/subject/25886197/">&lt;&lt;深入理解Bootstrap&gt;&gt;</a>为指导基础。</li>
-<li>结合最新版本的bootstrap，对新增知识做大致的理解和总结。</li>
-<li>准备做整个系列，时间跨度估计不会短，旨在不追求快，追求吸收程度和实践整理。</li>
-<li>实例demo可以看<a href="http://v3.bootcss.com/css/#type-addresses">中文教程</a>和<a href="http://www.runoob.com/bootstrap/bootstrap-tutorial.html">w3cschool</a>。</li>
-</ul>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bootstrap/">bootstrap</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码/">源码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系列/">系列</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/bootstrap/">bootstrap</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/17/bootstrap/bootstrapOverallArchitecture/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-sublime" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/16/sublime/" class="article-date">
-  	<time datetime="2015-12-15T19:37:30.000Z" itemprop="datePublished">2015-12-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/16/sublime/">我的sublime text3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="题记">题记</h1><p>作为前端一年多来，用过几款编辑器，hbuilder，notepad++，sublime， webstorm等。其他的没有用是因为，我刚开始入门的时候由于是在学python，用的notepad++，后来转成前端之后，就顺手用了它，第一想法是刚开始学习的时候，代码还是多自己码码比较好。之后随着自己的专业性增强，用了sublime text3，此乃神器也。当然，最专业的还是webstorm（折腾过一段时间）。<br>废话不说了，开始啦！</p>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublimeText/">sublimeText</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编辑器/">编辑器</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/16/sublime/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-wx-debug" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/15/wx-debug/" class="article-date">
-  	<time datetime="2015-12-14T19:51:00.000Z" itemprop="datePublished">2015-12-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/15/wx-debug/">微信X5内核webview调试</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="题记">题记</h1><p>记得在简书中很早就发现并收藏这篇文章了，但是点进去一看，又是tbs又是java和android，被吓傻了，果断关了网页。而后的契机（主要有大神带啦）让我重新来学习这篇文章，原因有几个：</p>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/debug/">debug</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webview/">webview</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信/">微信</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/12/15/wx-debug/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-whlove-record-introduction" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/11/26/whlove-record-introduction/" class="article-date">
-  	<time datetime="2015-11-26T14:00:00.000Z" itemprop="datePublished">2015-11-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/26/whlove-record-introduction/">武汉高校之恋-语音介绍页面实现总结</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="任务实现">任务实现</h1><ul>
-<li>设计图<br><img src="http://hz2015.sinaapp.com/static/images/design-record.jpg" alt="设计图"></li>
-</ul>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-sdk/">js-sdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/录音/">录音</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/web/">web</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/11/26/whlove-record-introduction/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-codewars" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/20/codewars/" class="article-date">
-  	<time datetime="2015-09-20T08:26:54.321Z" itemprop="datePublished">2015-09-20</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/20/codewars/">每日一战(codewars)</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <p>#1.DNA<br>题目：</p>
-<blockquote>
-<p>In DNA strings, symbols “A” and “T” are complements of each other, as “C” and “G”. You have function with one side of the DNA (string, except for Haskell); you need to get the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).<br>DNAStrand (“ATTGC”) # return “TAACG”<br>DNAStrand (“GTAT”) # return “CATA”</p>
-</blockquote>
-<p>以下的解决方法是摘录并分析掌握：</p>
-<p>解决一：<br><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">DNAStrand</span><span class="params">(dna)</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> dna.replace(/./g, <span class="function"><span class="keyword">function</span><span class="params">(c)</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> DNAStrand.<span class="built_in">pairs</span>[c]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DNAStrand.<span class="built_in">pairs</span> = &#123;</span><br><span class="line">  A: <span class="string">'T'</span>,</span><br><span class="line">  T: <span class="string">'A'</span>,</span><br><span class="line">  C: <span class="string">'G'</span>,</span><br><span class="line">  G: <span class="string">'C'</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/codewars/">codewars</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/20/codewars/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-angular-nextWeb" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/07/23/angular-nextWeb/" class="article-date">
-  	<time datetime="2015-07-23T01:30:30.000Z" itemprop="datePublished">2015-07-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/23/angular-nextWeb/">angular.js开发下一代web读书笔记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <p>##谈到angular.js可以想到什么？</p>
-<ul>
-<li>核心特性:MVC，模块化，自动化双向数据绑定，语义化标签，依赖注入(首次应用于前端框架。)。</li>
-<li>TDD(测试驱动)。</li>
-<li>解决html实现动态页面的困难。</li>
-</ul>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MVC/">MVC</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端框架/">前端框架</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习笔记/">学习笔记</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/07/23/angular-nextWeb/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-designPattern" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/29/designPattern/" class="article-date">
-  	<time datetime="2015-06-29T14:35:30.000Z" itemprop="datePublished">2015-06-29</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/29/designPattern/">javascript设计模式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="javascript设计模式">javascript设计模式</h1><p>模式内容：</p>
-<ul>
-<li>Constructor构造器模式</li>
-<li>Module模块模式</li>
-<li>Revealing Module揭示模块模式</li>
-<li>Singleton单例模式</li>
-<li>Observer观察者模式</li>
-<li>Mediator中介者模式</li>
-<li>Prototype模式</li>
-<li>Command模式</li>
-<li>Facade外观模式</li>
-<li>Factory工厂模式</li>
-<li>Mixin混入模式</li>
-<li>Decorator装饰者模式</li>
-<li>Flyweight享元模式</li>
-</ul>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/06/29/designPattern/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    
-<article id="post-codeRule-js" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/06/24/codeRule-js/" class="article-date">
-  	<time datetime="2015-06-24T12:11:20.000Z" itemprop="datePublished">2015-06-24</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/24/codeRule-js/">前端代码规范-js</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
-
-      <div class="entry">
-      
-        <h1 id="高质量的javascript">高质量的javascript</h1><h2 id="养成良好的编程习惯">养成良好的编程习惯</h2><ul>
-<li>用匿名函数将脚本包起来，可以有效控制全局变量，避免冲突隐患。</li>
-<li>使用命名空间</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">	<span class="keyword">var</span> GLOBAL = &#123;&#125;;</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="actionscript"></span><br><span class="line">	(<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">var</span> a=<span class="number">123</span>,b=<span class="string">"hello world"</span>;</span><br><span class="line">		GLOBAL.A=&#123;&#125;;</span><br><span class="line">		GLOBAL.A.str2 = a;</span><br><span class="line">		GLOBAL.A.str = b;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码规范/">代码规范</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/06/24/codeRule-js/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -1043,8 +455,8 @@ var _hmt = _hmt || [];
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
