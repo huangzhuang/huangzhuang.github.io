@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>认真玩玩angular4 | hzhuang的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="策略
+在于质量，不在于速度。
+一点点的系统推进，状态不好换其他的，不想看换其他的……
+做好系统性的笔记，做到心中有大纲的地步。
+
+如何开始一个项目？对于react项目而言，fackbook出了一个create-react-app包，可以快速的搭建出一个大型项目的框架。在个人经验中，是用webpack模块化打包工具+express/webpack-dev-serve启动本地服来自行搭建开发环境的。后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认真玩玩angular4">
+<meta property="og:url" content="http://huangzhuang.github.io/2018/04/25/angular4/deepStudyNg4/index.html">
+<meta property="og:site_name" content="hzhuang的博客">
+<meta property="og:description" content="策略
+在于质量，不在于速度。
+一点点的系统推进，状态不好换其他的，不想看换其他的……
+做好系统性的笔记，做到心中有大纲的地步。
+
+如何开始一个项目？对于react项目而言，fackbook出了一个create-react-app包，可以快速的搭建出一个大型项目的框架。在个人经验中，是用webpack模块化打包工具+express/webpack-dev-serve启动本地服来自行搭建开发环境的。后">
+<meta property="og:image" content="http://7xp83s.com1.z0.glb.clouddn.com/directoryStructure.png">
+<meta property="og:image" content="http://yanxuan.nosdn.127.net/42ac31a30e59de426881c8f62f4b9574.png">
+<meta property="og:updated_time" content="2018-04-25T09:04:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认真玩玩angular4">
+<meta name="twitter:description" content="策略
+在于质量，不在于速度。
+一点点的系统推进，状态不好换其他的，不想看换其他的……
+做好系统性的笔记，做到心中有大纲的地步。
+
+如何开始一个项目？对于react项目而言，fackbook出了一个create-react-app包，可以快速的搭建出一个大型项目的框架。在个人经验中，是用webpack模块化打包工具+express/webpack-dev-serve启动本地服来自行搭建开发环境的。后">
+  
+  
+    <link rel="icon" href="http://hz2015.sinaapp.com/static/images/zhuang.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b20a205ed88943a2e3b262a3e51a21e5";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://hz2015.sinaapp.com/static/images/zhuang.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">hzhuang</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">人若无名，便可专心练剑！</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/categories/web">web</a></li>
+				        
+							<li><a href="/categories/bootstrap">bootstrap</a></li>
+				        
+							<li><a href="/categories/jquery">jquery源码</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/huangzhuang" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/1875236755/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huang-zhuang-225" title="zhihu">zhihu</a>
+					        
+								<a class="jianshu" target="_blank" href="http://www.jianshu.com/users/b3a8f42682b2/latest_articles" title="jianshu">jianshu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:hzhuang_wnlo@126.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/MVC/" style="font-size: 10px;">MVC</a> <a href="/tags/animation/" style="font-size: 10px;">animation</a> <a href="/tags/autosize/" style="font-size: 10px;">autosize</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 17.5px;">css3</a> <a href="/tags/debug/" style="font-size: 10px;">debug</a> <a href="/tags/iscroll/" style="font-size: 10px;">iscroll</a> <a href="/tags/jquery/" style="font-size: 10px;">jquery</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js-sdk/" style="font-size: 10px;">js-sdk</a> <a href="/tags/learning/" style="font-size: 15px;">learning</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/ng4/" style="font-size: 10px;">ng4</a> <a href="/tags/reqexp/" style="font-size: 10px;">reqexp</a> <a href="/tags/sublimeText/" style="font-size: 10px;">sublimeText</a> <a href="/tags/transition/" style="font-size: 10px;">transition</a> <a href="/tags/webview/" style="font-size: 10px;">webview</a> <a href="/tags/代码规范/" style="font-size: 12.5px;">代码规范</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/前端框架/" style="font-size: 12.5px;">前端框架</a> <a href="/tags/学习笔记/" style="font-size: 10px;">学习笔记</a> <a href="/tags/录音/" style="font-size: 10px;">录音</a> <a href="/tags/微信/" style="font-size: 10px;">微信</a> <a href="/tags/构建工具/" style="font-size: 10px;">构建工具</a> <a href="/tags/模仿qq/" style="font-size: 10px;">模仿qq</a> <a href="/tags/源码/" style="font-size: 12.5px;">源码</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/简书/" style="font-size: 10px;">简书</a> <a href="/tags/系列/" style="font-size: 12.5px;">系列</a> <a href="/tags/编辑器/" style="font-size: 10px;">编辑器</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a> <a href="/tags/选择器/" style="font-size: 10px;">选择器</a> <a href="/tags/高级程序/" style="font-size: 10px;">高级程序</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+				
+				<section class="switch-part switch-part3">
+				
+					<div id="js-aboutme">华中科技大学13级硕士，研三在读。准易中人，现在正在全力提升中。。。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">hzhuang</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://hz2015.sinaapp.com/static/images/zhuang.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">hzhuang</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">人若无名，便可专心练剑！</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/categories/web">web</a></li>
+		        
+					<li><a href="/categories/bootstrap">bootstrap</a></li>
+		        
+					<li><a href="/categories/jquery">jquery源码</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/huangzhuang" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/1875236755/profile?topnav=1&wvr=6" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="http://www.zhihu.com/people/huang-zhuang-225" title="zhihu">zhihu</a>
+			        
+						<a class="jianshu" target="_blank" href="http://www.jianshu.com/users/b3a8f42682b2/latest_articles" title="jianshu">jianshu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:hzhuang_wnlo@126.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+<article id="post-angular4/deepStudyNg4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/25/angular4/deepStudyNg4/" class="article-date">
+  	<time datetime="2018-04-25T09:00:00.000Z" itemprop="datePublished">2018-04-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      认真玩玩angular4
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ng4/">ng4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端框架/">前端框架</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+<a href="https://unsplash.it/1568/500/?random" title="" rel="fancy-group" class="fancy-ctn fancybox"><img src="https://unsplash.it/1568/500/?random" title=""></a>
+
+      <div class="entry">
+      
+        <div id="toc" class="toc-article">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#策略"><span class="toc-text">策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#如何开始一个项目？"><span class="toc-text">如何开始一个项目？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#核心知识"><span class="toc-text">核心知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#架构"><span class="toc-text">架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主要构造/重要概念"><span class="toc-text">主要构造/重要概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#各个构造块之间的关联"><span class="toc-text">各个构造块之间的关联</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模块"><span class="toc-text">模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#元数据解析"><span class="toc-text">元数据解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#declarations数组："><span class="toc-text">declarations数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#imports数组:"><span class="toc-text">imports数组:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#providers"><span class="toc-text">providers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bootstrap数组"><span class="toc-text">bootstrap数组</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模块究竟是什么？"><span class="toc-text">模块究竟是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用模块"><span class="toc-text">常用模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入口组件_entryComponents"><span class="toc-text">入口组件 entryComponents</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特性模块&diy模块"><span class="toc-text">特性模块&diy模块</span></a></li></ol></li></ol></li></ol>
+</div>
+
+      
+        <h1 id="策略">策略</h1><ul>
+<li>在于质量，不在于速度。</li>
+<li>一点点的系统推进，状态不好换其他的，不想看换其他的……</li>
+<li>做好系统性的笔记，做到心中有大纲的地步。</li>
+</ul>
+<h1 id="如何开始一个项目？">如何开始一个项目？</h1><p>对于react项目而言，fackbook出了一个create-react-app包，可以快速的搭建出一个大型项目的框架。在个人经验中，是用webpack模块化打包工具+express/webpack-dev-serve启动本地服来自行搭建开发环境的。后续会整理一片文章。<br>对于angular4，是用<strong>angular cli</strong>这个命令行工具来初始化一个项目的。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局安装angular cli</span></span><br><span class="line">npm install -<span class="keyword">g</span> @angular/<span class="keyword">cli</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个新的项目</span></span><br><span class="line">ng new appName</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动本地服务</span></span><br><span class="line">ng serve --<span class="keyword">open</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><img src="http://7xp83s.com1.z0.glb.clouddn.com/directoryStructure.png" alt="项目结构描述"></p>
+<h1 id="核心知识">核心知识</h1><h2 id="架构">架构</h2><p>Angular中有一些重要的概念，在之前的版本中也是存在的，比如模块、组件、服务、指令、依赖注入等，接下来就先学习下这些重要概念在ng4是什么样子的存在。</p>
+<h3 id="主要构造/重要概念">主要构造/重要概念</h3><ul>
+<li>模块 module</li>
+<li>组件 component</li>
+<li>模版 template</li>
+<li>元数据 metadata</li>
+<li>数据绑定 data-binding</li>
+<li>指令 directive</li>
+<li>服务 service</li>
+<li>依赖注入 dependency injection</li>
+</ul>
+<h4 id="各个构造块之间的关联">各个构造块之间的关联</h4><p>先占位。</p>
+<h1 id="模块">模块</h1><blockquote>
+<p>NgModule 用于描述应用的各个部分如何组织在一起。 每个应用又至少一个 Angular 模块，根模块就是你用来启动此应用的模块。 按照惯例，它通常命名为 AppModule。</p>
+</blockquote>
+<p>从根模块出来，来看看ngModule的metadata。</p>
+<h2 id="元数据解析">元数据解析</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//根模块</span></span><br><span class="line"><span class="keyword">import</span> &#123; BrowserModule &#125; <span class="keyword">from</span> <span class="string">'@angular/platform-browser'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; NgModule &#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; AppComponent &#125; <span class="keyword">from</span> <span class="string">'./app.component'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根模块</span></span><br><span class="line">@NgModule(&#123; <span class="comment">//装饰器，获取一个元数据对象，告诉Angular如何编译和启动本应用。</span></span><br><span class="line">  declarations: [ <span class="comment">//该应用所拥有的组件。</span></span><br><span class="line">    AppComponent</span><br><span class="line">  ],</span><br><span class="line">  imports: [</span><br><span class="line">    BrowserModule</span><br><span class="line">  ],</span><br><span class="line">  providers: [],</span><br><span class="line">  bootstrap: [AppComponent]</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AppModule</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>元数据对象分析：</p>
+<h3 id="declarations数组："><strong>declarations数组：</strong></h3><ul>
+<li>告诉angular哪些组件是属于该模块。<strong>整个项目中所有定义的组件都要放在这个数组中好了</strong>，每个组件只能声明在一个NgModule中。</li>
+<li>治接受可声明的对象，比如组件、指令或者管道。再次强调一个可声明对象只能在一个ngModule中声明。</li>
+</ul>
+<blockquote>
+<p>每个可声明对象都只能属于一个模块，所以只能把它声明在一个 @NgModule中。当你需要在其它模块中使用它时，就要在那里导入包含这个可声明对象的模块。</p>
+</blockquote>
+<h3 id="imports数组:"><strong>imports数组:</strong></h3><ul>
+<li>告诉angular该模块想正常工作，还需要哪些模块。</li>
+<li>导入其它模块，这样可以用到被导入的模块中声明的组件、指令等。</li>
+<li>导入的数组项只能是@NgModule模块。</li>
+</ul>
+<blockquote>
+<p>组件的模板中可以引用在当前模块中声明的或从其它模块中导入的组件、指令、管道。</p>
+</blockquote>
+<h3 id="providers"><strong>providers</strong></h3><ul>
+<li>该应用需要的服务，服务的创建者。</li>
+<li>在根模块中providers时，服务是全应用范围的。服务的创建者，并加入到全局服务列表中，可用于应用任何部分</li>
+<li>在特性模块或者惰性加载时，服务是范围化的。</li>
+</ul>
+<h3 id="bootstrap数组"><strong>bootstrap数组</strong></h3><ul>
+<li>指定应用的主视图（根节点）。</li>
+<li>只有根模块才需要设置这个参数。</li>
+</ul>
+<h2 id="模块究竟是什么？">模块究竟是什么？</h2><p>下面主要是学习官网啦！</p>
+<h3 id="简介">简介</h3><blockquote>
+<p>NgModules 用于配置注入器和编译器，并帮你把那些相关的东西组织在一起。</p>
+</blockquote>
+<p>下面这句话逼格很高啊：</p>
+<blockquote>
+<p>Angular 模块把组件、指令和管道打包成内聚的功能块，每个模块聚焦于一个特性区域、业务领域、工作流或通用工具。</p>
+</blockquote>
+<ul>
+<li>带有@NgModule装饰器的<strong>类</strong>。</li>
+<li>参数是一个元数据对象，用于描述编译模版的方法&amp;在运行时创建注入器。</li>
+<li>声明某些组件、指令和管道属于这个模块，declarations数组。</li>
+<li>公开其中的部分组件、指令和管道，以便其它模块中的组件模板中可以使用它们，exports。</li>
+<li>导入其它带有组件、指令和管道的模块，这些模块中的元件都是本模块所需的， imports。</li>
+<li>把一些服务商添加到应用的依赖注入器中，providers数组。</li>
+</ul>
+<h3 id="常用模块">常用模块</h3><p>整理下常见的NgModule&amp;作用。</p>
+<table>
+<thead>
+<tr>
+<th>模块名</th>
+<th>来源</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BrowserModule</td>
+<td>@angular/platform-browser</td>
+<td>让应用可以在浏览器中应用，这个需要在根模块中导入</td>
+</tr>
+<tr>
+<td>CommonModule</td>
+<td>@angular/common</td>
+<td>使用内置的指令，比如NgIf、NgFor</td>
+</tr>
+<tr>
+<td>FormsModule</td>
+<td>@angular/forms</td>
+<td>用于构建模版驱动表单(NgModule)</td>
+</tr>
+<tr>
+<td>ReactiveFormsModule</td>
+<td>@angular/forms</td>
+<td>用于构建响应式表单</td>
+</tr>
+<tr>
+<td>RouterModule</td>
+<td>@angular/router</td>
+<td>使用路由功能</td>
+</tr>
+<tr>
+<td>HttpClientmodule</td>
+<td>@angular/common/http</td>
+<td>异步请求数据时需要用到</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入模块的方式</span></span><br><span class="line"><span class="keyword">import</span> &#123;moduleName&#125; <span class="keyword">from</span> <span class="string">'moduleResouce'</span>;</span><br><span class="line"><span class="comment">//然后将导入的模块在当前的模块中imports。</span></span><br></pre></td></tr></table></figure>
+<h3 id="入口组件_entryComponents">入口组件 entryComponents</h3><p>两种类型：</p>
+<ul>
+<li>引导用的根组件，引导过程中把它加载到DOM中。</li>
+<li>在路由定义中指定的组件，动态加载。</li>
+</ul>
+<p>通常情况下，对于以上两种类型的入口组件，angular会自动识别，所以不需要显式的去设置这个数组。编译起只会为从入口组件中直接或者间接访问到的组件生成代码。</p>
+<ul>
+<li>即使在declarations数组中声明了，但是没有用到的，编译器不会声称代码。</li>
+<li>导入的库中，没有用到的模块也不会生成代码。</li>
+</ul>
+<p><img src="http://yanxuan.nosdn.127.net/42ac31a30e59de426881c8f62f4b9574.png" alt=""></p>
+<h3 id="特性模块&amp;diy模块">特性模块&amp;diy模块</h3><p>特性模块提供了聚焦于特定应用需求的一组功能，抽离中一个通用的逻辑处理块。</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建module，根目录下命令行操作。</span></span><br><span class="line">ng <span class="keyword">generate</span> module moduleName</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建组件，可以带路径。</span></span><br><span class="line">ng <span class="keyword">generate</span> component moduleName/componentName</span><br></pre></td></tr></table></figure>
+<p>待续……</p>
+
+      
+    </div>
+
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/01/13/gulp/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gulp学习笔记</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="angular4/deepStudyNg4" data-title="认真玩玩angular4" data-url="http://huangzhuang.github.io/2018/04/25/angular4/deepStudyNg4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 hzhuang
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<div id="totop" style="position:fixed;bottom:150px;right:50px;cursor: pointer;">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+  </div>
+</body>
+</html>
